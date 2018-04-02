@@ -4,4 +4,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable
   include DeviseTokenAuth::Concerns::User
+
+  mount_uploader :image, ImageUploader
+
 end

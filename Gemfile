@@ -35,6 +35,11 @@ gem 'omniauth'
 gem 'rails_admin', '~> 1.3'
 gem 'devise_token_auth'
 
+gem 'carrierwave'                           # This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
+gem 'fog', '~> 1.36.0'                      # Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
+gem 'mini_magick', require: false           # A ruby wrapper for ImageMagick or GraphicsMagick command line.
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
