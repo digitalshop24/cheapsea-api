@@ -6,12 +6,11 @@ class Swagger::Docs::Config
 end
 
 Swagger::Docs::Config.base_api_controller = ApiController
-
 Swagger::Docs::Config.register_apis({
   '1.0' => {
     controller_base_path: '',
     api_file_path: 'public/apidocs',
-    base_path: ENV['HOST'] || 'http://127.0.0.1:3000',
+    base_path: ENV['HOST'],
     parent_controller: ApiController,
     clean_directory: true
   }

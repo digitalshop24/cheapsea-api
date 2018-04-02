@@ -1,0 +1,241 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=New%20York&key=AIzaSyBdCU3DYWSnqDko-_8l5aNgNneanf_SkJw&types=geocode
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 02 Apr 2018 13:58:17 GMT
+      Expires:
+      - Mon, 02 Apr 2018 13:58:17 GMT
+      Cache-Control:
+      - private, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303432; quic=51303431; quic=51303339; quic=51303335,quic=":443";
+        ma=2592000; v="42,41,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "predictions" : [
+              {
+                 "description" : "New York, NY, USA",
+                 "id" : "7eae6a016a9c6f58e2044573fb8f14227b6e1f96",
+                 "matched_substrings" : [
+                    {
+                       "length" : 8,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJOwg_06VPwokRYv534QaPC8g",
+                 "reference" : "CjQpAAAACZ8w-kqz6yHW6bkJCnxM5860QYhgWUtXTBc0AxpfwrhERx61-EhmvEGkA6_3oU9_EhBa7nTyOLUdzwhtayzJJRIIGhQi3OGZvU45vuevL1E9FW8H8w6lrA",
+                 "structured_formatting" : {
+                    "main_text" : "New York",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 8,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "NY, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "New York"
+                    },
+                    {
+                       "offset" : 10,
+                       "value" : "NY"
+                    },
+                    {
+                       "offset" : 14,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              },
+              {
+                 "description" : "New York, IA, USA",
+                 "id" : "329cb7144660f29514f351db26cef864634f748a",
+                 "matched_substrings" : [
+                    {
+                       "length" : 8,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJD_qB3F8X6YcRDraFbXmLUD4",
+                 "reference" : "CjQpAAAAqnA6WuftX201lxBAL6CLITh92pPJIj9utfviNt8Lw4H-3Hr559LazFBA2LDFBbm_EhB-1QRFKH0_eJIB2Kxx5TAiGhSM-Jc3DtmY2oRGanM8rk5OQr688Q",
+                 "structured_formatting" : {
+                    "main_text" : "New York",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 8,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "IA, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "New York"
+                    },
+                    {
+                       "offset" : 10,
+                       "value" : "IA"
+                    },
+                    {
+                       "offset" : 14,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              },
+              {
+                 "description" : "New York, USA",
+                 "id" : "349c7fc49816ce54bb586cf8fa2cd79b255746b3",
+                 "matched_substrings" : [
+                    {
+                       "length" : 8,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJqaUj8fBLzEwRZ5UY3sHGz90",
+                 "reference" : "CjQlAAAAiGsU5fVnAz47Ie5z-cgGzQtvTVd9AVV4L2AudngYu0l8JvEOAwZhUf8DqEZju772EhAZ0uI-0XBFE5DaXaMgZT7oGhTmiZjT27fni2SfxSNistUzkbkuFA",
+                 "structured_formatting" : {
+                    "main_text" : "New York",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 8,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "New York"
+                    },
+                    {
+                       "offset" : 10,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "administrative_area_level_1", "political", "geocode" ]
+              },
+              {
+                 "description" : "New York Avenue Northwest, Washington, DC, USA",
+                 "id" : "f950b4c93f0d7a81b90d6771920b58b756c7123a",
+                 "matched_substrings" : [
+                    {
+                       "length" : 8,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "Ei5OZXcgWW9yayBBdmVudWUgTm9ydGh3ZXN0LCBXYXNoaW5ndG9uLCBEQywgVVNB",
+                 "reference" : "CkQyAAAAtHXxpqLG_Sme1YijMxQvju-YBQic4RMiIb3N4p7PdJ_cL8Q3VcR2ujhfDmUiYzD23iQNR1q19b0q1LaoVSzVjRIQLg-WDl2qClTwrOImAXUzDRoU4k-DZG-thp2yk78KHgNOZm762ec",
+                 "structured_formatting" : {
+                    "main_text" : "New York Avenue Northwest",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 8,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Washington, DC, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "New York Avenue Northwest"
+                    },
+                    {
+                       "offset" : 27,
+                       "value" : "Washington"
+                    },
+                    {
+                       "offset" : 39,
+                       "value" : "DC"
+                    },
+                    {
+                       "offset" : 43,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "New York Penn Station, New York, NY, USA",
+                 "id" : "e9ea1a5dd33866a212405616e93eccfaef0d3543",
+                 "matched_substrings" : [
+                    {
+                       "length" : 8,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJy62yFa5ZwokRun79NAZCVXk",
+                 "reference" : "CkQ2AAAA_rnvi2U-s1uIzsdZhPYIWS-2OB4Lnbt82cJRWgO85olDKK9-SmCegRekAgU_cbax2aJneppO2kBuXcrUKM_DBBIQyl_dtQ_pj-prTtXvhXrGaRoUrKZLZ7JAoz6KwmLk9ozTzFb_nG4",
+                 "structured_formatting" : {
+                    "main_text" : "New York Penn Station",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 8,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "New York, NY, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "New York Penn Station"
+                    },
+                    {
+                       "offset" : 23,
+                       "value" : "New York"
+                    },
+                    {
+                       "offset" : 33,
+                       "value" : "NY"
+                    },
+                    {
+                       "offset" : 37,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "transit_station", "point_of_interest", "establishment", "geocode" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 02 Apr 2018 13:58:32 GMT
+recorded_with: VCR 3.0.3

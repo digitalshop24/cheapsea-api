@@ -6,6 +6,10 @@
     {
       "path": "/apidocs/auth.{format}",
       "description": "User Management"
+    },
+    {
+      "path": "/apidocs/geo.{format}",
+      "description": "Geo"
     }
   ],
   "authorizations": null

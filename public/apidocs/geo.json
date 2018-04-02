@@ -1,0 +1,60 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://tours13.herokuapp.com",
+  "resourcePath": "/geo",
+  "apis": [
+    {
+      "path": "/geo/autocomplete",
+      "operations": [
+        {
+          "summary": "Autocomplete",
+          "notes": "City",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "input",
+              "type": "string",
+              "description": "Query search",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "lat",
+              "type": "string",
+              "description": "Latitude",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "lng",
+              "type": "string",
+              "description": "Longitude",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Geo#autocomplete",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
