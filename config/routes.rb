@@ -5,9 +5,15 @@ Rails.application.routes.draw do
 
   get '/docs' => redirect('/api_html/dist/index.html?url=/apidocs/api-docs.json')
 
-  post 'auth' => 'auth#create'
-  put 'auth' => 'auth#update'
-  post 'auth/sign_in' => 'auth#sign_in'
+  scope 'auth' do
+    post '/' => 'auth#create'
+    put '/' => 'auth#update'
+    post '/sign_in' => 'auth#sign_in'
+  end
+
+  scope 'geo', controller: :geo do
+    post :autocomplete
+  end
 
   default_url_options host: ENV['HOST'] || 'localhost:3000'
 
