@@ -1,0 +1,175 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://cheapsea.herokuapp.com",
+  "resourcePath": "/api/v1/offers",
+  "apis": [
+    {
+      "path": "/api/v1/offers",
+      "operations": [
+        {
+          "summary": "All offers",
+          "nickname": "API::V1::Offers#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/offers",
+      "operations": [
+        {
+          "summary": "Create a new Offer item",
+          "notes": "Notes for creating a new Offer item",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "uid",
+              "type": "string",
+              "description": "uid",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token",
+              "required": true
+            },
+            {
+              "paramType": "header",
+              "name": "client",
+              "type": "string",
+              "description": "client",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "offer[offer_type]",
+              "type": "string",
+              "description": "Offer type: airplane, trane, bus, car_rent",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[discount_type]",
+              "type": "string",
+              "description": "Discount type: hot, seasonal, erroneous, other",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[name]",
+              "type": "string",
+              "description": "Name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "offer[from_google_place_id]",
+              "type": "string",
+              "description": "Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "offer[to_google_place_id]",
+              "type": "string",
+              "description": "Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "offer[airline_id]",
+              "type": "string",
+              "description": "Airline id",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[flight_type]",
+              "type": "string",
+              "description": "Flight type: direct, transfer",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[transfers_count]",
+              "type": "integer",
+              "description": "Transfers count",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[date_from]",
+              "type": "string",
+              "description": "Start date of offer",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[date_to]",
+              "type": "string",
+              "description": "End date of offer",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[date_end]",
+              "type": "string",
+              "description": "Date when offer will archived automaticly",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[price]",
+              "type": "integer",
+              "description": "Price",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[currency_type]",
+              "type": "string",
+              "description": "Currency type: RUB, USD, EUR",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[discount_rate]",
+              "type": "integer",
+              "description": "Discount rate",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[description]",
+              "type": "string",
+              "description": "Description",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "API::V1::Offers#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

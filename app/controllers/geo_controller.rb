@@ -13,6 +13,7 @@ class GeoController < ApiController
   end
 
   def autocomplete
+    byebug
     if params[:input].blank?
       render json: Geo::DefaultValueObject.call
     else
