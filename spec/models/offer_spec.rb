@@ -10,7 +10,6 @@
 #  to_google_place_id   :integer
 #  airline_id           :integer
 #  flight_type          :integer
-#  booking_url          :integer
 #  transfers_count      :integer
 #  date_from            :datetime
 #  date_to              :datetime
@@ -19,6 +18,8 @@
 #  currency_type        :integer
 #  discount_rate        :integer
 #  description          :text
+#  status               :integer          default("draft"), not null
+#  user_id              :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #

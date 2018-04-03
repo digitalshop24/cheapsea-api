@@ -16,6 +16,8 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.integer :currency_type
       t.integer :discount_rate
       t.text :description
+      t.integer :status, default: 0, null: false, index: true
+      t.integer :user_id, index: true, foreign_key: true
 
       t.timestamps
     end

@@ -37,5 +37,5 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  has_many :offers
+  has_many :offers, dependent: :nullify
 end
