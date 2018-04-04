@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180403173116) do
     t.string   "nickname"
     t.string   "image"
     t.string   "email"
+    t.integer  "role",                   default: 0
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false

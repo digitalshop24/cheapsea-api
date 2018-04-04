@@ -38,4 +38,6 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :offers, dependent: :nullify
+
+  enum role: %i(agent moderator admin)
 end
