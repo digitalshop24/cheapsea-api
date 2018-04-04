@@ -3,4 +3,7 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include Pundit
+  include CustomErrors
+
+  rescue_from Pundit::NotAuthorizedError, with: :forbidden
 end

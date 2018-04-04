@@ -1,10 +1,10 @@
 class Users::AccessCheckService
   PERMISSIONS = {
     member: {
-      Offer: %i(index create update)
+      Offer: %i(index create update destroy)
     },
     moderator: {
-      Offer: %i(index create update)
+      Offer: %i(index create update destroy)
     },
     guest: {
       Offer: %i(index)

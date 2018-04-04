@@ -54,11 +54,11 @@ class ApplicationPolicy
   private
 
   def admin?
-    user.admin?
+    user&.admin?
   end
 
   def moderator?
-    user.moderator?
+    user&.moderator?
   end
 
   def klass(record)
@@ -66,7 +66,7 @@ class ApplicationPolicy
   end
 
   def granted?(action)
-    Users::AccessCheckService.new(user: user, klass: klass(record), action: action)
+    Users::AccessCheckService.new(user: user, klass: klass(record), action: action).call
   end
 
   def owner?
