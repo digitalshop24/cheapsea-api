@@ -40,7 +40,26 @@ class API::V1::OffersController < ApiController
     end
   end
 
+  def update
+    authenticate_user!
+
+    offer = Offer.find(params[:id])
+    authorize offer
+    params = user.agent? ? offer_params : advanced_params
+
+    validation = Offers::UpdateValidation.call(params)
+    render json: validation.errors, status: 500 if validation.errors.present?
+
+    if offer.update(params)
+      render json: offer, status: 200
+    else
+      render json: offer.errors.full_messages, status: 500
+    end
+  end
+
   def index
+    authorize Offer
+
     render json: Offer.all
   end
 
@@ -52,4 +71,6 @@ class API::V1::OffersController < ApiController
       :date_from, :date_to, :date_end, :price, :currency_type, :discount_rate, :description
     )
   end
+
+  def
 end

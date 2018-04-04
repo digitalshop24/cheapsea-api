@@ -296,6 +296,8 @@ GEM
     pg (0.21.0)
     public_suffix (3.0.2)
     puma (3.11.3)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.4)
     rack-attack (5.0.1)
       rack
@@ -437,6 +439,7 @@ DEPENDENCIES
   omniauth
   pg (~> 0.18)
   puma (~> 3.0)
+  pundit
   rack-attack (= 5.0.1)
   rack-cors
   rails
