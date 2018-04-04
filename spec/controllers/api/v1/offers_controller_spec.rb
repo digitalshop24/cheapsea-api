@@ -13,7 +13,28 @@ describe API::V1::OffersController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
+      sign_in user
       get :index
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #update" do
+    let!(:offer) { create(:offer) }
+
+    it "returns http success" do
+      sign_in user
+      patch :index, params: { id: offer.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #update" do
+    let!(:offer) { create(:offer) }
+
+    it "returns http success" do
+      sign_in user
+      delete :index, params: { id: offer.id }
       expect(response).to have_http_status(:success)
     end
   end

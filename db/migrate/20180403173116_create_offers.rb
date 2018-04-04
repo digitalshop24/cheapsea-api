@@ -4,9 +4,9 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.integer :offer_type
       t.integer :discount_type
       t.string :name
-      t.integer :from_google_place_id
-      t.integer :to_google_place_id
-      t.integer :airline_id
+      t.string :from_google_place_id
+      t.string :to_google_place_id
+      t.string :airline_id
       t.integer :flight_type
       t.integer :transfers_count
       t.datetime :date_from
