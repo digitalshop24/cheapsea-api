@@ -1,17 +1,17 @@
 class OfferPolicy < ApplicationPolicy
-  def index
+  def index?
     super
   end
 
-  def create
+  def create?
     super
   end
 
-  def update
-    admin? || moderator? || owner?
+  def update?
+    (admin? || moderator? || owner?) if super
   end
 
-  def destroy
-    admin? || moderator? || owner?
+  def destroy?
+    (admin? || moderator? || owner?) if super
   end
 end
