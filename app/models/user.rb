@@ -39,5 +39,5 @@ class User < ApplicationRecord
 
   has_many :offers, dependent: :nullify
 
-  enum role: %i(agent moderator admin)
+  enum role: %i(member moderator admin)
 end

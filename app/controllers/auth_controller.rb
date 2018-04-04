@@ -16,7 +16,7 @@ class AuthController < ApiController
   swagger_api :update do |api|
     summary 'Update a existed User item'
     notes 'Notes for updating a existed User item'
-    ApiController::credentials(api)
+    ApiController.credentials(api)
     api.param :form, :password, :string, :optional, 'Password'
     response :unauthorized
     response :not_acceptable, 'The request you made is not acceptable'

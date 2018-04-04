@@ -1,6 +1,6 @@
 class Users::AccessCheckService
   PERMISSIONS = {
-    agent: {
+    member: {
       Offer: %i(index create update)
     },
     moderator: {

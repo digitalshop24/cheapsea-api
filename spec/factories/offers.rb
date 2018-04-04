@@ -33,14 +33,13 @@ FactoryGirl.define do
     to_google_place_id 1
     airline_id 1
     flight_type 1
-    booking_url 1
     transfers_count 1
     date_from "2018-04-03 20:31:16"
     date_to "2018-04-03 20:31:16"
     date_end "2018-04-03 20:31:16"
     price 1
-    currency_type 1
     discount_rate 1
     description "MyText"
+    user
   end
 end
