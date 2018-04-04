@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "https://cheapsea.herokuapp.com",
-  "resourcePath": "/api/v1/offers",
+  "resourcePath": "offers",
   "apis": [
     {
       "path": "/api/v1/offers",
