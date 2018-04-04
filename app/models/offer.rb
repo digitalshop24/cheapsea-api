@@ -25,11 +25,11 @@
 #
 
 class Offer < ApplicationRecord
-  enum status: %i(draft published)
-  enum offer_type: %i(airplane trane bus car_rent)
-  enum discount_type: %i(hot seasonal erroneous other)
-  enum flight_type: %i(direct transfer)
-  enum currency_type: %i(RUB USD EUR)
+  enum status: { draft: 0, published: 1 }
+  enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
+  enum discount_type: { hot: 0, seasonal: 1, erroneous: 2, other: 3 }
+  enum flight_type: { direct: 0, transfer: 1 }
+  enum currency_type: { RUB: 0, USD: 1, EUR: 2 }
 
   belongs_to :user
 
