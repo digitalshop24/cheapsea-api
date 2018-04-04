@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  swagger_controller :offers, 'Offer Management', resource_path: '/api/v1/offers'
+  swagger_controller :offers, 'Offer Management'
 
   swagger_api :create do |api|
     summary 'Create a new Offer item'
