@@ -31,6 +31,15 @@ module FilterApi
 
     # ActiveModelSerializers.config.adapter = :json_api
 
-    config.middleware.use Rack::Attack
+    # config.middleware.use Rack::Attack
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 methods: [:get, :post, :put, :delete]
+      end
+    end
   end
 end
