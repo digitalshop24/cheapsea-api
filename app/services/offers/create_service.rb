@@ -1,5 +1,3 @@
-# TODO: add specs
-
 class Offers::CreateService
   include Interactor
 

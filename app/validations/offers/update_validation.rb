@@ -1,5 +1,3 @@
-# TODO: add specs
-
 Offers::UpdateValidation = Dry::Validation.Form do
   configure do
     config.messages_file = "#{Rails.root}/config/locales/en.yml"

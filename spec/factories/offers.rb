@@ -28,18 +28,18 @@ FactoryGirl.define do
   factory :offer do
     offer_type 1
     discount_type 1
-    name "MyString"
-    from_google_place_id 1
-    to_google_place_id 1
+    name 'MyString'
+    from_google_place_id 'ChIJOwg_06VPwokRYv534QaPC8g'
+    to_google_place_id 'ChIJGzE9DS1l44kRoOhiASS_fHg'
     airline_id 1
     flight_type 1
     transfers_count 1
-    date_from "2018-04-03 20:31:16"
-    date_to "2018-04-03 20:31:16"
-    date_end "2018-04-03 20:31:16"
+    date_from '2018-04-03 20:31:16'
+    date_to '2018-04-03 20:31:16'
+    date_end '2018-04-03 20:31:16'
     price 1
     discount_rate 1
-    description "MyText"
+    description 'MyText'
     user
   end
 end

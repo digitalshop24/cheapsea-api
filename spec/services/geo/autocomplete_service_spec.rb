@@ -6,7 +6,7 @@ describe Geo::AutocompleteService do
   let(:input) { 'New York' }
 
   context 'found' do
-    use_vcr_cassette 'geo/autocomplete/found'
+    use_vcr_cassette 'services/geo/autocomplete/found'
 
     it 'checks that result is not nil' do
       expect(subject).not_to be_nil
@@ -18,7 +18,7 @@ describe Geo::AutocompleteService do
   end
 
   context 'not found' do
-    use_vcr_cassette 'geo/autocomplete/not_found'
+    use_vcr_cassette 'services/geo/autocomplete/not_found'
 
     let(:input) { 'djshfg3487fg874' }
 
