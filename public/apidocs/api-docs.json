@@ -4,6 +4,10 @@
   "basePath": "https://cheapsea.herokuapp.com",
   "apis": [
     {
+      "path": "/apidocs/airlines.{format}",
+      "description": "Airlines"
+    },
+    {
       "path": "/apidocs/auth.{format}",
       "description": "User Management"
     },

@@ -34,6 +34,8 @@ gem "interactor", "~> 3.0"
 gem 'annotate'
 gem 'dry-validation'
 gem 'pundit'
+gem 'httparty'
+gem 'redis-namespace'
 
 gem 'carrierwave'                           # This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
 gem 'fog', '~> 1.36.0'                      # Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
