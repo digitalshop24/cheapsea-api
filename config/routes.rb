@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'airlines/all'
+
+  namespace :api do
+    namespace :v1 do
+      get 'airlines/index'
+    end
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount_devise_token_auth_for 'User', at: 'auth'
@@ -13,6 +21,10 @@ Rails.application.routes.draw do
 
   scope 'geo', controller: :geo do
     post :autocomplete
+  end
+
+  scope 'airlines', controller: :airlines do
+    get :all
   end
 
   default_url_options host: ENV['HOST']

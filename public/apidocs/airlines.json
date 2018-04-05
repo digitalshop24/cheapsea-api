@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://cheapsea.herokuapp.com",
+  "resourcePath": "/airlines",
+  "apis": [
+    {
+      "path": "/airlines/all",
+      "operations": [
+        {
+          "summary": "Fetch all airlines",
+          "nickname": "Airlines#all",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

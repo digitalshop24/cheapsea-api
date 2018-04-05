@@ -1,4 +1,4 @@
-class Geo::PlaceInfo < Geo::Base
+class Geo::PlaceInfoService < Geo::Base
   include Interactor
 
   def call
