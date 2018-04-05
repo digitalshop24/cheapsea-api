@@ -5,7 +5,7 @@ describe Geo::PlaceInfo do
 
   let(:place_id) { 'ChIJOwg_06VPwokRYv534QaPC8g' }
 
-  use_vcr_cassette 'geo/place_info'
+  use_vcr_cassette 'services/geo/place_info'
 
   describe 'success' do
     it 'checks that service is successful' do

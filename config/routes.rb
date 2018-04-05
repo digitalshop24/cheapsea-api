@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     post :autocomplete
   end
 
-  default_url_options host: ENV['HOST'] || 'localhost:3000'
+  default_url_options host: ENV['HOST']
 
   namespace :api do
     namespace :v1 do
