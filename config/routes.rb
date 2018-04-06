@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'airlines/all'
-
-  namespace :api do
-    namespace :v1 do
-      get 'airlines/index'
-    end
-  end
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount_devise_token_auth_for 'User', at: 'auth'
