@@ -46,4 +46,6 @@ class OfferSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :airline
+
+  has_many :transfers
 end

@@ -11,6 +11,8 @@
 #
 
 class Transfer < ApplicationRecord
-  belongs_to :offer
+  belongs_to :offer, counter_cache: true
   belongs_to :airline, optional: true
+
+  validates :offer_id, presence: true
 end

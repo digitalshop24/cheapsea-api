@@ -145,6 +145,13 @@
               "type": "string",
               "description": "Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "transfers_params",
+              "type": "string",
+              "description": "Create transfers. ex: [{\"google_place_id\": \"ChIJOwg_06VPwokRYv534QaPC8g\", \"airline_id\": \"1\"}, {\"google_place_id\": \"ChIJOwg_06VPwokRYv534QaPC8g\", \"airline_id\": \"1\"}]",
+              "required": false
             }
           ],
           "responseMessages": [
