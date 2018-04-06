@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  #before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: :index
 
   swagger_controller :offers, 'Offer Management'
 
@@ -64,9 +64,9 @@ class API::V1::OffersController < ApiController
   end
 
   def create
-    #authorize Offer
+    authorize Offer
 
-    service = Offers::CreateService.call(user: User.first, params: full_params, transfers_params: transfers_params)
+    service = Offers::CreateService.call(user: current_user, params: full_params, transfers_params: transfers_params)
     if service.success?
       render json: service.result, status: 200
     else
