@@ -14,4 +14,22 @@ describe Offers::UpdateValidation do
       expect(subject.success?).to be true
     end
   end
+
+  describe 'invalid' do
+    context 'params' do
+      context 'from_google_place_id' do
+        let(:params) { { from_google_place_id: 'wrong_id' } }
+        it 'doesnt exist' do
+          expect(subject.errors[:from_google_place_id]).to eq(['Google place does not exist'])
+        end
+      end
+
+      context 'to_google_place_id' do
+        let(:params) { { to_google_place_id: 'wrong_id' } }
+        it 'doesnt exist' do
+          expect(subject.errors[:to_google_place_id]).to eq(['Google place does not exist'])
+        end
+      end
+    end
+  end
 end

@@ -12,8 +12,8 @@
 
 FactoryGirl.define do
   factory :transfer do
-    offer nil
-    google_place_id "MyString"
+    offer
+    google_place_id 'ChIJOwg_06VPwokRYv534QaPC8g'
     airline nil
   end
 end

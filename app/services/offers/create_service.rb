@@ -12,6 +12,7 @@ class Offers::CreateService
     offer = user.offers.new(params)
     if offer.valid?
       offer.save
+      create_transfers(offer)
     else
       context.fail!(errors: offer.errors.full_messages)
     end
@@ -21,10 +22,18 @@ class Offers::CreateService
 
   private
 
-  attr_reader :user, :params
+  attr_reader :user, :params, :transfers_params
 
   def pre_initialize
     @user = context.user
     @params = context.params
+    @transfers_params = JSON.parse(context.transfers_params) if context.transfers_params.present?
+  end
+
+  def create_transfers(offer)
+    return if transfers_params.nil?
+    transfers_params.each do |transfer|
+      Transfers::CreateService.call(params: transfer, offer: offer)
+    end
   end
 end

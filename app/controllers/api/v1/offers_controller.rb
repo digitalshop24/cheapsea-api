@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  before_action :authenticate_user!, except: :index
+  #before_action :authenticate_user!, except: :index
 
   swagger_controller :offers, 'Offer Management'
 
@@ -25,6 +25,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[name]', :string, :required, 'Name'
     api.param :form, 'offer[from_google_place_id]', :string, :required, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
     api.param :form, 'offer[to_google_place_id]', :string, :required, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
+    api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
     response :unauthorized
     response :not_acceptable, 'The request you made is not acceptable'
     response :unprocessable_entity
@@ -59,13 +60,13 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: Offer.all
+    render json: Offer.includes(:airline, :user, transfers: :airline)
   end
 
   def create
-    authorize Offer
+    #authorize Offer
 
-    service = Offers::CreateService.call(user: current_user, params: full_params)
+    service = Offers::CreateService.call(user: User.first, params: full_params, transfers_params: transfers_params)
     if service.success?
       render json: service.result, status: 200
     else
@@ -107,7 +108,7 @@ class API::V1::OffersController < ApiController
 
   def params_array
     %i(offer_type discount_type name from_google_place_id to_google_place_id airline_id flight_type transfers_count
-      date_from date_to date_end price currency_type discount_rate description status)
+      date_from date_to date_end price currency_type discount_rate description status transfers_params)
   end
 
   def full_params
@@ -116,5 +117,9 @@ class API::V1::OffersController < ApiController
 
   def stripped_params
     params.require(:offer).permit(params_array.tap { |arr| arr.delete(:status) })
+  end
+
+  def transfers_params
+    params[:transfers_params]
   end
 end
