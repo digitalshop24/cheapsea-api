@@ -23,6 +23,7 @@
 #  nickname               :string
 #  image                  :string
 #  email                  :string
+#  role                   :integer          default("member")
 #  tokens                 :json
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
