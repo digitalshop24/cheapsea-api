@@ -6,8 +6,8 @@
 #  offer_type           :integer
 #  discount_type        :integer
 #  name                 :string
-#  from_google_place_id :integer
-#  to_google_place_id   :integer
+#  from_google_place_id :string
+#  to_google_place_id   :string
 #  airline_id           :integer
 #  flight_type          :integer
 #  transfers_count      :integer
@@ -33,6 +33,8 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :airline, optional: true
+
+  has_many :transfers
 
   validates :name, :from_google_place_id, :to_google_place_id, presence: true
 

@@ -6,8 +6,8 @@
 #  offer_type           :integer
 #  discount_type        :integer
 #  name                 :string
-#  from_google_place_id :integer
-#  to_google_place_id   :integer
+#  from_google_place_id :string
+#  to_google_place_id   :string
 #  airline_id           :integer
 #  flight_type          :integer
 #  transfers_count      :integer
@@ -32,4 +32,5 @@ describe Offer, type: :model do
   it { is_expected.to validate_presence_of(:to_google_place_id) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:airline) }
+  it { is_expected.to have_many(:transfers) }
 end
