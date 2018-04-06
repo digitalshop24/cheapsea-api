@@ -1,0 +1,1 @@
+Import airlines: `rake import:airlines`

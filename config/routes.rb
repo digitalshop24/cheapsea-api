@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     post :autocomplete
   end
 
-  scope 'airlines', controller: :airlines do
-    get :all
+  resources :airlines, only: :index do
+    post :autocomplete, on: :collection
   end
 
   default_url_options host: ENV['HOST']

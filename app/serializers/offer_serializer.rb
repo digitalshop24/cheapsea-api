@@ -45,4 +45,5 @@ class OfferSerializer < ActiveModel::Serializer
     :updated_at
 
   belongs_to :user
+  belongs_to :airline
 end
