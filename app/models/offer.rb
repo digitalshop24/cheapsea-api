@@ -32,6 +32,7 @@ class Offer < ApplicationRecord
   enum currency_type: { RUB: 0, USD: 1, EUR: 2 }
 
   belongs_to :user
+  belongs_to :airline, optional: true
 
   validates :name, :from_google_place_id, :to_google_place_id, presence: true
 

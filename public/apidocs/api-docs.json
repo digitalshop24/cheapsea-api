@@ -4,16 +4,16 @@
   "basePath": "https://cheapsea.herokuapp.com",
   "apis": [
     {
-      "path": "/apidocs/airlines.{format}",
-      "description": "Airlines"
-    },
-    {
       "path": "/apidocs/auth.{format}",
       "description": "User Management"
     },
     {
       "path": "/apidocs/geo.{format}",
       "description": "Geo"
+    },
+    {
+      "path": "/apidocs/airlines.{format}",
+      "description": "Airlines"
     },
     {
       "path": "/apidocs/api/v1/offers.{format}",

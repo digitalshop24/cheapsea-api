@@ -2,14 +2,50 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "https://cheapsea.herokuapp.com",
-  "resourcePath": "/airlines",
+  "resourcePath": "airlines",
   "apis": [
     {
-      "path": "/airlines/all",
+      "path": "/airlines/autocomplete",
+      "operations": [
+        {
+          "summary": "Autocomplete airlines",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "query",
+              "type": "string",
+              "description": "Query search",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "nickname": "Airlines#autocomplete",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/airlines",
       "operations": [
         {
           "summary": "Fetch all airlines",
-          "nickname": "Airlines#all",
+          "nickname": "Airlines#index",
           "method": "get"
         }
       ]
