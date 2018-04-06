@@ -1,6 +1,3 @@
-User.destroy_all
-Offer.destroy_all
-
 User.create!(email: 'admin@gmail.com', password: 'password')
 User.create!(email: 'member@gmail.com', password: 'password', role: 'admin')
 User.create!(email: 'moderator@gmail.com', password: 'password', role: 'moderator')
