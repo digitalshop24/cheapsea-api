@@ -27,7 +27,7 @@ class Offers::CreateService
   def pre_initialize
     @user = context.user
     @params = context.params
-    @transfers_params = JSON.parse(context.transfers_params) if context.transfers_params.present?
+    @transfers_params = JSON.parse(context.transfers_params.to_json) if context.transfers_params.present?
   end
 
   def create_transfers(offer)
