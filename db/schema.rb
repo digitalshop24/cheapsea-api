@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406173914) do
+ActiveRecord::Schema.define(version: 20180409155833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20180406173914) do
     t.string   "from_google_place_id"
     t.string   "to_google_place_id"
     t.integer  "airline_id"
-    t.integer  "flight_type"
     t.integer  "transfers_count"
     t.datetime "date_from"
     t.datetime "date_to"
@@ -38,10 +37,11 @@ ActiveRecord::Schema.define(version: 20180406173914) do
     t.integer  "currency_type"
     t.integer  "discount_rate"
     t.text     "description"
-    t.integer  "status",               default: 0, null: false
+    t.integer  "status",               default: 0,    null: false
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "is_direct",            default: true
     t.index ["airline_id"], name: "index_offers_on_airline_id", using: :btree
     t.index ["status"], name: "index_offers_on_status", using: :btree
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree

@@ -7,7 +7,7 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.string :from_google_place_id
       t.string :to_google_place_id
       t.integer :airline_id, index: true, foreign_key: true
-      t.integer :flight_type
+      t.boolean :is_direct, default: true
       t.integer :transfers_count
       t.datetime :date_from
       t.datetime :date_to
