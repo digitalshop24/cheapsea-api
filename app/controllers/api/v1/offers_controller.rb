@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: %i(index show)
 
   swagger_controller :offers, 'Offer Management'
 
@@ -8,7 +8,6 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[offer_type]', :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
     api.param :form, 'offer[discount_type]', :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
     api.param :form, 'offer[airline_id]', :string, :optional, 'Airline id'
-    api.param :form, 'offer[flight_type]', :string, :optional, 'Flight type: direct, transfer'
     api.param :form, 'offer[transfers_count]', :integer, :optional, 'Transfers count'
     api.param :form, 'offer[date_from]', :string, :optional, 'Start date of offer'
     api.param :form, 'offer[date_to]', :string, :optional, 'End date of offer'
@@ -23,6 +22,7 @@ class API::V1::OffersController < ApiController
     summary 'Create a new Offer item'
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :required, 'Name'
+    api.param :form, 'offer[is_direct]', :boolean, :required, 'Is a direct flight?'
     api.param :form, 'offer[from_google_place_id]', :string, :required, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
     api.param :form, 'offer[to_google_place_id]', :string, :required, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
     api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
@@ -36,6 +36,7 @@ class API::V1::OffersController < ApiController
     param :path, :id, :integer, :optional, 'Offer Id'
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :optional, 'Name'
+    api.param :form, 'offer[is_direct]', :boolean, :optional, 'Is a direct flight?'
     api.param :form, 'offer[from_google_place_id]', :string, :optional, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
     api.param :form, 'offer[to_google_place_id]', :string, :optional, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
@@ -57,9 +58,12 @@ class API::V1::OffersController < ApiController
     summary 'All offers'
   end
 
-  def index
-    authorize Offer
+  swagger_api :show do
+    summary 'Show an offer'
+    param :path, :id, :integer, :optional, 'Offer Id'
+  end
 
+  def index
     render json: Offer.includes(:airline, :user, transfers: :airline)
   end
 
@@ -72,6 +76,10 @@ class API::V1::OffersController < ApiController
     else
       render json: service.errors, status: 500
     end
+  end
+
+  def show
+    render json: find_an_offer, status: 200
   end
 
   def update
@@ -107,7 +115,7 @@ class API::V1::OffersController < ApiController
   end
 
   def params_array
-    %i(offer_type discount_type name from_google_place_id to_google_place_id airline_id flight_type transfers_count
+    %i(offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
       date_from date_to date_end price currency_type discount_rate description status transfers_params)
   end
 

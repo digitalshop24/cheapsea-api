@@ -64,13 +64,6 @@
             },
             {
               "paramType": "form",
-              "name": "offer[flight_type]",
-              "type": "string",
-              "description": "Flight type: direct, transfer",
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "offer[transfers_count]",
               "type": "integer",
               "description": "Transfers count",
@@ -134,6 +127,13 @@
             },
             {
               "paramType": "form",
+              "name": "offer[is_direct]",
+              "type": "boolean",
+              "description": "Is a direct flight?",
+              "required": true
+            },
+            {
+              "paramType": "form",
               "name": "offer[from_google_place_id]",
               "type": "string",
               "description": "Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)",
@@ -173,6 +173,25 @@
           ],
           "nickname": "API::V1::Offers#create",
           "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/offers/{id}",
+      "operations": [
+        {
+          "summary": "Show an offer",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Offer Id",
+              "required": false
+            }
+          ],
+          "nickname": "API::V1::Offers#show",
+          "method": "get"
         }
       ]
     },
@@ -233,13 +252,6 @@
             },
             {
               "paramType": "form",
-              "name": "offer[flight_type]",
-              "type": "string",
-              "description": "Flight type: direct, transfer",
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "offer[transfers_count]",
               "type": "integer",
               "description": "Transfers count",
@@ -299,6 +311,13 @@
               "name": "offer[name]",
               "type": "string",
               "description": "Name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer[is_direct]",
+              "type": "boolean",
+              "description": "Is a direct flight?",
               "required": false
             },
             {

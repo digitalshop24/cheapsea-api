@@ -9,7 +9,6 @@
 #  from_google_place_id :string
 #  to_google_place_id   :string
 #  airline_id           :integer
-#  flight_type          :integer
 #  transfers_count      :integer
 #  date_from            :datetime
 #  date_to              :datetime
@@ -22,6 +21,7 @@
 #  user_id              :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  is_direct            :boolean          default(TRUE)
 #
 
 FactoryGirl.define do
@@ -32,7 +32,6 @@ FactoryGirl.define do
     from_google_place_id 'ChIJOwg_06VPwokRYv534QaPC8g'
     to_google_place_id 'ChIJGzE9DS1l44kRoOhiASS_fHg'
     airline_id 1
-    flight_type 1
     transfers_count 1
     date_from '2018-04-03 20:31:16'
     date_to '2018-04-03 20:31:16'

@@ -9,7 +9,6 @@
 #  from_google_place_id :string
 #  to_google_place_id   :string
 #  airline_id           :integer
-#  flight_type          :integer
 #  transfers_count      :integer
 #  date_from            :datetime
 #  date_to              :datetime
@@ -22,6 +21,7 @@
 #  user_id              :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  is_direct            :boolean          default(TRUE)
 #
 
 class OfferSerializer < ActiveModel::Serializer
@@ -32,7 +32,7 @@ class OfferSerializer < ActiveModel::Serializer
     :from_google_place_id,
     :to_google_place_id,
     :airline_id,
-    :flight_type,
+    :is_direct,
     :transfers_count,
     :date_from,
     :date_to,
