@@ -64,7 +64,7 @@ class API::V1::OffersController < ApiController
   end
 
   def index
-    render json: Offer.includes(:airline, :user, transfers: :airline)
+    render json: Filters::OfferFilter.new(params.slice(params_array)), status: 200
   end
 
   def create
