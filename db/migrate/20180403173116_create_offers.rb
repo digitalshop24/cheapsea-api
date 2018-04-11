@@ -12,12 +12,11 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.datetime :date_from
       t.datetime :date_to
       t.datetime :date_end
-      t.integer :price
-      t.integer :currency_type
       t.integer :discount_rate
       t.text :description
-      t.integer :status, default: 0, null: false, index: true
+      t.integer :status, default: 'draft', null: false, index: true
       t.integer :user_id, index: true, foreign_key: true
+      t.monetize :price
 
       t.timestamps
     end

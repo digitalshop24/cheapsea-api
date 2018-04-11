@@ -13,8 +13,6 @@
 #  date_from            :datetime
 #  date_to              :datetime
 #  date_end             :datetime
-#  price                :integer
-#  currency_type        :integer
 #  discount_rate        :integer
 #  description          :text
 #  status               :integer          default("draft"), not null
@@ -22,6 +20,8 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  is_direct            :boolean          default(TRUE)
+#  price_cents          :integer          default(0), not null
+#  price_currency       :string           default("USD"), not null
 #
 
 class OfferSerializer < ActiveModel::Serializer
@@ -38,7 +38,6 @@ class OfferSerializer < ActiveModel::Serializer
     :date_to,
     :date_end,
     :price,
-    :currency_type,
     :discount_rate,
     :description,
     :created_at,
