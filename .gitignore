@@ -20,9 +20,6 @@
 # Meta Data RubyMine
 /.idea
 
-# Database
-/config/database.yml
-
 # RVM config file
 /.rvmrc
 
