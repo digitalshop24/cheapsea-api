@@ -9,7 +9,7 @@ set :user, 'root'
 set :branch, 'master'
 
 # Default value for :linked_files is []
-append :linked_files, 'application.yml'
+append :linked_files, 'config/application.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", 'vendor/bundle', "public/system"
@@ -48,7 +48,6 @@ namespace :puma do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
       execute "mkdir #{shared_path}/tmp/pids -p"
-      run "ln -nfs #{shared_path}/application.yml #{release_path}/config/application.yml"
     end
   end
 
