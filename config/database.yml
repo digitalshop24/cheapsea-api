@@ -36,4 +36,3 @@ test:
 production:
   <<: *default
   database: cheapsea_production
-
