@@ -13,8 +13,6 @@
 #  date_from            :datetime
 #  date_to              :datetime
 #  date_end             :datetime
-#  price                :integer
-#  currency_type        :integer
 #  discount_rate        :integer
 #  description          :text
 #  status               :integer          default("draft"), not null
@@ -22,20 +20,27 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  is_direct            :boolean          default(TRUE)
+#  price_cents          :integer          default(0), not null
+#  price_currency       :string           default("USD"), not null
 #
 
 class Offer < ApplicationRecord
+  CURRENCY_TYPES = %w(RUB USD EUR)
+
+  monetize :price_cents
+
   enum status: { draft: 0, published: 1 }
   enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
   enum discount_type: { hot: 0, seasonal: 1, erroneous: 2, other: 3 }
-  enum currency_type: { RUB: 0, USD: 1, EUR: 2 }
 
   belongs_to :user
   belongs_to :airline, optional: true
 
-  has_many :transfers
+  has_many :transfers, dependent: :destroy
 
   validates :name, :from_google_place_id, :to_google_place_id, :is_direct, presence: true
+  validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
+  validates :price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   scope :published, -> { where(status: 'published') }
 end

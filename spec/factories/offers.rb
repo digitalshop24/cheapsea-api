@@ -13,8 +13,6 @@
 #  date_from            :datetime
 #  date_to              :datetime
 #  date_end             :datetime
-#  price                :integer
-#  currency_type        :integer
 #  discount_rate        :integer
 #  description          :text
 #  status               :integer          default("draft"), not null
@@ -22,6 +20,8 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  is_direct            :boolean          default(TRUE)
+#  price_cents          :integer          default(0), not null
+#  price_currency       :string           default("USD"), not null
 #
 
 FactoryGirl.define do
@@ -36,7 +36,7 @@ FactoryGirl.define do
     date_from '2018-04-03 20:31:16'
     date_to '2018-04-03 20:31:16'
     date_end '2018-04-03 20:31:16'
-    price 1
+    price_cents 1
     discount_rate 1
     description 'MyText'
     user

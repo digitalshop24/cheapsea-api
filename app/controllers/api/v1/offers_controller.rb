@@ -12,8 +12,8 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[date_from]', :string, :optional, 'Start date of offer'
     api.param :form, 'offer[date_to]', :string, :optional, 'End date of offer'
     api.param :form, 'offer[date_end]', :string, :optional, 'Date when offer will archived automaticly'
-    api.param :form, 'offer[price]', :integer, :optional, 'Price'
-    api.param :form, 'offer[currency_type]', :string, :optional, 'Currency type: RUB, USD, EUR'
+    api.param :form, 'offer[price_cents]', :integer, :optional, 'Price'
+    api.param :form, 'offer[price_currency]', :integer, :optional, 'Currency type: RUB, USD, EUR'
     api.param :form, 'offer[discount_rate]', :integer, :optional, 'Discount rate'
     api.param :form, 'offer[description]', :string, :optional, 'Description'
   end
@@ -116,7 +116,8 @@ class API::V1::OffersController < ApiController
 
   def params_array
     %i(offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
-      date_from date_to date_end price currency_type discount_rate description status transfers_params)
+      date_from date_to date_end price discount_rate description status transfers_params price_currency
+      price_cents)
   end
 
   def full_params

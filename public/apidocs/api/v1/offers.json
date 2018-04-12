@@ -92,15 +92,15 @@
             },
             {
               "paramType": "form",
-              "name": "offer[price]",
+              "name": "offer[price_cents]",
               "type": "integer",
               "description": "Price",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "offer[currency_type]",
-              "type": "string",
+              "name": "offer[price_currency]",
+              "type": "integer",
               "description": "Currency type: RUB, USD, EUR",
               "required": false
             },
@@ -280,15 +280,15 @@
             },
             {
               "paramType": "form",
-              "name": "offer[price]",
+              "name": "offer[price_cents]",
               "type": "integer",
               "description": "Price",
               "required": false
             },
             {
               "paramType": "form",
-              "name": "offer[currency_type]",
-              "type": "string",
+              "name": "offer[price_currency]",
+              "type": "integer",
               "description": "Currency type: RUB, USD, EUR",
               "required": false
             },
