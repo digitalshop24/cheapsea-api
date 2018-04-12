@@ -59,4 +59,3 @@ config/environments/*.local.yml
 # Ignore application configuration
 /config/application.yml
 .byebug_history
-!/config/database.yml
