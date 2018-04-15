@@ -18,6 +18,7 @@ class AirlinesController < ApiController
   end
 
   def autocomplete
-    render json: Airline.where('name LIKE ?', "%#{params[:query]}%")
+    # render json: Airline.where('name LIKE ?', "%#{params[:query]}%")
+    render json: Airline.where('name ILIKE ?', "%#{params[:query]}%")
   end
 end
