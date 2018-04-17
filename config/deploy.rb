@@ -87,14 +87,6 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
-namespace :assets do
-  task :precompile do
-    Rake::Task['assets:precompile'].invoke
-    Rake::Task['swagger:docs'].invoke
-  end
-end
-
-
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
