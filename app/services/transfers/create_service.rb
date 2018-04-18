@@ -9,7 +9,7 @@ class Transfers::CreateService
       context.fail!(errors: validation.errors)
     end
 
-    transfer = offer.transfers.new(params)
+    transfer = offer.transfers.new(params.merge(user_id: user.id))
     if transfer.valid?
       transfer.save
     else
@@ -19,10 +19,11 @@ class Transfers::CreateService
 
   private
 
-  attr_reader :offer, :params
+  attr_reader :offer, :params, :user
 
   def pre_initialize
     @params = context.params
     @offer = context.offer
+    @user = context.user
   end
 end

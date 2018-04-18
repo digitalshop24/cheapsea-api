@@ -1,13 +1,19 @@
 class Users::AccessCheckService
   PERMISSIONS = {
     member: {
-      Offer: %i(index create update destroy)
+      Offer: %i[index create update destroy],
+      Transfer: %i[update]
     },
     moderator: {
-      Offer: %i(index create update destroy)
+      Offer: %i[index create update destroy],
+      Transfer: %i[index create update destroy]
+    },
+    admin: {
+      Offer: %i[index create update destroy],
+      Transfer: %i[index create update destroy]
     },
     guest: {
-      Offer: %i(index)
+      Offer: %i[index]
     }
   }.freeze
 

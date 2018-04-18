@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    admin? || granted?(:index)
+    granted?(:index)
   end
 
   def show?
-    admin? || granted?(:show)
+    granted?(:show)
   end
 
   def create?
-    admin? || granted?(:create)
+    granted?(:create)
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    admin? || granted?(:update)
+    granted?(:update)
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    admin? || granted?(:destroy)
+    granted?(:destroy)
   end
 
   def scope

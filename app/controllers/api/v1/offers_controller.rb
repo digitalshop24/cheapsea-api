@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  before_action :authenticate_user!, except: %i(index show)
+  before_action :authenticate_user!, except: %i[index show]
 
   swagger_controller :offers, 'Offer Management'
 
@@ -40,6 +40,8 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[from_google_place_id]', :string, :optional, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
     api.param :form, 'offer[to_google_place_id]', :string, :optional, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
+    api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
+
     response :unauthorized
     response :not_acceptable, 'The request you made is not acceptable'
     response :unprocessable_entity
@@ -64,6 +66,8 @@ class API::V1::OffersController < ApiController
   end
 
   def index
+    authorize Offer
+
     render json: ::Filters::OfferFilter.new(params.permit(params_array)).call, status: 200
   end
 
@@ -88,16 +92,11 @@ class API::V1::OffersController < ApiController
 
     params = current_user.member? ? stripped_params : full_params
 
-    validation = Offers::UpdateValidation.call(params)
-    if validation.errors.present?
-      render json: validation.errors, status: 500
-      return
-    end
-
-    if offer.update(params)
-      render json: offer, status: 200
+    service = Offers::UpdateService.call(user: current_user, offer: offer, params: params, transfers_params: transfers_params)
+    if service.success?
+      render json: service.offer, status: 200
     else
-      render json: offer.errors.full_messages, status: 500
+      render json: service.errors, status: 500
     end
   end
 
@@ -115,9 +114,8 @@ class API::V1::OffersController < ApiController
   end
 
   def params_array
-    %i(offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
-      date_from date_to date_end price discount_rate description status transfers_params price_currency
-      price_cents)
+    %i[offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
+      date_from date_to date_end price discount_rate description status price_currency price_cents]
   end
 
   def full_params
@@ -125,7 +123,7 @@ class API::V1::OffersController < ApiController
   end
 
   def stripped_params
-    params.require(:offer).permit(params_array.tap { |arr| arr.delete(:status) })
+    params.require(:offer).permit(ConvertService.remove_params_from_array(params_array, %i[status]))
   end
 
   def transfers_params

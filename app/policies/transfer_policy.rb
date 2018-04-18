@@ -1,4 +1,4 @@
-class OfferPolicy < ApplicationPolicy
+class TransferPolicy < ApplicationPolicy
   def update?
     (admin? || moderator? || owner?) if super
   end

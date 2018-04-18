@@ -5,7 +5,7 @@ class ImageUploader < BaseUploader
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
 end

@@ -39,6 +39,7 @@ class Offer < ApplicationRecord
   has_many :transfers, dependent: :destroy
 
   validates :name, :from_google_place_id, :to_google_place_id, presence: true
+  validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
   validates :price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
 

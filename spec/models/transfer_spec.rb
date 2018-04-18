@@ -15,5 +15,6 @@ require 'rails_helper'
 describe Transfer, type: :model do
   it { is_expected.to belong_to(:offer) }
   it { is_expected.to belong_to(:airline) }
+  it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:offer_id) }
 end

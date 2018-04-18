@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Transfers::CreateService do
-  subject { Transfers::CreateService.call(offer: @offer, params: params) }
+  subject { Transfers::CreateService.call(offer: @offer, params: params, user: @user) }
 
   before do
     @user = create(:user)
