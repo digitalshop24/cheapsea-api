@@ -21,5 +21,6 @@
 
 en:
   errors:
-    place_existed?: 'Google place does not exist'
+    place_exists?: 'Google place does not exist'
+    airline_exists?: 'Airline does not exist'
 

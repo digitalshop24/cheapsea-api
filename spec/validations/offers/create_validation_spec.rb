@@ -45,6 +45,14 @@ describe Offers::CreateValidation do
           expect(subject.errors[:to_google_place_id]).to eq(['is missing'])
         end
       end
+
+      context 'airline_id' do
+        let(:params) { { airline_id: 0 } }
+
+        it 'does not exist' do
+          expect(subject.errors[:airline_id]).to eq(['Airline does not exist'])
+        end
+      end
     end
   end
 end

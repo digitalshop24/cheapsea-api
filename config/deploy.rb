@@ -9,7 +9,8 @@ set :user, 'root'
 set :branch, 'master'
 
 # Default value for :linked_files is []
-append :linked_files, ['config/application.yml', 'config/secrets.yml']
+append :linked_files, 'config/application.yml'
+append :linked_files, 'config/secrets.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", 'vendor/bundle', "public/system"

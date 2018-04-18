@@ -1,5 +1,5 @@
 class API::V1::OffersController < ApiController
-  before_action :authenticate_user!, except: %i[index show]
+  #before_action :authenticate_user!, except: %i[index show]
 
   swagger_controller :offers, 'Offer Management'
 

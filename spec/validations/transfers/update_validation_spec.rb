@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Transfers::CreateValidation do
+describe Transfers::UpdateValidation do
   subject do
-    Transfers::CreateValidation.call(params)
+    Transfers::UpdateValidation.call(params)
   end
 
   let(:params) { FactoryGirl.attributes_for(:transfer) }
 
-  use_vcr_cassette 'validations/transfers/create_validation'
+  use_vcr_cassette 'validations/transfers/update_validation'
 
   describe 'valid' do
     it 'checks that validation is successful' do
@@ -26,7 +26,7 @@ describe Transfers::CreateValidation do
       end
 
       context 'airline_id' do
-        let(:params) { { airline_id: 0 } }
+        let(:params) { { airline_id: 22 } }
 
         it 'doesnt exist' do
           expect(subject.errors[:airline_id]).to eq(['Airline does not exist'])

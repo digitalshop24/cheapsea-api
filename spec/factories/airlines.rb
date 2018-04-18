@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :airline do
-    name "MyString"
+    name 'Phoenix airlines'
   end
 end

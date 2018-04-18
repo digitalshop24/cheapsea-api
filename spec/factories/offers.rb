@@ -31,7 +31,7 @@ FactoryGirl.define do
     name 'MyString'
     from_google_place_id 'ChIJOwg_06VPwokRYv534QaPC8g'
     to_google_place_id 'ChIJGzE9DS1l44kRoOhiASS_fHg'
-    airline_id 1
+    airline
     transfers_count 1
     date_from '2018-04-03 20:31:16'
     date_to '2018-04-03 20:31:16'

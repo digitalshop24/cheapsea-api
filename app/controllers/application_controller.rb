@@ -6,4 +6,8 @@ class ApplicationController < ActionController::API
   include CustomErrors
 
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
+
+  def current_user
+    User.first if Rails.env.development?
+  end
 end

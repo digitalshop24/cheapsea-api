@@ -1,12 +1,11 @@
 Offers::UpdateValidation = Dry::Validation.Form do
   configure do
-    config.messages_file = "#{Rails.root}/config/locales/en.yml"
+    predicates(RelationsPredicates)
 
-    def place_existed?(place_id)
-      Geo::PlaceInfoService.call(place_id: place_id).result.present?
-    end
+    config.messages_file = "#{Rails.root}/config/locales/en.yml"
   end
 
-  optional(:from_google_place_id).maybe(:str?, :place_existed?)
-  optional(:to_google_place_id).maybe(:str?, :place_existed?)
+  optional(:from_google_place_id).maybe(:str?, :place_exists?)
+  optional(:to_google_place_id).maybe(:str?, :place_exists?)
+  optional(:airline_id).maybe(:airline_exists?)
 end

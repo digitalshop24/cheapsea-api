@@ -11,12 +11,10 @@ class Offers::UpdateService
 
     validate_transfers
 
-    ActiveRecord::Base.transaction do
-      if offer.update(params)
-        update_transfers
-      else
-        context.fail!(errors: offer.errors.full_messages)
-      end
+    if offer.update(params)
+      update_transfers
+    else
+      context.fail!(errors: offer.errors.full_messages)
     end
   end
 
@@ -39,7 +37,7 @@ class Offers::UpdateService
 
     transfers_params.each do |params|
       validation = Transfers::UpdateValidation.call(params)
-      context.fail!(errors: validation.errors) if validation.errors.present?
+      context.fail!(errors: { transfer: validation.errors.merge(id: params['id']) }) if validation.errors.present?
     end
   end
 
@@ -49,10 +47,8 @@ class Offers::UpdateService
     transfers_params.each do |params|
       transfer = offer.transfers.find_by(id: params['id'])
       next if transfer.nil?
-      raise Pundit::NotAuthorizedError unless TransferPolicy.new(user, transfer).update?
-      unless transfer.update(params)
-        context.fail!(errors: transfer.errors.full_messages)
-      end
+      next unless TransferPolicy.new(user, transfer).update?
+      transfer.update(params)
     end
   end
 end

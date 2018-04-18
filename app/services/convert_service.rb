@@ -1,6 +1,4 @@
-# TODO: add specs
-
-class ConvertService
+module ConvertService
   def self.remove_params_from_array_with_hash(arr, params)
     # ex: [{"id"=>"51", "google_place_id"=>"ChIJOwg_06VPwokRYv534QaPC8g", "airline_id"=>"1"}]
     params.each { |key| arr.each { |arr| arr.delete(key) }}
