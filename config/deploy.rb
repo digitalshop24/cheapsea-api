@@ -33,6 +33,10 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
+set :slackistrano, {
+  channel: '#backend',
+  webhook: 'https://hooks.slack.com/services/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'
+}
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
