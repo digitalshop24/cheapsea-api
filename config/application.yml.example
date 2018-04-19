@@ -1,6 +1,8 @@
 GOOGLE_MAP_URL: url
 GOOGLE_MAP_KEY: key
 
+TRAVELPAYOUTS_KEY: key
+
 development:
   HOST: http://localhost:3000
   REDIS_URL: redis://localhost:6379/0

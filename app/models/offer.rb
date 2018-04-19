@@ -27,8 +27,6 @@
 class Offer < ApplicationRecord
   CURRENCY_TYPES = %w(RUB USD EUR)
 
-  monetize :price_cents
-
   enum status: { draft: 0, published: 1 }
   enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
   enum discount_type: { hot: 0, seasonal: 1, erroneous: 2, other: 3 }
@@ -40,8 +38,7 @@ class Offer < ApplicationRecord
 
   validates :name, :from_google_place_id, :to_google_place_id, presence: true
   validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
+  validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
-  validates :price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
-
-  scope :published, -> { where(status: 'published') }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end

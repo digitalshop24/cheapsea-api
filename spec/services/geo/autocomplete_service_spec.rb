@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Geo::AutocompleteService do
-  subject { Geo::AutocompleteService.new(input).call }
+describe ThirdParty::Geo::AutocompleteService do
+  subject { ThirdParty::Geo::AutocompleteService.new(input).call }
 
   let(:input) { 'New York' }
 

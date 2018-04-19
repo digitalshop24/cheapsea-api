@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Geo::PlaceInfoService do
-  subject { Geo::PlaceInfoService.call(place_id: place_id) }
+describe ThirdParty::Geo::PlaceInfoService do
+  subject { ThirdParty::Geo::PlaceInfoService.call(place_id: place_id) }
 
   let(:place_id) { 'ChIJOwg_06VPwokRYv534QaPC8g' }
 

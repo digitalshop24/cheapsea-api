@@ -34,6 +34,7 @@ FactoryGirl.define do
     sequence :email do |n|
       "test#{n}@gmail.com"
     end
+    role 'agent'
     password 'password'
   end
 end

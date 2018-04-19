@@ -1,4 +1,4 @@
-class Geo::Base
+class ThirdParty::Geo::Base
   protected
 
   def get_url(url)

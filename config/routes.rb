@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     post '/sign_in' => 'auth#sign_in'
   end
 
-  scope 'geo', controller: :geo do
-    post :autocomplete
-  end
+  #scope 'geo', controller: :geo do
+  #  post :autocomplete
+  #end
 
   resources :airlines, only: :index do
     post :autocomplete, on: :collection

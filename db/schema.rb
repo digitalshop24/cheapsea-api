@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 20180419140952) do
 
   create_table "airlines", force: :cascade do |t|
     t.string   "name",       null: false
+    t.string   "iata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["iata"], name: "index_airlines_on_iata", using: :btree
     t.index ["name"], name: "index_airlines_on_name", using: :btree
   end
 
@@ -45,11 +47,14 @@ ActiveRecord::Schema.define(version: 20180419140952) do
     t.text     "description"
     t.integer  "status",               default: 0,     null: false
     t.integer  "user_id"
-    t.integer  "price_cents",          default: 0,     null: false
-    t.string   "price_currency",       default: "USD", null: false
+    t.float    "price"
+    t.string   "price_currency",       default: "RUB"
+    t.boolean  "two_sides",            default: false, null: false
+    t.integer  "flight_number"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id", using: :btree
+    t.index ["flight_number"], name: "index_offers_on_flight_number", using: :btree
     t.index ["status"], name: "index_offers_on_status", using: :btree
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
   end

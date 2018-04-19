@@ -6,6 +6,6 @@ module RelationsPredicates
   end
 
   predicate(:place_exists?) do |value|
-    Geo::PlaceInfoService.call(place_id: value).result.present?
+    ThirdParty::Geo::PlaceInfoService.call(place_id: value).result.present?
   end
 end

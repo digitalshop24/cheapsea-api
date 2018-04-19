@@ -16,7 +16,10 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :status, default: 'draft', null: false, index: true
       t.integer :user_id, index: true, foreign_key: true
-      t.monetize :price
+      t.float :price
+      t.string :price_currency, default: 'RUB'
+      t.boolean :two_sides, default: false, null: false
+      t.integer :flight_number, index: true
 
       t.timestamps
     end

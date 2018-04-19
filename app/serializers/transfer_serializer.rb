@@ -16,6 +16,6 @@ class TransferSerializer < ActiveModel::Serializer
   belongs_to :airline
 
   def google_place
-    Geo::PlaceInfoService.call(place_id: object.google_place_id).result
+    ThirdParty::Geo::PlaceInfoService.call(place_id: object.google_place_id).result
   end
 end

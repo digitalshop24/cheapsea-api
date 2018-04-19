@@ -1,4 +1,4 @@
-class Geo::AutocompleteService < Geo::Base
+class ThirdParty::Geo::AutocompleteService < ThirdParty::Geo::Base
   def initialize(input, lat = nil, lng = nil)
     @input = input
     @lat = lat
