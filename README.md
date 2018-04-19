@@ -1,6 +1,14 @@
-Import airlines: `rake import:airlines`
+# Import
+## All
+`rake import:all`
+## Airlines: 
+`rake import:airlines`
+runs the task but checks if airline existed
+## City codes
+`rake import:airlines`
+doesn't run the task if there are any city codes in database
 
-**Deploy**
+# Deploy
 
 ```
 sudo rm /etc/nginx/sites-enabled/default
