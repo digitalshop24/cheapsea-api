@@ -115,7 +115,7 @@ class API::V1::OffersController < ApiController
 
   def params_array
     %i[offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
-      date_from date_to date_end price discount_rate description status price_currency price]
+      date_from date_to date_end price discount_rate description status price_currency price two_sides]
   end
 
   def full_params

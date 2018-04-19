@@ -6,11 +6,11 @@ describe API::V1::OffersController, type: :controller do
   use_vcr_cassette 'controllers/offers/create'
 
   describe "GET #create" do
-    it "returns http success" do
-      sign_in user
-      get :create, params: {"offer"=>{"name"=>"sdf", "from_google_place_id"=>"ChIJOwg_06VPwokRYv534QaPC8g", "to_google_place_id"=>"ChIJOwg_06VPwokRYv534QaPC8g"}}
-      expect(response).to have_http_status(:success)
-    end
+    #it "returns http success" do
+      #sign_in user
+      #get :create, params: {"offer"=>{"name"=>"sdf", "from_google_place_id"=>"ChIJOwg_06VPwokRYv534QaPC8g", "to_google_place_id"=>"ChIJOwg_06VPwokRYv534QaPC8g"}}
+      #expect(response).to have_http_status(:success)
+    #end
   end
 
   describe "GET #index" do
