@@ -1,3 +1,6 @@
+# Start
+`rake app:reset` drops database, creates database, runs migration, seeds, import
+
 # Import
 ## All
 `rake import:all`
@@ -13,5 +16,5 @@ doesn't run the task if there are any city codes in database
 ```
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -nfs "/home/deploy/apps/appname/current/config/nginx.conf" "/etc/nginx/sites-enabled/appname"
-cap production deploy:initial
+cap production deploy
 ```

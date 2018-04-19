@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180419140952) do
     t.string   "from_google_place_id"
     t.string   "to_google_place_id"
     t.integer  "airline_id"
+    t.boolean  "is_direct",            default: true
     t.integer  "transfers_count"
     t.datetime "date_from"
     t.datetime "date_to"
@@ -44,11 +45,10 @@ ActiveRecord::Schema.define(version: 20180419140952) do
     t.text     "description"
     t.integer  "status",               default: 0,     null: false
     t.integer  "user_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "is_direct",            default: true
     t.integer  "price_cents",          default: 0,     null: false
     t.string   "price_currency",       default: "USD", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id", using: :btree
     t.index ["status"], name: "index_offers_on_status", using: :btree
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
@@ -58,11 +58,12 @@ ActiveRecord::Schema.define(version: 20180419140952) do
     t.integer  "offer_id",        null: false
     t.string   "google_place_id"
     t.integer  "airline_id"
+    t.integer  "user_id",         null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "user_id",         null: false
     t.index ["airline_id"], name: "index_transfers_on_airline_id", using: :btree
     t.index ["offer_id"], name: "index_transfers_on_offer_id", using: :btree
+    t.index ["user_id"], name: "index_transfers_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,4 +99,5 @@ ActiveRecord::Schema.define(version: 20180419140952) do
 
   add_foreign_key "transfers", "airlines"
   add_foreign_key "transfers", "offers"
+  add_foreign_key "transfers", "users"
 end

@@ -1,6 +1,9 @@
 class Users::AccessCheckService
   PERMISSIONS = {
     member: {
+      Offer: %i[index]
+    },
+    agent: {
       Offer: %i[index create update destroy],
       Transfer: %i[update]
     },

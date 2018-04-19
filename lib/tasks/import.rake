@@ -19,22 +19,26 @@ namespace :import do
       Airline.create!(name: airline['name'])
     end
 
-    puts 'Airlines import finished'
+    puts "#{Airline.count} airlines imported"
   end
 
   task city_codes: :environment do
-    return if CityCode.any?
+    CityCode.delete_all
 
     puts 'Airlines import started'
 
     city_codes = JSON.parse(File.read("#{Rails.root}/lib/import/city_codes.json"))
+    available_cities = CityCodes::TopHundredValueObject.call
 
-    city_codes.each_with_index do |code, index|
-      puts "#{index}/#{city_codes.length} city codes imported" if index % 500 == 0
+    city_codes.each do |code|
+      iata = code.first
+      name = code.second['name']
 
-      CityCode.create!(iata: code.first, name: code.second['name'])
+      next unless available_cities.include?(name)
+
+      CityCode.create!(iata: iata, name: name)
     end
 
-    puts 'City codes import finished'
+    puts "#{CityCode.count} city codes imported"
   end
 end
