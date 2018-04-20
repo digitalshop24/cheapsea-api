@@ -1,25 +1,37 @@
 class ThirdParty::Geo::AutocompleteService < ThirdParty::Geo::Base
-  def initialize(input, lat = nil, lng = nil)
+  def initialize(input)
     @input = input
-    @lat = lat
-    @lng = lng
   end
 
   def call
-    url = "#{ENV['GOOGLE_MAP_URL']}/place/autocomplete/json?input=#{input}&types=geocode&key=#{ENV['GOOGLE_MAP_KEY']}"
-    url << "&location=#{lat},#{lng}&radius=999" if lat.present? && lng.present?
+    result = read_from_cache
+    if result.nil?
+      url = "#{ENV['GOOGLE_MAP_URL']}/place/autocomplete/json?input=#{input}&types=geocode&key=#{ENV['GOOGLE_MAP_KEY']}"
 
-    delete_words = ['id', 'matched_substrings', 'reference', 'structured_formatting']
+      result = get_url(url)
 
-    result = get_url(url)
+      add_to_cache(result)
+    end
 
-    predictions = JSON.parse(result)['predictions']
-    predictions.each { |h| delete_words.each { |v| h.delete(v) } }
+    result = JSON.parse(result)
 
-    return predictions
+    error_message = result['error_message']
+    raise error_message if error_message.present?
+
+    return result['predictions']
   end
 
   private
 
-  attr_reader :input, :lat, :lng
+  def read_from_cache
+    ReadCache.redis.hget('google_place_names_cache', input)
+  end
+
+  def add_to_cache(result)
+    return if result['error_message'].present? || result['predictions'].empty?
+
+    ReadCache.redis.hset('google_place_names_cache', input, result)
+  end
+
+  attr_reader :input
 end

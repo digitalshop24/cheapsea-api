@@ -29,11 +29,14 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Geo::Base
   end
 
   def read_from_cache
-    ReadCache.redis.hget('google_places_cache', place_id)
+    ReadCache.redis.hget('google_place_ids_cache', place_id)
   end
 
   def add_to_cache(result)
-    ReadCache.redis.hset('google_places_cache', place_id, result)
+    error = JSON.parse(result)['error_message']
+    context.fail!(error: error) if error.present?
+
+    ReadCache.redis.hset('google_place_ids_cache', place_id, result)
   end
 
   attr_reader :place_id

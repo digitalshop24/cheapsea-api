@@ -23,5 +23,7 @@ cap production deploy
 
 `sidekiq -q critical,2 -q default`
 
+`sidekiq -e production` for production
+
 ## Workers
 `Import::CheapOffersWorker.perform_async` import cheap offers

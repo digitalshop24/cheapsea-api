@@ -38,7 +38,12 @@ class Import::CheapOffersWorker
               date_to: data['return_at'],
               date_end: data['expires_at']
             )
-          rescue
+          rescue Exception => e
+            puts '#' * 100
+            puts e.message
+            puts e.backtrace.inspect
+            puts '#' * 100
+
             next
           end
         end
