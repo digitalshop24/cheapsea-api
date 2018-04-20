@@ -61,17 +61,17 @@ namespace :import do
 
           next if Offer.find_by(flight_number: data['flight_number']).present?
 
-          from_google_place_id = ThirdParty::Geo::AutocompleteService.new(first_level_city.name).call
-          to_google_place_id = ThirdParty::Geo::AutocompleteService.new(second_level_city.name).call
-          next if from_google_place_id.nil? || to_google_place_id.nil?
+          from_google_place = ThirdParty::Geo::AutocompleteService.new(first_level_city.name).call.first
+          to_google_place = ThirdParty::Geo::AutocompleteService.new(second_level_city.name).call.first
+          next if from_google_place.nil? || to_google_place.nil?
 
           Offer.create(
             two_sides: true,
             user: user,
             price: data['price'],
             name: "From #{first_level_city.name} to #{second_level_city.name} for #{data['price']} RUB.",
-            from_google_place_id: from_google_place_id['place_id'],
-            to_google_place_id: to_google_place_id['place_id'],
+            from_google_place_id: from_google_place['place_id'],
+            to_google_place_id: to_google_place['place_id'],
             airline: Airline.find_by(iata: data['airline']),
             date_from: data['departure_at'],
             date_to: data['return_at'],
