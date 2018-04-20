@@ -16,6 +16,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[price_currency]', :integer, :optional, 'Currency type: RUB, USD, EUR'
     api.param :form, 'offer[discount_rate]', :integer, :optional, 'Discount rate'
     api.param :form, 'offer[description]', :string, :optional, 'Description'
+    api.param :form, 'offer[two_sides]', :string, :optional, 'Two sides?'
   end
 
   swagger_api :create do |api|

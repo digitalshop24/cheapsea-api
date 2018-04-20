@@ -50,6 +50,8 @@ namespace :import do
       puts "#{first_level_city.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |second_level_city|
+        next if first_level_city.id == second_level_city.id
+
         offers = ThirdParty::Travelpayouts::GetCheapOffersService.call(origin: first_level_city.iata, destination: second_level_city.iata)
 
         next if offers['data'].empty?
@@ -61,22 +63,25 @@ namespace :import do
 
           next if Offer.find_by(flight_number: data['flight_number']).present?
 
-          from_google_place = ThirdParty::Geo::AutocompleteService.new(first_level_city.name).call.first
-          to_google_place = ThirdParty::Geo::AutocompleteService.new(second_level_city.name).call.first
-          next if from_google_place.nil? || to_google_place.nil?
+          begin
+            from_google_place = ThirdParty::Geo::AutocompleteService.new(first_level_city.name).call.first
+            to_google_place = ThirdParty::Geo::AutocompleteService.new(second_level_city.name).call.first
 
-          Offer.create(
-            two_sides: true,
-            user: user,
-            price: data['price'],
-            name: "From #{first_level_city.name} to #{second_level_city.name} for #{data['price']} RUB.",
-            from_google_place_id: from_google_place['place_id'],
-            to_google_place_id: to_google_place['place_id'],
-            airline: Airline.find_by(iata: data['airline']),
-            date_from: data['departure_at'],
-            date_to: data['return_at'],
-            date_end: data['expires_at']
-          )
+            Offer.create(
+              two_sides: true,
+              user: user,
+              price: data['price'],
+              name: "From #{first_level_city.name} to #{second_level_city.name} for #{data['price']} RUB.",
+              from_google_place_id: from_google_place['place_id'],
+              to_google_place_id: to_google_place['place_id'],
+              airline: Airline.find_by(iata: data['airline']),
+              date_from: data['departure_at'],
+              date_to: data['return_at'],
+              date_end: data['expires_at']
+            )
+          rescue
+            next
+          end
         end
       end
     end
