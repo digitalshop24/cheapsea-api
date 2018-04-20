@@ -18,3 +18,10 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo ln -nfs "/home/deploy/apps/appname/current/config/nginx.conf" "/etc/nginx/sites-enabled/appname"
 cap production deploy
 ```
+
+# Sidekiq
+
+`sidekiq -q critical,2 -q default`
+
+## Workers
+`Import::CheapOffersWorker.perform_async` import cheap offers

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   mount_devise_token_auth_for 'User', at: 'auth'
 
+  mount Sidekiq::Web => '/sidekiq'
+
   get '/docs' => redirect('/api_html/dist/index.html?url=/apidocs/api-docs.json')
 
   scope 'auth' do

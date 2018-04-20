@@ -5,6 +5,6 @@ module ReadCache
       timeout: 500
     )
 
-    @redis_namespace ||= Redis::Namespace.new(:ns, redis: redis)
+    @redis_namespace ||= Redis::Namespace.new(:cheapsea, redis: redis)
   end
 end

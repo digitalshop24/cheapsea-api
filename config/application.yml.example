@@ -1,22 +1,19 @@
 GOOGLE_MAP_URL: url
 GOOGLE_MAP_KEY: key
 
+TRAVELPAYOUTS_URL: url
 TRAVELPAYOUTS_KEY: key
 
-development:
-  HOST: http://localhost:3000
-  REDIS_URL: redis://localhost:6379/0
-  # PG_HOST: localhost
-  # PG_PORT: 5432
-  # PG_USERNAME: postgres
-  PG_PASSWORD: password
+REDIS_URL: redis://localhost:6379/0
+SIDEKIQ_USER: user
+SIDEKIQ_PASSWORD: password
+
+HOST: http://localhost:3000
+
+PG_HOST: localhost
+PG_PORT: 5432
+PG_USERNAME: postgres
+PG_PASSWORD: password
 
 production:
-  HOST: https://tours13.herokuapp.com
-  REDIS_URL: redis://localhost:6379/0
-  PG_USERNAME: postgres
-  PG_HOST: localhost
-  PG_PORT: 5432
-  PG_USERNAME: postgres
-  PG_PASSWORD: password
   RAILS_SERVE_STATIC_FILES: true
