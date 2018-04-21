@@ -70,6 +70,8 @@ class API::V1::OffersController < ApiController
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
     param :query, :description, :string, :optional, 'Description'
     param :query, :two_sides, :string, :optional, 'Two sides'
+    param :query, :from_google_place_id, :string, :optional, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
+    param :query, :to_google_place_id, :string, :optional, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
   end
 
   swagger_api :show do

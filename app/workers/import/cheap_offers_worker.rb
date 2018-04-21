@@ -31,7 +31,7 @@ class Import::CheapOffersWorker
             to_google_place = ::ThirdParty::Geo::AutocompleteService.new(second_level_city.name).call.first
 
             Offer.create(
-              offer_type: 'airline',
+              offer_type: 'airplane',
               two_sides: true,
               user: user,
               price: data['price'],

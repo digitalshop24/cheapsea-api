@@ -26,7 +26,7 @@
 
 FactoryGirl.define do
   factory :offer do
-    offer_type 1
+    offer_type 'airplane'
     discount_type 1
     name 'MyString'
     from_google_place_id 'ChIJOwg_06VPwokRYv534QaPC8g'
