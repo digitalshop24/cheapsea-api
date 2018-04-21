@@ -42,6 +42,7 @@ gem 'fog', '~> 1.36.0'                      # Module for the 'fog' gem to suppor
 gem 'mini_magick', require: false           # A ruby wrapper for ImageMagick or GraphicsMagick command line.
 gem 'sidekiq'
 gem 'sidekiq-statistic'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

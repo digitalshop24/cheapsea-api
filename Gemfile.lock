@@ -482,6 +482,7 @@ DEPENDENCIES
   geocoder
   httparty
   interactor (~> 3.0)
+  kaminari
   listen (~> 3.0.5)
   mina (= 1.0.2)
   mini_magick

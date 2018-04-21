@@ -28,13 +28,12 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[to_google_place_id]', :string, :required, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
     api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
     response :unauthorized
-    response :not_acceptable, 'The request you made is not acceptable'
     response :unprocessable_entity
   end
 
   swagger_api :update do |api|
     summary 'Update an Offer item'
-    param :path, :id, :integer, :optional, 'Offer Id'
+    param :path, :id, :integer, :required, 'Offer Id'
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :optional, 'Name'
     api.param :form, 'offer[is_direct]', :boolean, :optional, 'Is a direct flight?'
@@ -44,21 +43,33 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
 
     response :unauthorized
-    response :not_acceptable, 'The request you made is not acceptable'
     response :unprocessable_entity
   end
 
   swagger_api :destroy do |api|
     summary 'Destroy an Offer item'
-    param :path, :id, :integer, :optional, 'Offer Id'
+    param :path, :id, :integer, :required, 'Offer Id'
     ApiController.credentials(api)
     response :unauthorized
-    response :not_acceptable, 'The request you made is not acceptable'
     response :unprocessable_entity
   end
 
   swagger_api :index do
     summary 'All offers'
+    param :query, :page, :integer, :optional, 'Page'
+    param :query, :name, :string, :optional, 'Name'
+    param :query, :offer_type, :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
+    param :query, :discount_type, :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
+    param :query, :airline_id, :string, :optional, 'Airline id'
+    param :query, :transfers_count, :integer, :optional, 'Transfers count'
+    param :query, :date_from, :string, :optional, 'Start date of offer'
+    param :query, :date_to, :string, :optional, 'End date of offer'
+    param :query, :date_end, :string, :optional, 'Date when offer will archived automaticly'
+    param :query, :price, :integer, :optional, 'Price'
+    param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR'
+    param :query, :discount_rate, :integer, :optional, 'Discount rate'
+    param :query, :description, :string, :optional, 'Description'
+    param :query, :two_sides, :string, :optional, 'Two sides'
   end
 
   swagger_api :show do
@@ -69,7 +80,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: ::Filters::OfferFilter.new(params.permit(params_array)).call, status: 200
+    render json: ::Filters::OfferFilter.new(params.permit(params_array), params[:page]).call, status: 200
   end
 
   def create

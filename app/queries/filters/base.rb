@@ -1,7 +1,8 @@
 class Filters::Base
-  def initialize(params={})
+  def initialize(params={}, page = nil)
     @params = params
     @relation = nil
+    @page = page
   end
 
   def call
@@ -19,5 +20,5 @@ class Filters::Base
 
   protected
 
-  attr_reader :relation, :params
+  attr_reader :relation, :params, :page
 end

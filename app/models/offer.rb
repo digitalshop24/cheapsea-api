@@ -31,6 +31,8 @@ class Offer < ApplicationRecord
   enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
   enum discount_type: { hot: 0, seasonal: 1, erroneous: 2, other: 3 }
 
+  paginates_per 20
+
   belongs_to :user
   belongs_to :airline, optional: true
 

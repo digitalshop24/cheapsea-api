@@ -1,6 +1,6 @@
 class Filters::OfferFilter < Filters::Base
-  def initialize(params)
-    super(params)
-    @relation = Offer.includes(:airline, :user, transfers: :airline)
+  def initialize(params, page)
+    super(params, page)
+    @relation = Offer.includes(:airline, :user, transfers: :airline).page(page)
   end
 end

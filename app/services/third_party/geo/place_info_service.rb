@@ -4,22 +4,20 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Geo::Base
   def call
     pre_initialize
 
-    res = read_from_cache
-    if res.nil?
+    result = read_from_cache
+    if result.nil?
       url = "#{ENV['GOOGLE_MAP_URL']}/geocode/json?place_id=#{place_id}&key=#{ENV['GOOGLE_MAP_KEY']}"
 
-      res = get_url(url)
+      begin
+        result = get_url(url)
+      rescue Exception => e
+        context.fail!(error: e.message)
+      end
 
-      add_to_cache(res)
+      add_to_cache(result)
     end
 
-    begin
-      result = JSON.parse(res)['results'][0]
-    rescue Exception => e
-      context.fail!(error: e.message)
-    end
-
-    context.result = result
+    context.result = JSON.parse(result)['results'][0]
   end
 
   private
