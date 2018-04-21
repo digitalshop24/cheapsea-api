@@ -20,7 +20,11 @@ class Import::CheapOffersWorker
         offers['data'][second_level_city.iata].each do |offer|
           data = offer.second
 
-          next if Offer.find_by(flight_number: data['flight_number']).present?
+          next if Offer.where(
+            flight_number: data['flight_number'],
+            date_from: data['departure_at'],
+            date_to: data['return_at']
+          ).any?
 
           begin
             from_google_place = ::ThirdParty::Geo::AutocompleteService.new(first_level_city.name).call.first

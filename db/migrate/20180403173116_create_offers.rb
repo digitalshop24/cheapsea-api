@@ -9,8 +9,8 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.integer :airline_id, index: true, foreign_key: true
       t.boolean :is_direct, default: true
       t.integer :transfers_count
-      t.datetime :date_from
-      t.datetime :date_to
+      t.datetime :date_from, index: true
+      t.datetime :date_to, index: true
       t.datetime :date_end
       t.integer :discount_rate
       t.text :description
