@@ -7,8 +7,8 @@
 ## Airlines: 
 `rake import:airlines`
 runs the task but checks if airline existed
-## City codes
-`rake import:airlines`
+## Cities
+`rake import:cities`
 doesn't run the task if there are any city codes in database
 ## Offers
 ### Two sides the cheapest offers

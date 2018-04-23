@@ -7,15 +7,17 @@ describe Offers::UpdateValidation do
 
   let(:params) { FactoryGirl.attributes_for(:offer) }
 
-  use_vcr_cassette 'validations/offers/update_validation'
-
   describe 'valid' do
+    use_vcr_cassette 'validations/offers/update_validation/valid'
+
     it 'checks that validation is successful' do
       expect(subject.success?).to be true
     end
   end
 
   describe 'invalid' do
+    use_vcr_cassette 'validations/offers/update_validation/invalid'
+
     context 'params' do
       context 'from_google_place_id' do
         let(:params) { { from_google_place_id: 'wrong_id' } }

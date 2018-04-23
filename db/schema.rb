@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422211442) do
+ActiveRecord::Schema.define(version: 20180419140952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,13 @@ ActiveRecord::Schema.define(version: 20180422211442) do
     t.index ["name"], name: "index_airlines_on_name"
   end
 
-  create_table "city_codes", id: :serial, force: :cascade do |t|
+  create_table "cities", id: :serial, force: :cascade do |t|
     t.string "iata", null: false
     t.string "name", null: false
+    t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_cities_on_active"
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|

@@ -2,7 +2,7 @@ class Import::OneSideCheapestOffersWorker
   include Sidekiq::Worker
 
   def perform
-    cities = CityCode.all
+    cities = City.all
     user = User.admin.take
 
     cities.each_with_index do |first_level_city, index|

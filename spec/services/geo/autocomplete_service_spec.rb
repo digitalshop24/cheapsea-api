@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 describe ThirdParty::Geo::AutocompleteService do
-  subject { ThirdParty::Geo::AutocompleteService.new(input).call }
+  subject { ThirdParty::Geo::AutocompleteService.call(input: input) }
 
   let(:input) { 'New York' }
 
   context 'found' do
     use_vcr_cassette 'services/geo/autocomplete/found'
 
-    it 'checks that result is not nil' do
-      expect(subject).not_to be_nil
+    it 'checks that service successed' do
+      expect(subject.success?).to eq true
     end
 
     it 'checks that the city has found' do
-      expect(subject.first['description']).to eq('New York, NY, USA')
+      expect(subject.result.first['description']).to eq('New York, NY, USA')
     end
   end
 
@@ -23,7 +23,7 @@ describe ThirdParty::Geo::AutocompleteService do
     let(:input) { 'djshfg3487fg874' }
 
     it 'checks that result is empty' do
-      expect(subject).to be_empty
+      expect(subject.result).to be_empty
     end
   end
 end

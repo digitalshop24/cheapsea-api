@@ -1,5 +1,4 @@
 namespace :app do
-
   desc 'Force Remove All Postgres Sessions'
   task destroy_pg_sessions: :environment do
 
@@ -31,5 +30,4 @@ namespace :app do
     Rake::Task['db:seed'].invoke
     Rake::Task['import:all'].invoke
   end
-
 end

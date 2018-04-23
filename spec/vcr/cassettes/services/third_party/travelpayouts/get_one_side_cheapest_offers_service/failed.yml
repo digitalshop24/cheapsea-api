@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NOTEXISTED&month=2018-04-22&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
+    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=GFJ&month=&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
     body:
       encoding: US-ASCII
       string: ''
@@ -21,18 +21,18 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Sun, 22 Apr 2018 23:09:58 GMT
+      - Mon, 23 Apr 2018 19:37:07 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '54'
+      - '41'
       Status:
       - 400 Bad Request
       X-Content-Type-Options:
       - nosniff
     body:
       encoding: UTF-8
-      string: '{"message":"Parameter destination length more than 3"}'
+      string: '{"message":"Parameter month is not Date"}'
     http_version: 
-  recorded_at: Sun, 22 Apr 2018 23:09:58 GMT
+  recorded_at: Mon, 23 Apr 2018 19:37:10 GMT
 recorded_with: VCR 3.0.3

@@ -7,15 +7,17 @@ describe Offers::CreateValidation do
 
   let(:params) { FactoryGirl.attributes_for(:offer) }
 
-  use_vcr_cassette 'validations/offers/create_validation'
-
   describe 'valid' do
+    use_vcr_cassette 'validations/offers/create_validation/valid'
+
     it 'checks that validation is successful' do
       expect(subject.success?).to be true
     end
   end
 
   describe 'invalid' do
+    use_vcr_cassette 'validations/offers/create_validation/invalid'
+
     let(:params) { {} }
 
     it 'checks that validation is failure' do

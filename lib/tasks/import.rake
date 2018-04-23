@@ -3,7 +3,7 @@ namespace :import do
 
   task all: :environment do
     Rake::Task['import:airlines'].invoke
-    Rake::Task['import:city_codes'].invoke
+    Rake::Task['import:cities'].invoke
     Rake::Task['import:two_sides_cheapest_offers'].invoke
     Rake::Task['import:one_side_cheapest_offers'].invoke
   end
@@ -12,8 +12,8 @@ namespace :import do
     Import::AirlinesWorker.perform_async
   end
 
-  task city_codes: :environment do
-    Import::CityCodesService.call
+  task cities: :environment do
+    Import::CitiesService.call
   end
 
   task two_sides_cheapest_offers: :environment do

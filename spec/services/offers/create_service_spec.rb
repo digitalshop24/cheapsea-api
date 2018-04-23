@@ -9,9 +9,9 @@ describe Offers::CreateService do
 
   let(:params) { FactoryGirl.attributes_for(:offer) }
 
-  use_vcr_cassette 'services/offers/create_service'
-
   describe 'success' do
+    use_vcr_cassette 'services/offers/create_service/success'
+
     it 'checks that service is successful' do
       expect(subject.success?).to be true
     end
@@ -22,6 +22,8 @@ describe Offers::CreateService do
   end
 
   describe 'failure' do
+    use_vcr_cassette 'services/offers/create_service/failure'
+
     let(:params) { {} }
 
     it 'checks that service failed' do

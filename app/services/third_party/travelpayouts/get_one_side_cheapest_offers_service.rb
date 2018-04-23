@@ -1,12 +1,25 @@
-# TODO add specs
-module ThirdParty::Travelpayouts::GetOneSideCheapestOffersService
-  def self.call(origin:, destination:, month: Date.current)
+class ThirdParty::Travelpayouts::GetOneSideCheapestOffersService < ThirdParty::Base
+  include Interactor
+
+  def call
+    pre_initialize
+
     url = "#{ENV['TRAVELPAYOUTS_URL']}/v2/prices/month-matrix?origin=#{origin}&destination=#{destination}&month=#{month}&show_to_affiliates=false&token=#{ENV['TRAVELPAYOUTS_KEY']}"
-    response = HTTParty.get(url)
+    response = get_url(url)
     result = JSON.parse(response.body)
+    context.fail!(error: result['errors']) if result['errors'].present?
+    context.fail!(error: result['message']) if result['message'].present?
 
-    ThirdParty::RaiseErrorService.call(self, result, true)
-
-    result
+    context.result = result['data']
   end
+
+  private
+
+  def pre_initialize
+    @origin = context.origin
+    @destination = context.destination
+    @month = context.month
+  end
+
+  attr_reader :origin, :destination, :month
 end

@@ -13,9 +13,9 @@ describe Offers::UpdateService do
   let(:params) { FactoryGirl.attributes_for(:offer, name: 'two') }
   let(:transfers_params) { {} }
 
-  use_vcr_cassette 'services/offers/update_service'
-
   describe 'success' do
+    use_vcr_cassette 'services/offers/update_service/success'
+
     it 'checks that service is successful' do
       expect(subject.success?).to be true
     end
@@ -36,6 +36,8 @@ describe Offers::UpdateService do
   end
 
   describe 'failure' do
+    use_vcr_cassette 'services/offers/update_service/failure'
+
     let(:params) { { from_google_place_id: 'wrong_id' } }
 
     it 'checks that service failed' do

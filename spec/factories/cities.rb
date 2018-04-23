@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :city_code do
+  factory :city do
     iata "MyString"
     name "MyString"
   end

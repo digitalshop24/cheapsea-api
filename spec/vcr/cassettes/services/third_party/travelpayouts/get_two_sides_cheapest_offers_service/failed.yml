@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Sun, 22 Apr 2018 23:09:59 GMT
+      - Mon, 23 Apr 2018 20:30:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 323a10b6503d1e1927d903fd967d66db
+      - 80c13ba392253dacc90f587b42ad2234
       X-Runtime:
-      - '0.003758'
+      - '0.003098'
       X-Rack-Cache:
       - miss
     body:
@@ -41,5 +41,5 @@ http_interactions:
       string: '{"success":false,"data":null,"error":"Resource not found. Check out
         API documentation at http://api.travelpayouts.com/"}'
     http_version: 
-  recorded_at: Sun, 22 Apr 2018 23:09:59 GMT
+  recorded_at: Mon, 23 Apr 2018 20:30:53 GMT
 recorded_with: VCR 3.0.3

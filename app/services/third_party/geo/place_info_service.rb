@@ -1,4 +1,4 @@
-class ThirdParty::Geo::PlaceInfoService < ThirdParty::Geo::Base
+class ThirdParty::Geo::PlaceInfoService < ThirdParty::Base
   include Interactor
 
   def call
@@ -7,17 +7,13 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Geo::Base
     result = read_from_cache
     if result.nil?
       url = "#{ENV['GOOGLE_MAP_URL']}/geocode/json?place_id=#{place_id}&key=#{ENV['GOOGLE_MAP_KEY']}"
-
-      begin
-        result = get_url(url)
-      rescue Exception => e
-        context.fail!(error: e.message)
-      end
+      result = get_url(url)
+      context.fail!(error: result['error_message']) if result['error_message'].present?
 
       add_to_cache(result)
     end
 
-    context.result = JSON.parse(result)['results'][0]
+    context.result = JSON.parse(result['results'][0].to_json)
   end
 
   private
@@ -31,8 +27,7 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Geo::Base
   end
 
   def add_to_cache(result)
-    error = JSON.parse(result)['error_message']
-    context.fail!(error: error) if error.present?
+    return if result['results'].empty?
 
     ReadCache.redis.hset('google_place_ids_cache', place_id, result)
   end

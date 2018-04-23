@@ -1,4 +1,4 @@
-module CityCodes::TopHundredValueObject
+module Cities::TopHundredValueObject
   def self.call
     %w[
       Гонконг
