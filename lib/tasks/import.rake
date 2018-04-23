@@ -4,41 +4,23 @@ namespace :import do
   task all: :environment do
     Rake::Task['import:airlines'].invoke
     Rake::Task['import:city_codes'].invoke
+    Rake::Task['import:two_sides_cheapest_offers'].invoke
+    Rake::Task['import:one_side_cheapest_offers'].invoke
   end
 
   task airlines: :environment do
-    airlines_array = ThirdParty::Travelpayouts::GetAirlinesService.call
-
-    puts 'Airlines import started'
-
-    airlines_array.each_with_index do |airline, index|
-      next if Airline.find_by(name: airline['name']).present?
-
-      puts "#{index}/#{airlines_array.length} airlines imported" if index % 1000 == 0
-
-      Airline.create!(name: airline['name'], iata: airline['iata'])
-    end
-
-    puts "#{Airline.count} airlines imported"
+    Import::AirlinesWorker.perform_async
   end
 
   task city_codes: :environment do
-    CityCode.delete_all
+    Import::CityCodesService.call
+  end
 
-    puts 'Airlines import started'
+  task two_sides_cheapest_offers: :environment do
+    Import::TwoSidesCheapestOffersWorker.perform_async
+  end
 
-    city_codes = JSON.parse(File.read("#{Rails.root}/lib/import/city_codes.json"))
-    popular_cities = CityCodes::TopHundredValueObject.call
-
-    city_codes.each do |code|
-      iata = code.first
-      name = code.second['name']
-
-      next unless popular_cities.include?(name)
-
-      CityCode.create!(iata: iata, name: name)
-    end
-
-    puts "#{CityCode.count} city codes imported"
+  task one_side_cheapest_offers: :environment do
+    Import::OneSideCheapestOffersWorker.perform_async
   end
 end

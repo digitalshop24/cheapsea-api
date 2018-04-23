@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NYC&month=2018-04-22&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Sun, 22 Apr 2018 23:09:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1tavc30uvcegmd4j90mi92lpldfr8go4
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Request-Method:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: "{\"success\": true, \"data\": \n[{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"City.Travel\",\"found_at\":\"2018-04-22T21:39:08\",\"duration\":1185,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-23\",\"actual\":true},{\"value\":25579.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-22T21:39:08\",\"duration\":1865,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-23\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"OZON.travel\",\"found_at\":\"2018-04-22T22:05:19\",\"duration\":1445,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-24\",\"actual\":true},{\"value\":26192.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-22T22:05:19\",\"duration\":2295,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-24\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"OZON.travel\",\"found_at\":\"2018-04-22T22:55:42\",\"duration\":1255,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-25\",\"actual\":true},{\"value\":27150.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Trip.ru\",\"found_at\":\"2018-04-22T22:55:42\",\"duration\":875,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-25\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-04-21T20:46:39\",\"duration\":1810,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-29\",\"actual\":true},{\"value\":32138.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-21T20:46:39\",\"duration\":1465,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-29\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-04-21T21:41:46\",\"duration\":2040,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-30\",\"actual\":true},{\"value\":24265.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Kiwi.com\",\"found_at\":\"2018-04-21T21:41:46\",\"duration\":1825,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-30\",\"actual\":true}]
+        }\n"
+    http_version: 
+  recorded_at: Sun, 22 Apr 2018 23:09:58 GMT
+recorded_with: VCR 3.0.3

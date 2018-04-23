@@ -1,4 +1,4 @@
-class Import::CheapOffersWorker
+class Import::TwoSidesCheapestOffersWorker
   include Sidekiq::Worker
 
   def perform
@@ -11,7 +11,11 @@ class Import::CheapOffersWorker
       cities.find_each do |second_level_city|
         next if first_level_city.id == second_level_city.id
 
-        offers = ::ThirdParty::Travelpayouts::GetCheapOffersService.call(origin: first_level_city.iata, destination: second_level_city.iata)
+        begin
+          offers = ::ThirdParty::Travelpayouts::GetTwoSidesCheapestOffersService.call(origin: first_level_city.iata, destination: second_level_city.iata)
+        rescue  Exception => e
+          raise e.message
+        end
 
         next if offers['data'].empty?
 
@@ -23,7 +27,8 @@ class Import::CheapOffersWorker
           next if Offer.where(
             flight_number: data['flight_number'],
             date_from: data['departure_at'],
-            date_to: data['return_at']
+            date_to: data['return_at'],
+            two_sides: true
           ).any?
 
           begin
@@ -44,10 +49,7 @@ class Import::CheapOffersWorker
               date_end: data['expires_at']
             )
           rescue Exception => e
-            puts '#' * 100
-            puts e.message
-            puts e.backtrace.inspect
-            puts '#' * 100
+            ThirdParty::RaiseErrorService.call(self, { error: e.message })
 
             next
           end

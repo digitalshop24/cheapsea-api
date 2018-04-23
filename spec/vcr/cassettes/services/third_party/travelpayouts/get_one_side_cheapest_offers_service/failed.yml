@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NOTEXISTED&month=2018-04-22&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Sun, 22 Apr 2018 23:09:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '54'
+      Status:
+      - 400 Bad Request
+      X-Content-Type-Options:
+      - nosniff
+    body:
+      encoding: UTF-8
+      string: '{"message":"Parameter destination length more than 3"}'
+    http_version: 
+  recorded_at: Sun, 22 Apr 2018 23:09:58 GMT
+recorded_with: VCR 3.0.3

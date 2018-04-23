@@ -15,8 +15,7 @@ class ThirdParty::Geo::AutocompleteService < ThirdParty::Geo::Base
 
     result = JSON.parse(result)
 
-    error_message = result['error_message']
-    raise error_message if error_message.present?
+    ThirdParty::RaiseErrorService.call(self.class.name, result, true)
 
     return result['predictions']
   end

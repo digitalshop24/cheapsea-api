@@ -3,13 +3,18 @@
 
 # Import
 ## All
-`rake import:all`
+`rake import:all` runs all imports
 ## Airlines: 
 `rake import:airlines`
 runs the task but checks if airline existed
 ## City codes
 `rake import:airlines`
 doesn't run the task if there are any city codes in database
+## Offers
+### Two sides the cheapest offers
+  `rake import:two_sides_cheapest_offers` import the cheapest offers for two sides
+### One side the cheapest offers
+  `rake import:one_side_cheapest_offers` import the cheapest offers for one side
 
 # Deploy
 
@@ -26,4 +31,4 @@ cap production deploy
 `sidekiq -e production` for production
 
 ## Workers
-`Import::CheapOffersWorker.perform_async` import cheap offers
+`Import::TwoSidesCheapestOffersWorker.perform_async` import cheap offers
