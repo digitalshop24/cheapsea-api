@@ -31,4 +31,7 @@ cap production deploy
 `sidekiq -e production` for production
 
 ## Workers
-`Import::TwoSidesCheapestOffersWorker.perform_async` import cheap offers
+### Cheapest
+`Import::TwoSidesCheapestOffersWorker.perform_async` two sides
+
+`Import::OneSideCheapestOffersWorker.perform_async` one side

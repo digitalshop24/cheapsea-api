@@ -15,6 +15,6 @@ module Import::CitiesService
       City.create!(iata: iata, name: name, active: active)
     end
 
-    puts "#{City.count} city codes imported"
+    puts "#{City.count} cities imported"
   end
 end

@@ -7,7 +7,7 @@ class Import::Offers::TwoSidesCheapestOffersService
       puts "#{origin.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |destination|
-        next if the_same_point?
+        next if the_same_point?(origin, destination)
 
         offers = fetch_offers(origin, destination)
 
