@@ -12,7 +12,7 @@ class Import::TwoSidesCheapestOffersWorker
         next if first_level_city.id == second_level_city.id
 
         get_two_sides_offers_service = ::ThirdParty::Travelpayouts::GetTwoSidesCheapestOffersService.call(origin: first_level_city.iata, destination: second_level_city.iata)
-        context.fail!(error: get_two_sides_offers_service.offer) if get_two_sides_offers_service.failure?
+        context.fail!(error: get_two_sides_offers_service.error) if get_two_sides_offers_service.failure?
 
         offers = get_two_sides_offers_service.result
 
@@ -36,7 +36,7 @@ class Import::TwoSidesCheapestOffersWorker
             to_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: second_level_city.name).result
             next if from_google_place_service.nil? && to_google_place_service.nil?
 
-            Offer.create(
+            Offer.create!(
               offer_type: 'airplane',
               two_sides: true,
               user: user,

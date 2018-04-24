@@ -13,7 +13,11 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Base
       add_to_cache(result)
     end
 
-    context.result = JSON.parse(result['results'][0].to_json)
+    if result.is_a?(HTTParty::Response)
+      context.result = result.parsed_response['results'][0]
+    else
+      context.result = JSON.parse(result)['results'][0]
+    end
   end
 
   private

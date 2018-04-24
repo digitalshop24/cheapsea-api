@@ -13,7 +13,11 @@ class ThirdParty::Geo::AutocompleteService < ThirdParty::Base
       add_to_cache(result)
     end
 
-    context.result = JSON.parse(result['predictions'].to_json)
+    if result.is_a?(HTTParty::Response)
+      context.result = result.parsed_response['predictions']
+    else
+      context.result = JSON.parse(result)['predictions']
+    end
   end
 
   private

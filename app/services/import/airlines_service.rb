@@ -1,7 +1,5 @@
-class Import::AirlinesWorker
-  include Sidekiq::Worker
-
-  def perform
+module Import::AirlinesService
+  def self.call
     airlines_array = ::ThirdParty::Travelpayouts::GetAirlinesService.call
 
     puts 'Airlines import started'
