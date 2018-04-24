@@ -9,6 +9,7 @@ class ThirdParty::Travelpayouts::GetOneSideCheapestOffersService < ThirdParty::B
     result = JSON.parse(response.body)
     context.fail!(error: result['errors']) if result['errors'].present?
     context.fail!(error: result['message']) if result['message'].present?
+    context.fail!(error: result['data']['errors']) if result['data'].is_a?(Hash) && result['data'].has_key?('errors')
 
     context.result = result['data']
   end

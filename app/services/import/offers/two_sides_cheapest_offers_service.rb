@@ -4,16 +4,12 @@ class Import::Offers::TwoSidesCheapestOffersService
     user = User.admin.take
 
     cities.each_with_index do |origin, index|
-      @origin = origin
-
       puts "#{origin.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |destination|
-        @destination = destination
-
         next if the_same_point?
 
-        fetch_offers
+        offers = fetch_offers(origin, destination)
 
         next if offers.empty?
 
@@ -55,13 +51,11 @@ class Import::Offers::TwoSidesCheapestOffersService
 
   private
 
-  attr_reader :origin, :destination, :offers
-
-  def the_same_point?
+  def the_same_point?(origin, destination)
     origin.id == destination.id
   end
 
-  def fetch_offers
+  def fetch_offers(origin, destination)
     get_two_sides_offers_service = ::ThirdParty::Travelpayouts::GetTwoSidesCheapestOffersService.call(origin: origin.iata, destination: destination.iata)
 
     context.fail!(error: get_two_sides_offers_service.error) if get_two_sides_offers_service.failure?
@@ -70,11 +64,10 @@ class Import::Offers::TwoSidesCheapestOffersService
   end
 
   def offer_exists?(data)
-    Offer.find_by(
+    Offer.two_sides.find_by(
       price: data['price'],
       date_from: data['departure_at'],
-      date_to: data['return_at'],
-      two_sides: true
+      date_to: data['return_at']
     ).present?
   end
 end

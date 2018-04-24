@@ -5,7 +5,7 @@ namespace :import do
     Rake::Task['import:airlines'].invoke
     Rake::Task['import:cities'].invoke
     Rake::Task['import:two_sides_cheapest_offers'].invoke
-    #Rake::Task['import:one_side_cheapest_offers'].invoke
+    Rake::Task['import:one_side_cheapest_offers'].invoke
   end
 
   task airlines: :environment do

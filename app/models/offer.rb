@@ -43,4 +43,7 @@ class Offer < ApplicationRecord
   validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  scope :two_sides, -> { where(two_sides: true) }
+  scope :one_side, -> { where(two_sides: false) }
 end
