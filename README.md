@@ -11,10 +11,10 @@ runs the task but checks if airline existed
 `rake import:cities`
 doesn't run the task if there are any city codes in database
 ## Offers
-### Two sides the cheapest offers
-  `rake import:two_sides_cheapest_offers` import the cheapest offers for two sides
-### One side the cheapest offers
-  `rake import:one_side_cheapest_offers` import the cheapest offers for one side
+### Cheapest
+  `rake import:two_sides_cheapest_offers` two sides
+  
+  `rake import:one_side_cheapest_offers` one side
 
 # Deploy
 

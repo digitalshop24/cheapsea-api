@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424045501) do
+ActiveRecord::Schema.define(version: 20180424234937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180424045501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_cities_on_active"
+    t.index ["name"], name: "index_cities_on_name"
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|
@@ -53,9 +54,9 @@ ActiveRecord::Schema.define(version: 20180424045501) do
     t.string "price_currency", default: "RUB"
     t.boolean "two_sides", default: false, null: false
     t.integer "flight_number"
+    t.string "gate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gate"
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"

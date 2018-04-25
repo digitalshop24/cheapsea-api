@@ -25,6 +25,20 @@
 #
 
 class Offer < ApplicationRecord
+  include AASM
+
+  aasm column: :status, enum: true do
+    state :draft, initial: true
+    state :published
+
+    event :publish, after: :import_cheapest_offer do
+      transitions from: [:draft], to: :published
+    end
+  end
+  EVENTS_PARAMS_HASH = { published: 'publish!' }
+
+  before_save :import_worker_if_status_changed
+
   CURRENCY_TYPES = %w(RUB USD EUR)
 
   enum status: { draft: 0, published: 1 }
@@ -46,4 +60,23 @@ class Offer < ApplicationRecord
 
   scope :two_sides, -> { where(two_sides: true) }
   scope :one_side, -> { where(two_sides: false) }
+
+  private
+
+  def import_cheapest_offer
+    return if self.two_sides?
+
+    Import::OneSideCheapestOfferWorker.perform_async(
+      {
+        from_google_place_id: self.from_google_place_id,
+        to_google_place_id: self.to_google_place_id
+      }
+    )
+  end
+
+  def import_worker_if_status_changed
+    return unless self.status_changed?
+
+    import_cheapest_offer if self.status_changed?(from: 'draft', to: 'published')
+  end
 end

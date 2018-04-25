@@ -6,7 +6,7 @@ class ThirdParty::Geo::PlaceInfoService < ThirdParty::Base
 
     result = read_from_cache
     if result.nil?
-      url = "#{ENV['GOOGLE_MAP_URL']}/geocode/json?place_id=#{place_id}&key=#{ENV['GOOGLE_MAP_KEY']}"
+      url = "#{ENV['GOOGLE_MAP_URL']}/geocode/json?place_id=#{place_id}&key=#{ENV['GOOGLE_MAP_KEY']}&language=ru"
       result = get_url(url)
       context.fail!(error: result['error_message']) if result['error_message'].present?
 
