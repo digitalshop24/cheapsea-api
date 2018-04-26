@@ -75,7 +75,10 @@ class Import::Offers::OneSideCheapestOfferService
   end
 
   def set_origin_destination
-    names = ThirdParty::Geo::NamesFromPlaceIdsService.call(google_places: google_places).result
+    names = ThirdParty::Geo::NamesFromPlaceIdsService.call(
+      from_google_place_id: google_places[:from_google_place_id],
+      to_google_place_id: google_places[:to_google_place_id]
+    ).result
     @origin ||= City.find_by(name: names[:origin])
     @destination ||= City.find_by(name: names[:destination])
   end

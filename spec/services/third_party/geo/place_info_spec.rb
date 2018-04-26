@@ -6,7 +6,7 @@ describe ThirdParty::Geo::PlaceInfoService do
   let(:place_id) { 'ChIJOwg_06VPwokRYv534QaPC8g' }
 
   describe 'success' do
-    use_vcr_cassette 'services/geo/place_info/success'
+    use_vcr_cassette 'services/third_party/geo/place_info/success'
 
     it 'checks that service is successful' do
       expect(subject.success?).to be true
@@ -26,7 +26,7 @@ describe ThirdParty::Geo::PlaceInfoService do
   end
 
   describe 'failed' do
-    use_vcr_cassette 'services/geo/place_info/failed'
+    use_vcr_cassette 'services/third_party/geo/place_info/failed'
 
     let(:place_id) { 'wrong_id' }
 

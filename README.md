@@ -28,7 +28,7 @@ cap production deploy
 
 `sidekiq -q critical,2 -q default`
 
-`sidekiq -e production` for production
+`sidekiq -e production -d -L log/sidekiq.log` for production
 
 ## Workers
 ### Cheapest

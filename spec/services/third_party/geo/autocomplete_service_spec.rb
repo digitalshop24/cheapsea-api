@@ -6,7 +6,7 @@ describe ThirdParty::Geo::AutocompleteService do
   let(:input) { 'New York' }
 
   context 'found' do
-    use_vcr_cassette 'services/geo/autocomplete/found'
+    use_vcr_cassette 'services/third_party/geo/autocomplete/found'
 
     it 'checks that service successed' do
       expect(subject.success?).to eq true
@@ -18,7 +18,7 @@ describe ThirdParty::Geo::AutocompleteService do
   end
 
   context 'not found' do
-    use_vcr_cassette 'services/geo/autocomplete/not_found'
+    use_vcr_cassette 'services/third_party/geo/autocomplete/not_found'
 
     let(:input) { 'djshfg3487fg874' }
 
