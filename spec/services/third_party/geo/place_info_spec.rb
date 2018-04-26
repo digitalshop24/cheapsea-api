@@ -21,7 +21,7 @@ describe ThirdParty::Geo::PlaceInfoService do
     end
 
     it 'checks that result contains an info about the city' do
-      expect(subject.result['address_components'].first['long_name']).to eq('New York')
+      expect(subject.result['address_components'].first['long_name']).to eq('Нью-Йорк')
     end
   end
 

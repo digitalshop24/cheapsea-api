@@ -25,6 +25,8 @@ describe Offers::UpdateService do
     end
 
     context 'transfers' do
+      use_vcr_cassette 'services/offers/update_service/transfers/success'
+
       let(:transfers_params) do
         "[{\"id\": \"#{@transfer.id}\", \"google_place_id\": \"ChIJGzE9DS1l44kRoOhiASS_fHg\", \"airline_id\": \"#{@airline.id}\"}]"
       end
@@ -53,6 +55,8 @@ describe Offers::UpdateService do
     end
 
     context 'transfers' do
+      use_vcr_cassette 'services/offers/update_service/transfers/failure'
+
       let(:params) { FactoryGirl.attributes_for(:offer) }
       let(:transfers_params) do
         "[{\"id\": \"#{@transfer.id}\", \"google_place_id\": \"wrong_id\", \"airline_id\": \"#{@airline.id + 1}\"}]"

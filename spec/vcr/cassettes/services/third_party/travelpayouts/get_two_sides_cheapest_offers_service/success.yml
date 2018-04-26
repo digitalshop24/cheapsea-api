@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Mon, 23 Apr 2018 20:30:50 GMT
+      - Thu, 26 Apr 2018 19:35:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,18 +29,18 @@ http_interactions:
       Status:
       - 200 OK
       Etag:
-      - W/"ef24a510b3eeee22dbe4c983ed1c3099"
+      - W/"7d468b7485dd7007707a87c52e4f83a9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ccf1934952d05d4b96e4051942d6e08c
+      - 1046c57aec8ba110a21aa81aa3ab1c66
       X-Runtime:
-      - '0.063924'
+      - '0.012447'
       X-Rack-Cache:
       - miss
     body:
       encoding: ASCII-8BIT
-      string: '{"success":true,"data":{"NYC":{"1":{"price":23402,"airline":"AY","flight_number":706,"departure_at":"2019-02-19T19:50:00Z","return_at":"2019-02-27T17:45:00Z","expires_at":"2018-04-26T05:16:36Z"},"2":{"price":26581,"airline":"LX","flight_number":1311,"departure_at":"2018-12-01T15:05:00Z","return_at":"2018-12-07T22:05:00Z","expires_at":"2018-04-25T15:31:42Z"},"3":{"price":36021,"airline":"LX","flight_number":1311,"departure_at":"2018-10-04T14:10:00Z","return_at":"2018-10-10T13:30:00Z","expires_at":"2018-04-24T13:06:07Z"},"4":{"price":49042,"airline":"SU","flight_number":33,"departure_at":"2018-05-05T06:25:00Z","return_at":"2018-05-20T23:55:00Z","expires_at":"2018-04-26T05:59:42Z"},"5":{"price":59329,"airline":"BT","flight_number":447,"departure_at":"2019-03-06T06:10:00Z","return_at":"2019-03-13T20:20:00Z","expires_at":"2018-04-25T10:37:43Z"},"6":{"price":59613,"airline":"AF","flight_number":1465,"departure_at":"2019-02-04T16:20:00Z","return_at":"2019-02-12T14:20:00Z","expires_at":"2018-04-25T19:33:19Z"},"7":{"price":68039,"airline":"AF","flight_number":1465,"departure_at":"2019-02-04T16:20:00Z","return_at":"2019-02-12T14:20:00Z","expires_at":"2018-04-25T19:33:19Z"}}},"error":null,"currency":"rub"}'
+      string: '{"success":true,"data":{"NYC":{"1":{"price":23098,"airline":"AY","flight_number":704,"departure_at":"2018-09-12T06:00:00Z","return_at":"2018-09-18T17:40:00Z","expires_at":"2018-04-29T16:06:42Z"},"2":{"price":24603,"airline":"LH","flight_number":1433,"departure_at":"2019-04-09T14:05:00Z","return_at":"2019-04-16T21:55:00Z","expires_at":"2018-04-29T18:57:46Z"},"3":{"price":50501,"airline":"SU","flight_number":33,"departure_at":"2018-09-14T06:25:00Z","return_at":"2018-09-22T01:05:00Z","expires_at":"2018-04-29T11:05:28Z"},"4":{"price":56260,"airline":"SU","flight_number":19,"departure_at":"2018-05-02T15:15:00Z","return_at":"2018-07-16T00:40:00Z","expires_at":"2018-04-29T19:01:53Z"},"5":{"price":52471,"airline":"S7","flight_number":16,"departure_at":"2018-12-21T11:20:00Z","return_at":"2018-12-26T19:20:00Z","expires_at":"2018-04-29T09:38:27Z"}}},"error":null,"currency":"rub"}'
     http_version: 
-  recorded_at: Mon, 23 Apr 2018 20:30:53 GMT
+  recorded_at: Thu, 26 Apr 2018 19:36:04 GMT
 recorded_with: VCR 3.0.3

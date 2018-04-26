@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NYC&month=2018-04-23&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
+    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NYC&month=2018-04-26&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Mon, 23 Apr 2018 19:37:06 GMT
+      - Thu, 26 Apr 2018 19:35:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - cn4sp5bpmtaj277ttc1ir3koca3lpc9v
+      - kpn40aha8minum23uec3vsdmcki8p430
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Allow-Origin:
@@ -38,8 +38,9 @@ http_interactions:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: "{\"success\": true, \"data\": \n[{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-23T16:37:06.568164\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-23\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"OZON.travel\",\"found_at\":\"2018-04-23T18:53:44\",\"duration\":1810,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-24\",\"actual\":true},{\"value\":24983.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-23T18:53:44\",\"duration\":1380,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-24\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-23T16:37:06.568164\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-25\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-23T16:37:06.568164\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-26\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-23T16:37:06.568164\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-27\",\"actual\":true},{\"value\":21322.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-23T16:37:06.568164\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-28\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-04-23T15:48:48\",\"duration\":1635,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-29\",\"actual\":true},{\"value\":30016.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-23T15:48:48\",\"duration\":1575,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-29\",\"actual\":true},{\"value\":17857.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Go2See\",\"found_at\":\"2018-04-23T04:49:27\",\"duration\":1100,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-30\",\"actual\":true},{\"value\":22973.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-04-23T04:49:27\",\"duration\":4230,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-30\",\"actual\":true}]
+      string: "{\"success\": true, \"data\": \n[{\"value\":17643.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"SuperKassa.ru\",\"found_at\":\"2018-04-26T16:39:43\",\"duration\":1500,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-26\",\"actual\":true},{\"value\":76790.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"TAP
+        Portugal\",\"found_at\":\"2018-04-26T16:39:43\",\"duration\":1685,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-26\",\"actual\":true},{\"value\":17643.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-26T16:35:56.946176\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-27\",\"actual\":true},{\"value\":21063.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-26T16:35:56.946176\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-28\",\"actual\":true},{\"value\":17716.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-26T16:35:56.946176\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-29\",\"actual\":true},{\"value\":17643.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-04-26T16:35:56.946176\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-04-30\",\"actual\":true}]
         }\n"
     http_version: 
-  recorded_at: Mon, 23 Apr 2018 19:37:09 GMT
+  recorded_at: Thu, 26 Apr 2018 19:36:03 GMT
 recorded_with: VCR 3.0.3
