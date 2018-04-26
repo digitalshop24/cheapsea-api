@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'profiles/show'
+    end
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount_devise_token_auth_for 'User', at: 'auth'
@@ -26,6 +32,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :offers, only: %i[index show create update destroy]
+      resource :profile, only: :show
     end
   end
 end

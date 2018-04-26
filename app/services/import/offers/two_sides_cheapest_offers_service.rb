@@ -4,7 +4,7 @@ class Import::Offers::TwoSidesCheapestOffersService
     user = User.admin.take
 
     cities.each_with_index do |origin, index|
-      puts "#{origin.name} - #{index + 1}/#{cities.length} checking..."
+      puts "#{self.class.name} | #{origin.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |destination|
         next if the_same_point?(origin, destination)
