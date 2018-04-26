@@ -16,6 +16,8 @@ class Import::Offers::OneSideCheapestOffersService
 
         Import::Offers::OneSideCheapestOfferService.new(origin: origin, destination: destination, google_places: google_places).call
       end
+
+      sleep 10
     end
   end
 
