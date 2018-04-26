@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe ThirdParty::Geo::NamesFromPlaceIdsService do
+describe ThirdParty::Geo::CitiesFromPlaceIdsService do
   subject do
-    ThirdParty::Geo::NamesFromPlaceIdsService.call(
+    ThirdParty::Geo::CitiesFromPlaceIdsService.call(
       from_google_place_id: from_google_place_id,
       to_google_place_id: to_google_place_id
     )
   end
 
   describe 'success' do
-    use_vcr_cassette 'services/third_party/geo/names_from_place_ids_service/success'
+    use_vcr_cassette 'services/third_party/geo/cities_from_place_ids_service/success'
 
     let(:from_google_place_id) { 'ChIJOwg_06VPwokRYv534QaPC8g' }
     let(:to_google_place_id) { 'ChIJGzE9DS1l44kRoOhiASS_fHg' }
@@ -36,7 +36,7 @@ describe ThirdParty::Geo::NamesFromPlaceIdsService do
   end
 
   describe 'failure' do
-    use_vcr_cassette 'services/third_party/geo/names_from_place_ids_service/failure'
+    use_vcr_cassette 'services/third_party/geo/cities_from_place_ids_service/failure'
 
     let(:from_google_place_id) { 'wrong_id' }
     let(:to_google_place_id) { 'wrong_id' }

@@ -1,4 +1,4 @@
-class ThirdParty::Geo::NamesFromPlaceIdsService
+class ThirdParty::Geo::CitiesFromPlaceIdsService
   include Interactor
 
   def call
@@ -15,8 +15,8 @@ class ThirdParty::Geo::NamesFromPlaceIdsService
     context.fail!(error: 'destination is nil') if destination.nil?
 
     result = {
-      origin: origin,
-      destination: destination
+      origin: City.where('name ILIKE ?', "%#{origin}%").take,
+      destination: City.where('name ILIKE ?', "%#{destination}%").take
     }
 
     context.result = result

@@ -9,6 +9,7 @@
 #  from_google_place_id :string
 #  to_google_place_id   :string
 #  airline_id           :integer
+#  is_direct            :boolean          default(TRUE)
 #  transfers_count      :integer
 #  date_from            :datetime
 #  date_to              :datetime
@@ -17,11 +18,15 @@
 #  description          :text
 #  status               :integer          default("draft"), not null
 #  user_id              :integer
+#  price                :float
+#  price_currency       :string           default("RUB")
+#  two_sides            :boolean          default(FALSE), not null
+#  flight_number        :integer
+#  gate                 :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  is_direct            :boolean          default(TRUE)
-#  price_cents          :integer          default(0), not null
-#  price_currency       :string           default("USD"), not null
+#  origin_id            :integer
+#  destination_id       :integer
 #
 
 FactoryGirl.define do
@@ -43,5 +48,7 @@ FactoryGirl.define do
     two_sides false
     origin factory: :city
     destination factory: :city
+
+    after(:build) { |obj| obj.class.skip_callback(:validation, :before, :synchronize_places) }
   end
 end

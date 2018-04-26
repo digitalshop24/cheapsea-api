@@ -25,7 +25,7 @@
 #
 
 class Offer < ApplicationRecord
-  before_validation :synronize_places
+  before_validation :synchronize_places
   before_save :import_cheapest_offer
 
   CURRENCY_TYPES = %w(RUB USD EUR)
@@ -43,7 +43,7 @@ class Offer < ApplicationRecord
 
   has_many :transfers, dependent: :destroy
 
-  validates :name, :origin_id, :destination_id, presence: true
+  validates :name, :origin_id, :destination_id, :from_google_place_id, :to_google_place_id, presence: true
   validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
@@ -54,25 +54,43 @@ class Offer < ApplicationRecord
 
   private
 
-  def synronize_places
+  def synchronize_places
     # TODO add spec
-    if self.origin_id_changed? || self.destination_id_changed?
-      service = ThirdParty::Geo::PlaceIdsFromNamesService.call(origin_name: self.origin.name, destination_name: self.destination.name)
-
-      if service.failure?
-        errors.add(:base, service.error)
-        throw :abort
-      end
-
-      self.from_google_place_id = service.result[:from_google_place_id]
-      self.to_google_place_id = service.result[:to_google_place_id]
-    end
+    synchronize_google_places if origin_id_changed? || destination_id_changed?
+    synchronize_city_places if from_google_place_id_changed? || to_google_place_id_changed?
   end
 
-  def import_cheapest_offer
-    return if self.two_sides?
-    return unless self.status_changed?(from: 'draft', to: 'published')
+  def synchronize_google_places
+    service = ThirdParty::Geo::PlaceIdsFromNamesService.call(origin_name: origin.name, destination_name: destination.name)
 
-    Import::OneSideCheapestOfferWorker.perform_async(self.origin.id, self.destination.id)
+    if service.failure?
+      errors.add(:base, service.error)
+      throw :abort
+    end
+
+    self.from_google_place_id = service.result[:from_google_place_id]
+    self.to_google_place_id = service.result[:to_google_place_id]
+
+    return
+  end
+
+  def synchronize_city_places
+    service = ThirdParty::Geo::CitiesFromPlaceIdsService.call(from_google_place_id: from_google_place_id, to_google_place_id: to_google_place_id)
+
+    if service.failure?
+      errors.add(:base, service.error)
+      throw :abort
+    end
+
+    self.origin = service.result[:origin]
+    self.destination = service.result[:destination]
+  end
+
+
+  def import_cheapest_offer
+    return if two_sides?
+    return unless status_changed?(from: 'draft', to: 'published')
+
+    Import::OneSideCheapestOfferWorker.perform_async(origin.id, destination.id)
   end
 end
