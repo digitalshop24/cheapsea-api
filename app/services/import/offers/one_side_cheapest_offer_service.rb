@@ -1,11 +1,9 @@
 class Import::Offers::OneSideCheapestOfferService
   MONTH_PERIOD_ARRAY = (0..6).to_a
 
-  def initialize(origin: nil, destination: nil, google_places:)
-    @google_places = google_places.symbolize_keys
+  def initialize(origin, destination)
     @origin = origin
     @destination = destination
-    set_origin_destination if origin.nil? || destination.nil?
     @user = User.admin.take
   end
 
@@ -31,7 +29,7 @@ class Import::Offers::OneSideCheapestOfferService
 
   private
 
-  attr_reader :origin, :destination, :google_places, :user
+  attr_reader :origin, :destination, :user
 
   def fetch_offers(date)
     ::ThirdParty::Travelpayouts::GetOneSideCheapestOffersService.call(origin: origin.iata, destination: destination.iata, month: date)
@@ -53,8 +51,8 @@ class Import::Offers::OneSideCheapestOfferService
 
   def offer_exists?(data)
     Offer.published.find_by(
-      from_google_place_id: google_places[:from_google_place_id],
-      to_google_place_id: google_places[:to_google_place_id],
+      origin_id: origin.id,
+      destination_id: destination.id,
       price: data['value'],
       date_from: data['depart_date']
     ).present?
@@ -67,19 +65,10 @@ class Import::Offers::OneSideCheapestOfferService
       user: user,
       price: data['value'],
       name: "From #{origin.name} to #{destination.name} for #{data['value']} RUB.",
-      from_google_place_id: google_places[:from_google_place_id],
-      to_google_place_id: google_places[:to_google_place_id],
+      origin: origin,
+      destination: destination,
       gate: data['gate'],
       date_from: data['depart_date']
     )
-  end
-
-  def set_origin_destination
-    names = ThirdParty::Geo::NamesFromPlaceIdsService.call(
-      from_google_place_id: google_places[:from_google_place_id],
-      to_google_place_id: google_places[:to_google_place_id]
-    ).result
-    @origin ||= City.find_by(name: names[:origin])
-    @destination ||= City.find_by(name: names[:destination])
   end
 end

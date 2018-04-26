@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe ThirdParty::Geo::PlaceIdsFromNamesService do
   subject do
-    ThirdParty::Geo::PlaceIdsFromNamesService.call(origin: origin, destination: destination)
+    ThirdParty::Geo::PlaceIdsFromNamesService.call(origin_name: origin_name, destination_name: destination_name)
   end
 
   describe 'success' do
     use_vcr_cassette 'services/third_party/geo/place_ids_from_names_service/success'
 
-    let(:origin) { 'Нью-Йорк' }
-    let(:destination) { 'Бостон' }
+    let(:origin_name) { 'Нью-Йорк' }
+    let(:destination_name) { 'Бостон' }
 
     it 'checks that service successed' do
       expect(subject.success?).to be true
@@ -35,8 +35,8 @@ describe ThirdParty::Geo::PlaceIdsFromNamesService do
   describe 'failure' do
     use_vcr_cassette 'services/third_party/geo/place_ids_from_names_service/failure'
 
-    let(:origin) { 'wrong origin' }
-    let(:destination) { 'wrong destination' }
+    let(:origin_name) { 'wrong origin' }
+    let(:destination_name) { 'wrong destination' }
 
     it 'checks that service failed' do
       expect(subject.failure?).to be true
@@ -48,7 +48,7 @@ describe ThirdParty::Geo::PlaceIdsFromNamesService do
 
     context 'missing arguments' do
       context 'origin' do
-        let(:origin) { nil }
+        let(:origin_name) { nil }
 
         it 'checks that service has an error' do
           expect(subject.error).to eq('There should be 2 values')
@@ -56,7 +56,7 @@ describe ThirdParty::Geo::PlaceIdsFromNamesService do
       end
 
       context 'destination' do
-        let(:destination) { nil }
+        let(:destination_name) { nil }
 
         it 'checks that service has an error' do
           expect(subject.error).to eq('There should be 2 values')

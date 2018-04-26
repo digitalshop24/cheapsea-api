@@ -41,5 +41,7 @@ FactoryGirl.define do
     description 'MyText'
     user
     two_sides false
+    origin factory: :city
+    destination factory: :city
   end
 end

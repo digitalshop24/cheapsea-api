@@ -7,7 +7,7 @@ class Import::Offers::TwoSidesCheapestOffersService
       puts "#{self.class.name} | #{origin.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |destination|
-        next if the_same_point?(origin, destination)
+        next if the_same_point?(origin.id, destination.id)
 
         offers = fetch_offers(origin, destination)
 
@@ -19,25 +19,21 @@ class Import::Offers::TwoSidesCheapestOffersService
         offers[destination.iata].each do |offer|
           data = offer.second
 
-          next if offer_exists?(data)
+          next if offer_exists?(origin, destination, data)
 
           begin
-            from_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: origin.name).result
-            to_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: destination.name).result
-            next if from_google_place_service.nil? && to_google_place_service.nil?
-
             Offer.create!(
               offer_type: 'airplane',
               two_sides: true,
               user: user,
               price: data['price'],
               name: "From #{origin.name} to #{destination.name} for #{data['price']} RUB.",
-              from_google_place_id: from_google_place_service.first['place_id'],
-              to_google_place_id: to_google_place_service.first['place_id'],
               airline: Airline.find_by(iata: data['airline']),
               date_from: data['departure_at'],
               date_to: data['return_at'],
-              date_end: data['expires_at']
+              date_end: data['expires_at'],
+              origin: origin,
+              destination: destination
             )
           rescue Exception => e
             logger.warn e
@@ -51,8 +47,8 @@ class Import::Offers::TwoSidesCheapestOffersService
 
   private
 
-  def the_same_point?(origin, destination)
-    origin.id == destination.id
+  def the_same_point?(origin_id, destination_id)
+    origin_id == destination_id
   end
 
   def fetch_offers(origin, destination)
@@ -63,8 +59,10 @@ class Import::Offers::TwoSidesCheapestOffersService
     @offers = get_two_sides_offers_service.result
   end
 
-  def offer_exists?(data)
+  def offer_exists?(origin, destination, data)
     Offer.two_sides.find_by(
+      origin_id: origin.id,
+      destination_id: destination.id,
       price: data['price'],
       date_from: data['departure_at'],
       date_to: data['return_at']

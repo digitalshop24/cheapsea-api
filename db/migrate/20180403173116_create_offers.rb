@@ -21,6 +21,8 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.boolean :two_sides, default: false, null: false, index: true
       t.integer :flight_number, index: true
       t.string :gate
+      #t.integer :origin_id, foreign_key: true, index: true
+      #t.integer :destination_id, foreign_key: true, index: true
 
       t.timestamps
     end

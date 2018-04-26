@@ -25,19 +25,8 @@
 #
 
 class Offer < ApplicationRecord
-  include AASM
-
-  aasm column: :status, enum: true do
-    state :draft, initial: true
-    state :published
-
-    event :publish, after: :import_cheapest_offer do
-      transitions from: [:draft], to: :published
-    end
-  end
-  EVENTS_PARAMS_HASH = { published: 'publish!' }
-
-  before_save :import_worker_if_status_changed
+  before_validation :synronize_places
+  before_save :import_cheapest_offer
 
   CURRENCY_TYPES = %w(RUB USD EUR)
 
@@ -49,10 +38,12 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :airline, optional: true
+  belongs_to :origin, class_name: 'City', foreign_key: 'origin_id'
+  belongs_to :destination, class_name: 'City', foreign_key: 'destination_id'
 
   has_many :transfers, dependent: :destroy
 
-  validates :name, :from_google_place_id, :to_google_place_id, presence: true
+  validates :name, :origin_id, :destination_id, presence: true
   validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
@@ -63,20 +54,25 @@ class Offer < ApplicationRecord
 
   private
 
-  def import_cheapest_offer
-    return if self.two_sides?
+  def synronize_places
+    # TODO add spec
+    if self.origin_id_changed? || self.destination_id_changed?
+      service = ThirdParty::Geo::PlaceIdsFromNamesService.call(origin_name: self.origin.name, destination_name: self.destination.name)
 
-    Import::OneSideCheapestOfferWorker.perform_async(
-      {
-        from_google_place_id: self.from_google_place_id,
-        to_google_place_id: self.to_google_place_id
-      }
-    )
+      if service.failure?
+        errors.add(:base, service.error)
+        throw :abort
+      end
+
+      self.from_google_place_id = service.result[:from_google_place_id]
+      self.to_google_place_id = service.result[:to_google_place_id]
+    end
   end
 
-  def import_worker_if_status_changed
-    return unless self.status_changed?
+  def import_cheapest_offer
+    return if self.two_sides?
+    return unless self.status_changed?(from: 'draft', to: 'published')
 
-    import_cheapest_offer if self.status_changed?(from: 'draft', to: 'published')
+    Import::OneSideCheapestOfferWorker.perform_async(self.origin.id, self.destination.id)
   end
 end

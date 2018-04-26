@@ -6,11 +6,11 @@ class ThirdParty::Geo::PlaceIdsFromNamesService
   def call
     pre_initialize
 
-    from_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: origin)
+    from_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: origin_name)
     context.fail!(error: from_google_place_service.error) if from_google_place_service.failure?
     context.fail!(error: 'from_google_place_is is nil') if from_google_place_service.result.first.nil?
 
-    to_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: destination)
+    to_google_place_service = ::ThirdParty::Geo::AutocompleteService.call(input: destination_name)
     context.fail!(error: to_google_place_service.error) if to_google_place_service.failure?
     context.fail!(error: 'to_google_place_is is nil') if to_google_place_service.result.first.nil?
 
@@ -24,12 +24,12 @@ class ThirdParty::Geo::PlaceIdsFromNamesService
 
   private
 
-  attr_reader :origin, :destination
+  attr_reader :origin_name, :destination_name
 
   def pre_initialize
-    @origin = context.origin
-    @destination = context.destination
+    @origin_name = context.origin_name
+    @destination_name = context.destination_name
 
-    context.fail!(error: 'There should be 2 values') if origin.nil? || destination.nil?
+    context.fail!(error: 'There should be 2 values') if origin_name.nil? || destination_name.nil?
   end
 end
