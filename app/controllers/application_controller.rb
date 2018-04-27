@@ -7,7 +7,13 @@ class ApplicationController < ActionController::API
 
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
 
+  before_action :cors_preflight_check
+
   def current_user
     User.first if Rails.env.development?
+  end
+
+  def cors_preflight_check
+    return unless request.method == :options
   end
 end
