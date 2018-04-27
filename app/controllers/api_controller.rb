@@ -7,8 +7,6 @@ class ApiController < ApplicationController
   end
 
   def self.credentials(api)
-    api.param :header, 'uid', :string, :required, 'uid'
-    api.param :header, 'access-token', :string, :required, 'access-token'
-    api.param :header, 'client', :string, :required, 'client'
+    api.param :header, 'Authorization', :string, :required, 'ex: Bearer token'
   end
 end

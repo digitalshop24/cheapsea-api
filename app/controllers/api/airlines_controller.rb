@@ -1,4 +1,4 @@
-class AirlinesController < ApiController
+class API::AirlinesController < ApiController
   swagger_controller :airlines, 'Airlines'
 
   swagger_api :index do

@@ -1,4 +1,4 @@
-#class GeoController < ApiController
+#class API::GeoController < ApiController
 #  swagger_controller :geo, 'Geo', resource_path: '/geo'
 #
 #  swagger_api :autocomplete do |api|

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AirlinesController, type: :controller do
+describe API::AirlinesController, type: :controller do
   describe "GET #index" do
     it "returns http success" do
       get :index

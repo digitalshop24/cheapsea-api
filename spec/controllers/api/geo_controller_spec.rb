@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-#describe GeoController, type: :controller do
+#describe API::GeoController, type: :controller do
 #  use_vcr_cassette 'controllers/geo/autocomplete'
 
 #  describe "GET #autocomplete" do

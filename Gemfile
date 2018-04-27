@@ -27,7 +27,6 @@ gem "redis", '3.3.0'
 gem 'mina', '1.0.2'
 gem 'omniauth'
 gem 'rails_admin', '~> 1.3'
-gem 'devise_token_auth'
 gem 'figaro'
 gem 'geocoder'
 gem "interactor", "~> 3.0"
@@ -43,6 +42,7 @@ gem 'mini_magick', require: false           # A ruby wrapper for ImageMagick or 
 gem 'sidekiq'
 gem 'sidekiq-statistic'
 gem 'kaminari'
+gem 'knock', git: 'git@github.com:vitaliy-cro/knock.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

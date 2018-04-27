@@ -30,15 +30,13 @@
 #
 
 class User < ApplicationRecord
-  # Include default devise modules.
-  devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :omniauthable
-  include DeviseTokenAuth::Concerns::User
+  has_secure_password
 
   mount_uploader :image, ImageUploader
 
   has_many :offers, dependent: :nullify
 
   enum role: { member: 0, agent: 1, moderator: 2, admin: 3 }
+
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
