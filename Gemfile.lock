@@ -1,6 +1,5 @@
-GIT
-  remote: git@github.com:vitaliy-cro/knock.git
-  revision: 3c4eb88b0fdb4797508e8c3be94c63ecd28cda2e
+PATH
+  remote: vendor/knock
   specs:
     knock (2.1.1)
       bcrypt (~> 3.1)
