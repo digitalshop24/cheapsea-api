@@ -1,0 +1,585 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=MyString&key=AIzaSyAnjjXhcY6uPaAAZg5J-5xTv_v9uvtbiJs&types=geocode
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 28 Apr 2018 15:50:14 GMT
+      Expires:
+      - Sat, 28 Apr 2018 15:50:14 GMT
+      Cache-Control:
+      - private, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "predictions" : [
+              {
+                 "description" : "Stringtown Road, Grove City, OH, USA",
+                 "id" : "15629ac7b98258ebf24b0407655546181ee30470",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiRTdHJpbmd0b3duIFJvYWQsIEdyb3ZlIENpdHksIE9ILCBVU0E",
+                 "reference" : "CjQoAAAAUjFHkr17BkU3Kjz0rp-W1wyC-wjL_EW8CH63BYEvNNn9l6bI0QYMiCmQxUwRQXG6EhBciKsKNojqqbEMJZ6eJjXaGhQyVi4lN9aij9C6SBCzgS1pHOrvvQ",
+                 "structured_formatting" : {
+                    "main_text" : "Stringtown Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Grove City, OH, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringtown Road"
+                    },
+                    {
+                       "offset" : 17,
+                       "value" : "Grove City"
+                    },
+                    {
+                       "offset" : 29,
+                       "value" : "OH"
+                    },
+                    {
+                       "offset" : 33,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringfellow Road, Chantilly, VA, USA",
+                 "id" : "c07afb6d6a353db380e51b6d2a4f2efb983c0e7e",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiVTdHJpbmdmZWxsb3cgUm9hZCwgQ2hhbnRpbGx5LCBWQSwgVVNB",
+                 "reference" : "CjQpAAAARYPt-N12lPP2MobDr2yC9UzEPB4mPicnTYm_azu5dimxl7xaTcsPkVh5-hRig9-jEhBOGu1baEtOaxMULJuSMHK5GhTdt0pi3XvaZJs7G1Ug5RNY5J9J9Q",
+                 "structured_formatting" : {
+                    "main_text" : "Stringfellow Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Chantilly, VA, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringfellow Road"
+                    },
+                    {
+                       "offset" : 19,
+                       "value" : "Chantilly"
+                    },
+                    {
+                       "offset" : 30,
+                       "value" : "VA"
+                    },
+                    {
+                       "offset" : 34,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringfellow Road, Bokeelia, FL, USA",
+                 "id" : "5ac8073548e35dfcbdcae19d23e9fee8f2a9c13d",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiRTdHJpbmdmZWxsb3cgUm9hZCwgQm9rZWVsaWEsIEZMLCBVU0E",
+                 "reference" : "CjQoAAAAL27a1FGgohyysNURqZEYDVrf1LBIJkIsa8yemglyYmjrtlHdG5zulxYuH9ECB6FUEhAIZEzFcVyw8ODjrcUhB-zgGhSdxgbGuy1BUh0EMAU8fjdbW-6PRw",
+                 "structured_formatting" : {
+                    "main_text" : "Stringfellow Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Bokeelia, FL, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringfellow Road"
+                    },
+                    {
+                       "offset" : 19,
+                       "value" : "Bokeelia"
+                    },
+                    {
+                       "offset" : 29,
+                       "value" : "FL"
+                    },
+                    {
+                       "offset" : 33,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringtown, OK, USA",
+                 "id" : "cdacc47248e14c7fed2ff2d65444c5619e92bb6c",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJ_eh6kMDJtIcRBOgJJb3MrrY",
+                 "reference" : "CjQrAAAAGU7pwohV_vwK2rJseyLxnfJ3tEk_c9E4cFkUBGm_Ro9hxSNugI-fqaNJVtMZtH4GEhDsNp19iOyjKx0o94gDSD0zGhRCeuB5Ve-53uh5f8flvQcGaodcJQ",
+                 "structured_formatting" : {
+                    "main_text" : "Stringtown",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "OK, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringtown"
+                    },
+                    {
+                       "offset" : 12,
+                       "value" : "OK"
+                    },
+                    {
+                       "offset" : 16,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              },
+              {
+                 "description" : "Stringer, MS, USA",
+                 "id" : "835f90c698456f00491a80fa48ce1b257a7a3beb",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJeUuQ38Ikg4gRb_isF5kA8xk",
+                 "reference" : "CjQpAAAA6kfnQ_btZ7zRQw3oLrvkkb5ugPObkHZfpmR54LsJYdS9AtyzYDSSoPuDgX6njUypEhDD3peY8KqKOc0yWxyGZxiiGhQOZWZhhRlVfDfAoyOSmmdBcB_P4g",
+                 "structured_formatting" : {
+                    "main_text" : "Stringer",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "MS, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringer"
+                    },
+                    {
+                       "offset" : 10,
+                       "value" : "MS"
+                    },
+                    {
+                       "offset" : 14,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 15:50:23 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=MyString&key=AIzaSyAnjjXhcY6uPaAAZg5J-5xTv_v9uvtbiJs&types=geocode
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 28 Apr 2018 15:50:15 GMT
+      Expires:
+      - Sat, 28 Apr 2018 15:50:15 GMT
+      Cache-Control:
+      - private, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "predictions" : [
+              {
+                 "description" : "Stringtown Road, Grove City, OH, USA",
+                 "id" : "15629ac7b98258ebf24b0407655546181ee30470",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiRTdHJpbmd0b3duIFJvYWQsIEdyb3ZlIENpdHksIE9ILCBVU0E",
+                 "reference" : "CjQoAAAAfs9FDkURytO1Wvo8zfDT78zUL83YwLIyVYboNl1vJSP9ODOdOswwLzoJMT6d5-axEhALWFuRpzJx7m3Cg03aVxYIGhS8_OChQt10zba6XKLpUxP1ch-FXQ",
+                 "structured_formatting" : {
+                    "main_text" : "Stringtown Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Grove City, OH, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringtown Road"
+                    },
+                    {
+                       "offset" : 17,
+                       "value" : "Grove City"
+                    },
+                    {
+                       "offset" : 29,
+                       "value" : "OH"
+                    },
+                    {
+                       "offset" : 33,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringfellow Road, Chantilly, VA, USA",
+                 "id" : "c07afb6d6a353db380e51b6d2a4f2efb983c0e7e",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiVTdHJpbmdmZWxsb3cgUm9hZCwgQ2hhbnRpbGx5LCBWQSwgVVNB",
+                 "reference" : "CjQpAAAAfoLsch2lvVSF-or_Bxt9OS9id2ABekD0z8SWYkeBUAuWHUFUnoCaymDFKnVBV9jAEhBV25ikyLaVgW9nqwr8yfcXGhSGbRXjEZHnd30Hhf2miTRv5jDItw",
+                 "structured_formatting" : {
+                    "main_text" : "Stringfellow Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Chantilly, VA, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringfellow Road"
+                    },
+                    {
+                       "offset" : 19,
+                       "value" : "Chantilly"
+                    },
+                    {
+                       "offset" : 30,
+                       "value" : "VA"
+                    },
+                    {
+                       "offset" : 34,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringfellow Road, Bokeelia, FL, USA",
+                 "id" : "5ac8073548e35dfcbdcae19d23e9fee8f2a9c13d",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "EiRTdHJpbmdmZWxsb3cgUm9hZCwgQm9rZWVsaWEsIEZMLCBVU0E",
+                 "reference" : "CjQoAAAA-31xb67R0reyW6rD68OlTMrGlJ2f1CMLFD5lsDA5h1Sin-8mpBpasdG3982KQx-NEhCGcv4L2Q9ZuHJ1mzL6Nz-9GhRS5cGkYzIgh3PDHqUUKosy0JiUOA",
+                 "structured_formatting" : {
+                    "main_text" : "Stringfellow Road",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "Bokeelia, FL, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringfellow Road"
+                    },
+                    {
+                       "offset" : 19,
+                       "value" : "Bokeelia"
+                    },
+                    {
+                       "offset" : 29,
+                       "value" : "FL"
+                    },
+                    {
+                       "offset" : 33,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "route", "geocode" ]
+              },
+              {
+                 "description" : "Stringtown, OK, USA",
+                 "id" : "cdacc47248e14c7fed2ff2d65444c5619e92bb6c",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJ_eh6kMDJtIcRBOgJJb3MrrY",
+                 "reference" : "CjQrAAAATwpaYXV5TmUG4zcrbOBZHRrX5NcQEPn2fkOO2mPtI5WG0lZxCAW5zWppdbUC34C_EhC_ODv5jlp7lr5gxV3EnJbJGhTz7Zo8ZyrMzZWAfQJlPjd9Bzu1vw",
+                 "structured_formatting" : {
+                    "main_text" : "Stringtown",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "OK, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringtown"
+                    },
+                    {
+                       "offset" : 12,
+                       "value" : "OK"
+                    },
+                    {
+                       "offset" : 16,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              },
+              {
+                 "description" : "Stringer, MS, USA",
+                 "id" : "835f90c698456f00491a80fa48ce1b257a7a3beb",
+                 "matched_substrings" : [
+                    {
+                       "length" : 6,
+                       "offset" : 0
+                    }
+                 ],
+                 "place_id" : "ChIJeUuQ38Ikg4gRb_isF5kA8xk",
+                 "reference" : "CjQpAAAA6pC7gqb46A0-iBwCZ0QxHFv06MAkpGVLoE7lJnhAEYziDuVEZQz1t7jEzULqQiZqEhDJmTtAjFwFsLuyUlHGWq5rGhTRRvZZCGBHoq86TsE3d_mz8UAQsg",
+                 "structured_formatting" : {
+                    "main_text" : "Stringer",
+                    "main_text_matched_substrings" : [
+                       {
+                          "length" : 6,
+                          "offset" : 0
+                       }
+                    ],
+                    "secondary_text" : "MS, USA"
+                 },
+                 "terms" : [
+                    {
+                       "offset" : 0,
+                       "value" : "Stringer"
+                    },
+                    {
+                       "offset" : 10,
+                       "value" : "MS"
+                    },
+                    {
+                       "offset" : 14,
+                       "value" : "USA"
+                    }
+                 ],
+                 "types" : [ "locality", "political", "geocode" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 15:50:24 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAnjjXhcY6uPaAAZg5J-5xTv_v9uvtbiJs&language=ru&place_id=EiRTdHJpbmd0b3duIFJvYWQsIEdyb3ZlIENpdHksIE9ILCBVU0E
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 28 Apr 2018 15:50:17 GMT
+      Expires:
+      - Sun, 29 Apr 2018 15:50:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '589'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3NfY29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiU3RyaW5ndG93biBSb2FkIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIlN0cmluZ3Rvd24gUmQiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAicm91dGUiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJHcm92ZSBDaXR5IiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIkdyb3ZlIENpdHkiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiSmFja3NvbiBUb3duc2hpcCIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICJKYWNrc29uIFRvd25zaGlwIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMyIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJGcmFua2xpbiBDb3VudHkiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiRnJhbmtsaW4gQ291bnR5IiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMiIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJPaGlvIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIk9IIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICLQodC+0LXQtNC40L3QtdC90L3Ri9C1INCo0YLQsNGC0Ysg0JDQvNC10YDQuNC60LgiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiVVMiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAiY291bnRyeSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICI0MzEyMyIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICI0MzEyMyIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJwb3N0YWxfY29kZSIgXQogICAgICAgICAgICB9CiAgICAgICAgIF0sCiAgICAgICAgICJmb3JtYXR0ZWRfYWRkcmVzcyIgOiAiU3RyaW5ndG93biBSZCwgR3JvdmUgQ2l0eSwgT0ggNDMxMjMsINCh0KjQkCIsCiAgICAgICAgICJnZW9tZXRyeSIgOiB7CiAgICAgICAgICAgICJib3VuZHMiIDogewogICAgICAgICAgICAgICAibm9ydGhlYXN0IiA6IHsKICAgICAgICAgICAgICAgICAgImxhdCIgOiAzOS44ODU0OTY3LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC04My4wMjc1NTE2CiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzb3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDM5Ljg3NDQxMjc5OTk5OTk5LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC04My4wNjk1NDc4OTk5OTk5OQogICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJsb2NhdGlvbiIgOiB7CiAgICAgICAgICAgICAgICJsYXQiIDogMzkuODc4NjU0MSwKICAgICAgICAgICAgICAgImxuZyIgOiAtODMuMDQ4NTM2MgogICAgICAgICAgICB9LAogICAgICAgICAgICAibG9jYXRpb25fdHlwZSIgOiAiR0VPTUVUUklDX0NFTlRFUiIsCiAgICAgICAgICAgICJ2aWV3cG9ydCIgOiB7CiAgICAgICAgICAgICAgICJub3J0aGVhc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDM5Ljg4NTQ5NjcsCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTgzLjAyNzU1MTYKICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgInNvdXRod2VzdCIgOiB7CiAgICAgICAgICAgICAgICAgICJsYXQiIDogMzkuODc0NDEyNzk5OTk5OTksCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTgzLjA2OTU0Nzg5OTk5OTk5CiAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICB9LAogICAgICAgICAicGxhY2VfaWQiIDogIkNoSUpGMTBJcE8yRU9JZ1JCSEw5ZGxYQUZaSSIsCiAgICAgICAgICJ0eXBlcyIgOiBbICJyb3V0ZSIgXQogICAgICB9CiAgIF0sCiAgICJzdGF0dXMiIDogIk9LIgp9Cg==
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 15:50:26 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAnjjXhcY6uPaAAZg5J-5xTv_v9uvtbiJs&language=ru&place_id=EiRTdHJpbmd0b3duIFJvYWQsIEdyb3ZlIENpdHksIE9ILCBVU0E
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 28 Apr 2018 15:50:18 GMT
+      Expires:
+      - Sun, 29 Apr 2018 15:50:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '589'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - hq=":443"; ma=2592000; quic=51303433; quic=51303432; quic=51303431; quic=51303339;
+        quic=51303335,quic=":443"; ma=2592000; v="43,42,41,39,35"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3NfY29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiU3RyaW5ndG93biBSb2FkIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIlN0cmluZ3Rvd24gUmQiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAicm91dGUiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJHcm92ZSBDaXR5IiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIkdyb3ZlIENpdHkiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiSmFja3NvbiBUb3duc2hpcCIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICJKYWNrc29uIFRvd25zaGlwIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMyIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJGcmFua2xpbiBDb3VudHkiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiRnJhbmtsaW4gQ291bnR5IiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMiIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJPaGlvIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIk9IIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICLQodC+0LXQtNC40L3QtdC90L3Ri9C1INCo0YLQsNGC0Ysg0JDQvNC10YDQuNC60LgiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiVVMiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAiY291bnRyeSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICI0MzEyMyIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICI0MzEyMyIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJwb3N0YWxfY29kZSIgXQogICAgICAgICAgICB9CiAgICAgICAgIF0sCiAgICAgICAgICJmb3JtYXR0ZWRfYWRkcmVzcyIgOiAiU3RyaW5ndG93biBSZCwgR3JvdmUgQ2l0eSwgT0ggNDMxMjMsINCh0KjQkCIsCiAgICAgICAgICJnZW9tZXRyeSIgOiB7CiAgICAgICAgICAgICJib3VuZHMiIDogewogICAgICAgICAgICAgICAibm9ydGhlYXN0IiA6IHsKICAgICAgICAgICAgICAgICAgImxhdCIgOiAzOS44ODU0OTY3LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC04My4wMjc1NTE2CiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzb3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDM5Ljg3NDQxMjc5OTk5OTk5LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC04My4wNjk1NDc4OTk5OTk5OQogICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJsb2NhdGlvbiIgOiB7CiAgICAgICAgICAgICAgICJsYXQiIDogMzkuODc4NjU0MSwKICAgICAgICAgICAgICAgImxuZyIgOiAtODMuMDQ4NTM2MgogICAgICAgICAgICB9LAogICAgICAgICAgICAibG9jYXRpb25fdHlwZSIgOiAiR0VPTUVUUklDX0NFTlRFUiIsCiAgICAgICAgICAgICJ2aWV3cG9ydCIgOiB7CiAgICAgICAgICAgICAgICJub3J0aGVhc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDM5Ljg4NTQ5NjcsCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTgzLjAyNzU1MTYKICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgInNvdXRod2VzdCIgOiB7CiAgICAgICAgICAgICAgICAgICJsYXQiIDogMzkuODc0NDEyNzk5OTk5OTksCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTgzLjA2OTU0Nzg5OTk5OTk5CiAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICB9LAogICAgICAgICAicGxhY2VfaWQiIDogIkNoSUpGMTBJcE8yRU9JZ1JCSEw5ZGxYQUZaSSIsCiAgICAgICAgICJ0eXBlcyIgOiBbICJyb3V0ZSIgXQogICAgICB9CiAgIF0sCiAgICJzdGF0dXMiIDogIk9LIgp9Cg==
+    http_version: 
+  recorded_at: Sat, 28 Apr 2018 15:50:27 GMT
+recorded_with: VCR 3.0.3

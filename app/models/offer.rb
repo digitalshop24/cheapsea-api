@@ -43,7 +43,7 @@ class Offer < ApplicationRecord
 
   has_many :transfers, dependent: :destroy
 
-  validates :name, :origin_id, :destination_id, :from_google_place_id, :to_google_place_id, presence: true
+  validates :name, :origin_id, :destination_id, presence: true
   validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
@@ -55,7 +55,6 @@ class Offer < ApplicationRecord
   private
 
   def synchronize_places
-    # TODO add spec
     synchronize_google_places if origin_id_changed? || destination_id_changed?
     synchronize_city_places if from_google_place_id_changed? || to_google_place_id_changed?
   end
