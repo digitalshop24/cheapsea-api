@@ -36,8 +36,6 @@ describe Offer, type: :model do
   it { is_expected.to validate_presence_of(:is_direct) }
   it { is_expected.to validate_presence_of(:price) }
   it { is_expected.to validate_presence_of(:price_currency) }
-  it { is_expected.to validate_presence_of(:origin_id) }
-  it { is_expected.to validate_presence_of(:destination_id) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:airline) }
   it { is_expected.to have_many(:transfers) }

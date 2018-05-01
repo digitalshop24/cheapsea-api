@@ -48,7 +48,5 @@ FactoryGirl.define do
     two_sides false
     origin factory: :city
     destination factory: :city
-
-    after(:build) { |obj| obj.class.skip_callback(:validation, :before, :synchronize_places) }
   end
 end

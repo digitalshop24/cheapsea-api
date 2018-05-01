@@ -82,7 +82,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: ::Filters::OfferFilter.new(params.permit(params_array), params[:page]).call, status: 200
+    render json: ::Filters::OffersFilter.new(params.permit(params_array), params[:page]).call, status: 200
   end
 
   def create

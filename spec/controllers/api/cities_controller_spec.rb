@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-describe API::AirlinesController, type: :controller do
-  describe "POST #autocomplete" do
+describe API::CitiesController, type: :controller do
+  describe "GET #autocomplete" do
+    before { create(:city, name: 'New York') }
+
     it "returns http success" do
       post :autocomplete, params: { query: 'New York' }
       expect(response).to have_http_status(:success)

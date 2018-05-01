@@ -23,14 +23,18 @@ describe ThirdParty::Geo::CitiesFromPlaceIdsService do
     end
 
     context 'origin' do
+      let!(:city) { create(:city, name: 'Нью-Йорк') }
+
       it 'checks that origin has particular name' do
-        expect(subject.result[:origin]).to eq('Нью-Йорк')
+        expect(subject.result[:origin]).to eq(city)
       end
     end
 
     context 'destination' do
+      let!(:city) { create(:city, name: 'Бостон') }
+
       it 'checks that origin has particular name' do
-        expect(subject.result[:destination]).to eq('Бостон')
+        expect(subject.result[:destination]).to eq(city)
       end
     end
   end

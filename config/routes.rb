@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'cities/autocomplete'
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount Sidekiq::Web => '/sidekiq'
@@ -9,7 +13,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resource :auth, only: :create, controller: 'auth'
-    resources :airlines, only: :index do
+    resources :airlines, only: [] do
+      post :autocomplete, on: :collection
+    end
+    resources :cities, only: [] do
       post :autocomplete, on: :collection
     end
 
