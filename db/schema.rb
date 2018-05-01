@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428154301) do
+ActiveRecord::Schema.define(version: 20180501053823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,40 @@ ActiveRecord::Schema.define(version: 20180428154301) do
     t.index ["name"], name: "index_airlines_on_name"
   end
 
+  create_table "airports", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_en", null: false
+    t.bigint "city_id", null: false
+    t.string "iata", null: false
+    t.boolean "flightable", default: false, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_airports_on_city_id"
+  end
+
   create_table "cities", id: :serial, force: :cascade do |t|
     t.string "iata", null: false
     t.string "name", null: false
     t.boolean "active", default: false, null: false
+    t.integer "country_id", null: false
+    t.string "name_en", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_cities_on_active"
+    t.index ["country_id"], name: "index_cities_on_country_id"
     t.index ["name"], name: "index_cities_on_name"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "iata", null: false
+    t.string "name", null: false
+    t.string "name_en", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|
@@ -55,14 +81,16 @@ ActiveRecord::Schema.define(version: 20180428154301) do
     t.boolean "two_sides", default: false, null: false
     t.integer "flight_number"
     t.string "gate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "origin_id"
     t.integer "destination_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
+    t.index ["destination_id"], name: "index_offers_on_destination_id"
     t.index ["flight_number"], name: "index_offers_on_flight_number"
+    t.index ["origin_id"], name: "index_offers_on_origin_id"
     t.index ["status"], name: "index_offers_on_status"
     t.index ["two_sides"], name: "index_offers_on_two_sides"
     t.index ["user_id"], name: "index_offers_on_user_id"
@@ -81,12 +109,10 @@ ActiveRecord::Schema.define(version: 20180428154301) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
     t.string "email"
     t.integer "role", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "name"
+    t.string "password_digest", null: false
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -11,7 +11,9 @@
 #
 
 class City < ApplicationRecord
-  validates :iata, :name, presence: true
+  validates :iata, :name, :name_en, presence: true
+
+  belongs_to :country
 
   scope :active, -> { where(active: true) }
 end
