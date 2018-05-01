@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
+    get 'airports/autocomplete'
+  end
+
+  namespace :api do
     get 'cities/autocomplete'
   end
 
@@ -17,6 +21,9 @@ Rails.application.routes.draw do
       post :autocomplete, on: :collection
     end
     resources :cities, only: [] do
+      post :autocomplete, on: :collection
+    end
+    resources :airports, only: [] do
       post :autocomplete, on: :collection
     end
 

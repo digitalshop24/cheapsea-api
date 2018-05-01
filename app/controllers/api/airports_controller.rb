@@ -1,5 +1,5 @@
-class API::AirlinesController < ApiController
-  swagger_controller :airlines, 'Airlines'
+class API::AirportsController < ApiController
+  swagger_controller :airports, 'Airports'
 
   swagger_api :autocomplete do
     summary 'Autocomplete airlines'
@@ -10,6 +10,6 @@ class API::AirlinesController < ApiController
   end
 
   def autocomplete
-    render json: Airline.where('name ILIKE ?', "%#{params[:query]}%")
+    render json: Airport.where('name ILIKE ?', "%#{params[:query]}%").limit(10)
   end
 end
