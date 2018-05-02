@@ -52,12 +52,20 @@ ActiveRecord::Schema.define(version: 20180501053823) do
     t.index ["name"], name: "index_cities_on_name"
   end
 
+  create_table "continents", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "iata", null: false
     t.string "name", null: false
     t.string "name_en", null: false
+    t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|

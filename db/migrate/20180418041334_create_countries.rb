@@ -4,6 +4,7 @@ class CreateCountries < ActiveRecord::Migration[5.1]
       t.string :iata, null: false
       t.string :name, null: false
       t.string :name_en, null: false
+      t.references :continent
 
       t.timestamps
     end
