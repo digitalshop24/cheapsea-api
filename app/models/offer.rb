@@ -55,7 +55,6 @@ class Offer < ApplicationRecord
 
   has_many :transfers, dependent: :destroy
 
-  validates :name, presence: true
   validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
   validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }

@@ -34,7 +34,6 @@
 require 'rails_helper'
 
 describe Offer, type: :model do
-  it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:is_direct) }
   it { is_expected.to validate_presence_of(:price) }
   it { is_expected.to validate_presence_of(:price_currency) }
