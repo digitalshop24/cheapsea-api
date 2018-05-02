@@ -23,6 +23,10 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.string :gate
       t.integer :origin_id, foreign_key: true, index: true
       t.integer :destination_id, foreign_key: true, index: true
+      t.integer :from_airport_id, foreign_key: true, index: true
+      t.integer :to_airport_id, foreign_key: true, index: true
+      t.integer :visits_count, default: 0, null: false
+      t.string :name_auto
 
       t.timestamps
     end

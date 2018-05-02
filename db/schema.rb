@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501053823) do
+ActiveRecord::Schema.define(version: 20180502211940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,15 +91,21 @@ ActiveRecord::Schema.define(version: 20180501053823) do
     t.string "gate"
     t.integer "origin_id"
     t.integer "destination_id"
+    t.integer "from_airport_id"
+    t.integer "to_airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_auto"
+    t.integer "visits_count", default: 0, null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
     t.index ["destination_id"], name: "index_offers_on_destination_id"
     t.index ["flight_number"], name: "index_offers_on_flight_number"
+    t.index ["from_airport_id"], name: "index_offers_on_from_airport_id"
     t.index ["origin_id"], name: "index_offers_on_origin_id"
     t.index ["status"], name: "index_offers_on_status"
+    t.index ["to_airport_id"], name: "index_offers_on_to_airport_id"
     t.index ["two_sides"], name: "index_offers_on_two_sides"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end

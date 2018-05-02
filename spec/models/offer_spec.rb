@@ -23,10 +23,12 @@
 #  two_sides            :boolean          default(FALSE), not null
 #  flight_number        :integer
 #  gate                 :string
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
 #  origin_id            :integer
 #  destination_id       :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  from_airport_id      :integer
+#  to_airport_id        :integer
 #
 
 require 'rails_helper'

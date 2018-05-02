@@ -23,10 +23,12 @@
 #  two_sides            :boolean          default(FALSE), not null
 #  flight_number        :integer
 #  gate                 :string
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
 #  origin_id            :integer
 #  destination_id       :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  from_airport_id      :integer
+#  to_airport_id        :integer
 #
 
 class OfferSerializer < ActiveModel::Serializer
@@ -34,6 +36,7 @@ class OfferSerializer < ActiveModel::Serializer
     :offer_type,
     :discount_type,
     :name,
+    :name_auto,
     :from_google_place_id,
     :to_google_place_id,
     :airline_id,
@@ -45,11 +48,16 @@ class OfferSerializer < ActiveModel::Serializer
     :price,
     :discount_rate,
     :description,
+    :visits_count,
     :created_at,
     :updated_at
 
   belongs_to :user
   belongs_to :airline
+  belongs_to :origin
+  belongs_to :destination
+  belongs_to :from_airport
+  belongs_to :to_airport
 
   has_many :transfers
 end

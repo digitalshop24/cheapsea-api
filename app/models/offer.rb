@@ -9,6 +9,7 @@
 #  from_google_place_id :string
 #  to_google_place_id   :string
 #  airline_id           :integer
+#  is_direct            :boolean          default(TRUE)
 #  transfers_count      :integer
 #  date_from            :datetime
 #  date_to              :datetime
@@ -17,16 +18,25 @@
 #  description          :text
 #  status               :integer          default("draft"), not null
 #  user_id              :integer
+#  price                :float
+#  price_currency       :string           default("RUB")
+#  two_sides            :boolean          default(FALSE), not null
+#  flight_number        :integer
+#  gate                 :string
+#  origin_id            :integer
+#  destination_id       :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  is_direct            :boolean          default(TRUE)
-#  price_cents          :integer          default(0), not null
-#  price_currency       :string           default("USD"), not null
+#  from_airport_id      :integer
+#  to_airport_id        :integer
 #
 
 class Offer < ApplicationRecord
-  before_validation :synchronize_places
-  before_save :import_cheapest_offer
+  before_save do
+    synchronize_places
+    generate_name
+    import_cheapest_offer
+  end
 
   CURRENCY_TYPES = %w(RUB USD EUR)
 
@@ -40,6 +50,8 @@ class Offer < ApplicationRecord
   belongs_to :airline, optional: true
   belongs_to :origin, class_name: 'City', foreign_key: 'origin_id', optional: true
   belongs_to :destination, class_name: 'City', foreign_key: 'destination_id', optional: true
+  belongs_to :from_airport, class_name: 'Airport', foreign_key: 'from_airport_id', optional: true
+  belongs_to :to_airport, class_name: 'Airport', foreign_key: 'to_airport_id', optional: true
 
   has_many :transfers, dependent: :destroy
 
@@ -93,5 +105,13 @@ class Offer < ApplicationRecord
     return unless status_changed?(from: 'draft', to: 'published')
 
     Import::OneSideCheapestOfferWorker.perform_async(origin.id, destination.id)
+  end
+
+  def generate_name
+    triggered_fields = %w[origin_id destination_id date_to date_from price price_currency]
+
+    return if (triggered_fields & changes.keys).empty?
+
+    self.name_auto = Offers::GenerateNameService.call(self)
   end
 end
