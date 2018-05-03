@@ -2,7 +2,11 @@ module Offers::GenerateNameService
   def self.call(offer)
     origin_name = offer&.origin&.name || ''
     destination_name = offer&.destination&.name || ''
-    month_name = Russian::strftime(offer.date_from, "%B") || ''
+    month_name = begin
+      Russian::strftime(offer.date_from, "%B")
+    rescue
+      ''
+    end
     price = "#{offer.price.to_i}"
     price_currency = offer.price_currency == 'RUB' ? 'руб.' : '$'
     type = offer.is_direct? ? 'прямой' : 'составной'
