@@ -29,7 +29,6 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[name]', :string, :required, 'Name'
     api.param :form, 'offer[is_direct]', :boolean, :required, 'Is a direct flight?'
     api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
-
     response :unauthorized
     response :unprocessable_entity
   end
@@ -42,7 +41,6 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[is_direct]', :boolean, :optional, 'Is a direct flight?'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
     api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
-
     response :unauthorized
     response :unprocessable_entity
   end
@@ -83,7 +81,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: ::Filters::OffersFilter.new(params.permit(params_array), params[:page]).call, status: 200
+    render json: ::Filters::OffersFilter.new(params.permit(params_array), params[:page]).call, include: '**', status: 200
   end
 
   def create

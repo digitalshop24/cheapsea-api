@@ -16,6 +16,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :offers, dependent: :nullify
+  has_many :collections, dependent: :nullify
+  has_many :offer_collections, dependent: :nullify
 
   enum role: { member: 0, agent: 1, moderator: 2, admin: 3 }
 

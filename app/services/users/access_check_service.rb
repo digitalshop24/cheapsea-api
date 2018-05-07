@@ -9,11 +9,15 @@ class Users::AccessCheckService
     },
     moderator: {
       Offer: %i[index create update destroy],
-      Transfer: %i[index create update destroy]
+      Transfer: %i[index create update destroy],
+      Collection: %i[create destroy],
+      OfferCollection: %i[create destroy]
     },
     admin: {
       Offer: %i[index create update destroy],
-      Transfer: %i[index create update destroy]
+      Transfer: %i[index create update destroy],
+      Collection: %i[create destroy],
+      OfferCollection: %i[create destroy]
     },
     guest: {
       Offer: %i[index]
@@ -29,7 +33,7 @@ class Users::AccessCheckService
   def call
     class_name = klass.name.to_sym
     user_role = user.role.to_sym
-    PERMISSIONS[user_role][class_name].include?(action)
+    PERMISSIONS[user_role][class_name]&.include?(action)
   end
 
   private

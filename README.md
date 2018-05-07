@@ -59,3 +59,11 @@ contains name as a key and data from Google Map API
 
 #### user_info_cache
 contains user_id as a key and data
+
+# Trello
+## Task names
+`BN1` - BackendNew{number} - for new features
+
+`BF1` - BackendFix{number}- for fixes
+
+`BR1` - BackendRefactoring{number} - for refactoring

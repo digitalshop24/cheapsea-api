@@ -14,4 +14,6 @@ require 'rails_helper'
 
 describe User, type: :model do
   it { is_expected.to have_many(:offers) }
+  it { is_expected.to have_many(:collections) }
+  it { is_expected.to have_many(:offer_collections) }
 end

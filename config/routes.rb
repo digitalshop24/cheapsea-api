@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'airports/autocomplete'
-  end
-
-  namespace :api do
-    get 'cities/autocomplete'
-  end
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount Sidekiq::Web => '/sidekiq'
@@ -29,6 +21,8 @@ Rails.application.routes.draw do
 
     namespace :v1 do
       resources :offers, only: %i[index show create update destroy]
+      resources :collections, only: %i[index show create destroy]
+      resources :offer_collections, only: %i[create destroy]
       resource :profile, only: %i[create show]
     end
   end

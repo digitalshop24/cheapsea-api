@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502211940) do
+ActiveRecord::Schema.define(version: 20180507194257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20180502211940) do
     t.index ["name"], name: "index_cities_on_name"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_en"
+    t.text "desc"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
   create_table "continents", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -66,6 +76,18 @@ ActiveRecord::Schema.define(version: 20180502211940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["continent_id"], name: "index_countries_on_continent_id"
+  end
+
+  create_table "offer_collections", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "collection_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_offer_collections_on_collection_id"
+    t.index ["offer_id", "collection_id"], name: "index_offer_collections_on_offer_id_and_collection_id", unique: true
+    t.index ["offer_id"], name: "index_offer_collections_on_offer_id"
+    t.index ["user_id"], name: "index_offer_collections_on_user_id"
   end
 
   create_table "offers", id: :serial, force: :cascade do |t|
