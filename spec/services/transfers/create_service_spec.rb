@@ -6,11 +6,10 @@ describe Transfers::CreateService do
   before do
     @user = create(:user)
     @offer = create(:offer)
+    @city = create(:city)
   end
 
-  let(:params) { FactoryGirl.attributes_for(:transfer) }
-
-  use_vcr_cassette 'services/transfers/create_service'
+  let(:params) { { city_id: @city.id } }
 
   describe 'success' do
     it 'checks that service is successful' do

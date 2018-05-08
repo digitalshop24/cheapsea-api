@@ -4,16 +4,10 @@ class Offers::UpdateService
   def call
     pre_initialize
 
-    validation = Offers::UpdateValidation.call(params)
-    if validation.errors.present?
-      context.fail!(errors: validation.errors)
-    end
-
-    validate_transfers
-
     if offer.update(params)
       update_transfers
     else
+      byebug
       context.fail!(errors: offer.errors.full_messages)
     end
   end
@@ -30,15 +24,6 @@ class Offers::UpdateService
       JSON.parse(context.transfers_params),
       %w[offer_id user_id]
     ) if context.transfers_params.present?
-  end
-
-  def validate_transfers
-    return if transfers_params.nil?
-
-    transfers_params.each do |params|
-      validation = Transfers::UpdateValidation.call(params)
-      context.fail!(errors: { transfer: validation.errors.merge(id: params['id']) }) if validation.errors.present?
-    end
   end
 
   def update_transfers

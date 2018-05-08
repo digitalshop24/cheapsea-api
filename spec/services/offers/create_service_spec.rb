@@ -5,13 +5,12 @@ describe Offers::CreateService do
 
   before do
     @user = create(:user)
+    @city = create(:city)
   end
 
-  let(:params) { FactoryGirl.attributes_for(:offer) }
+  let(:params) { FactoryGirl.attributes_for(:offer).merge(origin_id: @city.id, destination_id: @city.id) }
 
   describe 'success' do
-    use_vcr_cassette 'services/offers/create_service/success'
-
     it 'checks that service is successful' do
       expect(subject.success?).to be true
     end
@@ -22,8 +21,6 @@ describe Offers::CreateService do
   end
 
   describe 'failure' do
-    use_vcr_cassette 'services/offers/create_service/failure'
-
     let(:params) { {} }
 
     it 'checks that service failed' do
@@ -35,7 +32,7 @@ describe Offers::CreateService do
     end
 
     it 'checks that errors include particular error' do
-      expect(subject.errors[:from_google_place_id]).to eq(['is missing'])
+      expect(subject.errors).to include('Origin must exist')
     end
   end
 end

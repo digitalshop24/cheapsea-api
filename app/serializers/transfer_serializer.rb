@@ -2,21 +2,18 @@
 #
 # Table name: transfers
 #
-#  id              :integer          not null, primary key
-#  offer_id        :integer          not null
-#  google_place_id :string
-#  airline_id      :integer
-#  user_id         :integer          not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id         :integer          not null, primary key
+#  offer_id   :integer          not null
+#  airline_id :integer
+#  user_id    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  city_id    :integer
 #
 
 class TransferSerializer < ActiveModel::Serializer
-  attributes :id, :airline, :google_place
+  attributes :id
 
-  belongs_to :airline
-
-  def google_place
-    ThirdParty::Geo::PlaceInfoService.call(place_id: object.google_place_id).result
-  end
+  belongs_to :airline, serializer: nil
+  belongs_to :city, serializer: nil
 end

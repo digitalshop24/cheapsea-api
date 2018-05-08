@@ -37,26 +37,4 @@ describe Filters::CitiesFilter do
       end
     end
   end
-
-  context 'record not found in the database' do
-    context 'found in the google api' do
-      use_vcr_cassette 'queries/filters/cities_filter_service/found'
-
-      let(:query) { 'Фрязино' }
-
-      it 'checks that result found via the google api' do
-        expect(subject.first[:google_places]).not_to be_empty
-      end
-    end
-
-    context 'found in the google api' do
-      use_vcr_cassette 'queries/filters/cities_filter_service/not_found'
-
-      let(:query) { '3d299h39823hd' }
-
-      it 'checks that result found via the google api' do
-        expect(subject.first[:google_places]).to be_empty
-      end
-    end
-  end
 end

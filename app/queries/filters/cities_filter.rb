@@ -7,13 +7,7 @@ class Filters::CitiesFilter
   def call
     return popular_cities if query.nil?
 
-    result = relation.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
-
-    if result.empty?
-      result = result.to_a << { google_places: ThirdParty::Geo::AutocompleteService.call(input: query).result }
-    end
-
-    result
+    relation.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
   end
 
   private

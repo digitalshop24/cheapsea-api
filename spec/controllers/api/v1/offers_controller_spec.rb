@@ -3,8 +3,6 @@ require 'rails_helper'
 describe API::V1::OffersController, type: :controller do
   let(:user) { create(:user) }
 
-  use_vcr_cassette 'controllers/offers/create'
-
   describe "GET #create" do
     #it "returns http success" do
       #sign_in user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508182216) do
+ActiveRecord::Schema.define(version: 20180508192700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20180508182216) do
     t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "square_images"
+    t.json "rectangular_images"
     t.text "desc"
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
@@ -111,8 +113,6 @@ ActiveRecord::Schema.define(version: 20180508182216) do
     t.integer "offer_type"
     t.integer "discount_type"
     t.string "name"
-    t.string "from_google_place_id"
-    t.string "to_google_place_id"
     t.integer "airline_id"
     t.boolean "is_direct", default: true
     t.integer "transfers_count"
@@ -130,10 +130,10 @@ ActiveRecord::Schema.define(version: 20180508182216) do
     t.string "gate"
     t.integer "origin_id"
     t.integer "destination_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "from_airport_id"
     t.integer "to_airport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name_auto"
     t.integer "visits_count", default: 0, null: false
     t.bigint "images_countries_square_id"
@@ -143,22 +143,25 @@ ActiveRecord::Schema.define(version: 20180508182216) do
     t.index ["date_to"], name: "index_offers_on_date_to"
     t.index ["destination_id"], name: "index_offers_on_destination_id"
     t.index ["flight_number"], name: "index_offers_on_flight_number"
+    t.index ["from_airport_id"], name: "index_offers_on_from_airport_id"
     t.index ["images_countries_rectangular_id"], name: "index_offers_on_images_countries_rectangular_id"
     t.index ["images_countries_square_id"], name: "index_offers_on_images_countries_square_id"
     t.index ["origin_id"], name: "index_offers_on_origin_id"
     t.index ["status"], name: "index_offers_on_status"
+    t.index ["to_airport_id"], name: "index_offers_on_to_airport_id"
     t.index ["two_sides"], name: "index_offers_on_two_sides"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
   create_table "transfers", id: :serial, force: :cascade do |t|
     t.integer "offer_id", null: false
-    t.string "google_place_id"
     t.integer "airline_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_id"
     t.index ["airline_id"], name: "index_transfers_on_airline_id"
+    t.index ["city_id"], name: "index_transfers_on_city_id"
     t.index ["offer_id"], name: "index_transfers_on_offer_id"
     t.index ["user_id"], name: "index_transfers_on_user_id"
   end

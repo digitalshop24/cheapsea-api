@@ -3,11 +3,6 @@ class Offers::CreateService
 
   def call
     pre_initialize
-    
-    validation = Offers::CreateValidation.call(params)
-    if validation.errors.present?
-      context.fail!(errors: validation.errors)
-    end
 
     offer = user.offers.new(params)
     if offer.valid?

@@ -15,8 +15,6 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[discount_rate]', :integer, :optional, 'Discount rate'
     api.param :form, 'offer[description]', :string, :optional, 'Description'
     api.param :form, 'offer[two_sides]', :string, :optional, 'Two sides?'
-    api.param :form, 'offer[from_google_place_id]', :string, :optional, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
-    api.param :form, 'offer[to_google_place_id]', :string, :optional, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
     api.param :form, 'offer[from_airport_id]', :integer, :optional, 'ID of airport'
     api.param :form, 'offer[to_airport_id]', :integer, :optional, 'ID of airport'
   end
@@ -30,7 +28,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[destination_id]', :integer, :required, 'Destination City id'
     api.param :form, 'offer[price]', :integer, :required, 'Price'
     api.param :form, 'offer[price_currency]', :integer, :required, 'Currency type: RUB, USD, EUR'
-    api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
+    api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"city_id": "1", "airline_id": "1"}, {"city_id": "2", "airline_id": "2"}]'
     response :unauthorized
     response :unprocessable_entity
   end
@@ -46,7 +44,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[origin_id]', :integer, :optional, 'Origin City id'
     api.param :form, 'offer[destination_id]', :integer, :optional, 'Destination City id'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
-    api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
+    api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "city_id": "1", "airline_id": "1"}]'
     response :unauthorized
     response :unprocessable_entity
   end
@@ -75,8 +73,6 @@ class API::V1::OffersController < ApiController
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
     param :query, :description, :string, :optional, 'Description'
     param :query, :two_sides, :string, :optional, 'Two sides'
-    param :query, :from_google_place_id, :string, :optional, 'Departure place(ex: ChIJOwg_06VPwokRYv534QaPC8g for New York)'
-    param :query, :to_google_place_id, :string, :optional, 'Arrival place(ex: ChIJGzE9DS1l44kRoOhiASS_fHg for Boston)'
   end
 
   swagger_api :show do
@@ -138,11 +134,8 @@ class API::V1::OffersController < ApiController
       offer_type
       discount_type
       name
-      from_google_place_id
-      to_google_place_id
       airline_id
       is_direct
-      transfers_count
       date_from
       date_to
       date_end

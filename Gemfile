@@ -35,7 +35,6 @@ gem 'figaro'
 gem 'geocoder'
 gem "interactor", "~> 3.0"
 gem 'annotate'
-gem 'dry-validation'
 gem 'pundit'
 gem 'httparty'
 gem 'redis-namespace'

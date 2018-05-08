@@ -4,11 +4,6 @@ class Transfers::CreateService
   def call
     pre_initialize
 
-    validation = Transfers::CreateValidation.call(params)
-    if validation.errors.present?
-      context.fail!(errors: validation.errors)
-    end
-
     transfer = offer.transfers.new(params.merge(user_id: user.id))
     if transfer.valid?
       transfer.save
