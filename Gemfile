@@ -26,7 +26,11 @@ gem 'swagger-docs', '0.2.9'
 gem "redis", '3.3.0'
 gem 'mina', '1.0.2'
 gem 'omniauth'
-gem 'rails_admin', '~> 1.3'
+gem 'rmagick', require: false           # A ruby wrapper for ImageMagick or GraphicsMagick command line.
+gem 'carrierwave'                           # This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
+gem 'fog', '~> 1.36.0'
+gem 'tilt', '~> 2.0'
+gem 'activeadmin'
 gem 'figaro'
 gem 'geocoder'
 gem "interactor", "~> 3.0"
@@ -35,10 +39,7 @@ gem 'dry-validation'
 gem 'pundit'
 gem 'httparty'
 gem 'redis-namespace'
-gem 'slackistrano'
-gem 'carrierwave'                           # This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
-gem 'fog', '~> 1.36.0'                      # Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
-gem 'mini_magick', require: false           # A ruby wrapper for ImageMagick or GraphicsMagick command line.
+gem 'slackistrano' # Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
 gem 'sidekiq'
 gem 'sidekiq-statistic'
 gem 'kaminari'

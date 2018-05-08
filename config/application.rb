@@ -9,7 +9,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
-# require "sprockets/railtie"
+require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -30,5 +30,6 @@ module FilterApi
     # config.api_only = true
 
     # ActiveModelSerializers.config.adapter = :json_api
+    config.middleware.use ActionDispatch::Flash
   end
 end

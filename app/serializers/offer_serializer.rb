@@ -58,6 +58,8 @@ class OfferSerializer < ActiveModel::Serializer
   belongs_to :destination
   belongs_to :from_airport
   belongs_to :to_airport
+  belongs_to :images_countries_square
+  belongs_to :images_countries_rectangular
 
   has_many :transfers
 

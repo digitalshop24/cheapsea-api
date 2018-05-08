@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507194257) do
+ActiveRecord::Schema.define(version: 20180508182216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,24 @@ ActiveRecord::Schema.define(version: 20180507194257) do
     t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "desc"
     t.index ["continent_id"], name: "index_countries_on_continent_id"
+  end
+
+  create_table "images_countries_rectangulars", force: :cascade do |t|
+    t.bigint "country_id"
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_images_countries_rectangulars_on_country_id"
+  end
+
+  create_table "images_countries_squares", force: :cascade do |t|
+    t.bigint "country_id"
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_images_countries_squares_on_country_id"
   end
 
   create_table "offer_collections", force: :cascade do |t|
@@ -113,21 +130,23 @@ ActiveRecord::Schema.define(version: 20180507194257) do
     t.string "gate"
     t.integer "origin_id"
     t.integer "destination_id"
-    t.integer "from_airport_id"
-    t.integer "to_airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "from_airport_id"
+    t.integer "to_airport_id"
     t.string "name_auto"
     t.integer "visits_count", default: 0, null: false
+    t.bigint "images_countries_square_id"
+    t.bigint "images_countries_rectangular_id"
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
     t.index ["destination_id"], name: "index_offers_on_destination_id"
     t.index ["flight_number"], name: "index_offers_on_flight_number"
-    t.index ["from_airport_id"], name: "index_offers_on_from_airport_id"
+    t.index ["images_countries_rectangular_id"], name: "index_offers_on_images_countries_rectangular_id"
+    t.index ["images_countries_square_id"], name: "index_offers_on_images_countries_square_id"
     t.index ["origin_id"], name: "index_offers_on_origin_id"
     t.index ["status"], name: "index_offers_on_status"
-    t.index ["to_airport_id"], name: "index_offers_on_to_airport_id"
     t.index ["two_sides"], name: "index_offers_on_two_sides"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
@@ -153,6 +172,8 @@ ActiveRecord::Schema.define(version: 20180507194257) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "images_countries_rectangulars", "countries"
+  add_foreign_key "images_countries_squares", "countries"
   add_foreign_key "transfers", "airlines"
   add_foreign_key "transfers", "offers"
   add_foreign_key "transfers", "users"

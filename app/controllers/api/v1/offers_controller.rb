@@ -12,8 +12,6 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[date_from]', :string, :optional, 'Start date of offer'
     api.param :form, 'offer[date_to]', :string, :optional, 'End date of offer'
     api.param :form, 'offer[date_end]', :string, :optional, 'Date when offer will archived automaticly'
-    api.param :form, 'offer[price]', :integer, :optional, 'Price'
-    api.param :form, 'offer[price_currency]', :integer, :optional, 'Currency type: RUB, USD, EUR'
     api.param :form, 'offer[discount_rate]', :integer, :optional, 'Discount rate'
     api.param :form, 'offer[description]', :string, :optional, 'Description'
     api.param :form, 'offer[two_sides]', :string, :optional, 'Two sides?'
@@ -28,6 +26,10 @@ class API::V1::OffersController < ApiController
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :required, 'Name'
     api.param :form, 'offer[is_direct]', :boolean, :required, 'Is a direct flight?'
+    api.param :form, 'offer[origin_id]', :integer, :required, 'Origin City id'
+    api.param :form, 'offer[destination_id]', :integer, :required, 'Destination City id'
+    api.param :form, 'offer[price]', :integer, :required, 'Price'
+    api.param :form, 'offer[price_currency]', :integer, :required, 'Currency type: RUB, USD, EUR'
     api.param :form, 'transfers_params', :string, :optional, 'Create transfers. ex: [{"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}, {"google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
     response :unauthorized
     response :unprocessable_entity
@@ -39,6 +41,10 @@ class API::V1::OffersController < ApiController
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :optional, 'Name'
     api.param :form, 'offer[is_direct]', :boolean, :optional, 'Is a direct flight?'
+    api.param :form, 'offer[price]', :integer, :optional, 'Price'
+    api.param :form, 'offer[price_currency]', :integer, :optional, 'Currency type: RUB, USD, EUR'
+    api.param :form, 'offer[origin_id]', :integer, :optional, 'Origin City id'
+    api.param :form, 'offer[destination_id]', :integer, :optional, 'Destination City id'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
     api.param :form, 'offer[transfers_params]', :string, :optional, 'Update transfers. ex: [{"id": "51", "google_place_id": "ChIJOwg_06VPwokRYv534QaPC8g", "airline_id": "1"}]'
     response :unauthorized
@@ -128,8 +134,29 @@ class API::V1::OffersController < ApiController
   end
 
   def params_array
-    %i[offer_type discount_type name from_google_place_id to_google_place_id airline_id is_direct transfers_count
-      date_from date_to date_end price discount_rate description status price_currency price two_sides from_airport_id to_airport_id]
+    %i[
+      offer_type
+      discount_type
+      name
+      from_google_place_id
+      to_google_place_id
+      airline_id
+      is_direct
+      transfers_count
+      date_from
+      date_to
+      date_end
+      price
+      discount_rate
+      description
+      status
+      price_currency
+      two_sides
+      from_airport_id
+      to_airport_id
+      origin_id
+      destination_id
+    ]
   end
 
   def full_params

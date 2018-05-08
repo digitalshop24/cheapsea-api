@@ -1,5 +1,4 @@
 class ImageUploader < BaseUploader
-
   version :medium do
     process resize_to_fit: [250, 250]
   end
@@ -7,5 +6,4 @@ class ImageUploader < BaseUploader
   def extension_white_list
     %w[jpg jpeg gif png]
   end
-
 end

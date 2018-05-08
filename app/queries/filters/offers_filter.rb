@@ -6,6 +6,8 @@ class Filters::OffersFilter < Filters::Base
       :user,
       :from_airport,
       :to_airport,
+      :images_countries_rectangular,
+      :images_countries_square,
       origin: [country: :continent],
       destination: [country: :continent],
       transfers: :airline

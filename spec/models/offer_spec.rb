@@ -39,5 +39,11 @@ describe Offer, type: :model do
   it { is_expected.to validate_presence_of(:price_currency) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:airline) }
+  it { is_expected.to belong_to(:images_countries_square) }
+  it { is_expected.to belong_to(:images_countries_rectangular) }
+  it { is_expected.to belong_to(:from_airport) }
+  it { is_expected.to belong_to(:origin) }
+  it { is_expected.to belong_to(:destination) }
+  it { is_expected.to belong_to(:to_airport) }
   it { is_expected.to have_many(:transfers) }
 end

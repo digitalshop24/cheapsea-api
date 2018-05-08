@@ -18,4 +18,6 @@ describe Country, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:name_en) }
   it { is_expected.to belong_to(:continent) }
+  it { is_expected.to have_many(:square_images) }
+  it { is_expected.to have_many(:rectangular_images) }
 end

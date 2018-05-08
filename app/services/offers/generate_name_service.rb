@@ -1,4 +1,5 @@
 module Offers::GenerateNameService
+  # TODO add spec
   def self.call(offer)
     origin_name = offer&.origin&.name || ''
     destination_name = offer&.destination&.name || ''

@@ -35,8 +35,10 @@ class Offer < ApplicationRecord
   before_save do
     synchronize_places
     generate_name
-    import_cheapest_offer
+    import_cheapest_offer_before_save
   end
+  before_create :add_country_images
+  after_destroy :import_cheapest_offer_after_destroy
 
   CURRENCY_TYPES = %w(RUB USD EUR)
 
@@ -48,17 +50,20 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :airline, optional: true
-  belongs_to :origin, class_name: 'City', foreign_key: 'origin_id', optional: true
-  belongs_to :destination, class_name: 'City', foreign_key: 'destination_id', optional: true
+  belongs_to :origin, class_name: 'City', foreign_key: 'origin_id'
+  belongs_to :destination, class_name: 'City', foreign_key: 'destination_id'
   belongs_to :from_airport, class_name: 'Airport', foreign_key: 'from_airport_id', optional: true
   belongs_to :to_airport, class_name: 'Airport', foreign_key: 'to_airport_id', optional: true
+  belongs_to :images_countries_square, class_name: 'Images::Countries::Square', optional: true
+  belongs_to :images_countries_rectangular, class_name: 'Images::Countries::Rectangular', optional: true
 
   has_many :transfers, dependent: :destroy
 
-  validates :is_direct, presence: true, inclusion: { in: [ true, false ] }
+  validates :is_direct, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
-  validates :price_currency, presence: true, inclusion: { in: CURRENCY_TYPES }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :price_currency, inclusion: { in: CURRENCY_TYPES }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :origin_id, :destination_id, :is_direct, :price_currency, :price, presence: true
 
   scope :two_sides, -> { where(two_sides: true) }
   scope :one_side, -> { where(two_sides: false) }
@@ -99,9 +104,18 @@ class Offer < ApplicationRecord
   end
 
 
+  def import_cheapest_offer_before_save
+    return unless status_changed?(from: 'draft', to: 'published')
+
+    import_cheapest_offer
+  end
+
+  def import_cheapest_offer_after_destroy
+    import_cheapest_offer
+  end
+
   def import_cheapest_offer
     return if two_sides?
-    return unless status_changed?(from: 'draft', to: 'published')
 
     Import::OneSideCheapestOfferWorker.perform_async(origin.id, destination.id)
   end
@@ -112,5 +126,13 @@ class Offer < ApplicationRecord
     return if (triggered_fields & changes.keys).empty?
 
     self.name_auto = Offers::GenerateNameService.call(self)
+  end
+
+  def add_country_images
+    square_image = destination.country.square_images.sample
+    rectangular_image = destination.country.rectangular_images.sample
+
+    self.images_countries_square_id = square_image&.id
+    self.images_countries_rectangular_id = rectangular_image&.id
   end
 end

@@ -15,4 +15,10 @@ class Country < ApplicationRecord
   validates :iata, :name, :name_en, presence: true
 
   belongs_to :continent, optional: true
+
+  has_many :square_images, class_name: 'Images::Countries::Square'
+  has_many :rectangular_images, class_name: 'Images::Countries::Rectangular'
+
+  accepts_nested_attributes_for :square_images, allow_destroy: true
+  accepts_nested_attributes_for :rectangular_images, allow_destroy: true
 end
