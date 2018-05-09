@@ -22,6 +22,7 @@ class API::V1::ProfilesController < ApiController
     api.param :form, 'profile[password]', :string, :required, 'Password'
     api.param :form, 'profile[password_confirmation]', :string, :required, 'Password confirmation'
     api.param :form, 'profile[name]', :string, :required, 'Name'
+    api.param :form, 'profile[phone]', :string, :optional, 'Phone'
     response :unauthorized
     response :unprocessable_entity
   end
@@ -36,6 +37,6 @@ class API::V1::ProfilesController < ApiController
   private
 
   def profile_params
-    params.require(:profile).permit(%i[email password password_confirmation name])
+    params.require(:profile).permit(%i[email password password_confirmation name phone])
   end
 end

@@ -6,6 +6,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :role, default: 'member'
       t.string :password_digest, null: false
       t.string :image
+      t.string :phone
     end
 
     add_index :users, :email,                unique: true

@@ -5,7 +5,6 @@ class CreateTransfers < ActiveRecord::Migration[5.0]
       t.string :google_place_id
       t.references :airline
       t.references :user, null: false
-      t.references :city, null: false
 
       t.timestamps
     end
