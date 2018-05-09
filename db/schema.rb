@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20180509002855) do
     t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "square_images"
+    t.json "rectangular_images"
     t.text "desc"
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
@@ -145,10 +147,10 @@ ActiveRecord::Schema.define(version: 20180509002855) do
     t.string "gate"
     t.integer "origin_id"
     t.integer "destination_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "from_airport_id"
     t.integer "to_airport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name_auto"
     t.integer "visits_count", default: 0, null: false
     t.bigint "images_countries_square_id"
@@ -158,10 +160,12 @@ ActiveRecord::Schema.define(version: 20180509002855) do
     t.index ["date_to"], name: "index_offers_on_date_to"
     t.index ["destination_id"], name: "index_offers_on_destination_id"
     t.index ["flight_number"], name: "index_offers_on_flight_number"
+    t.index ["from_airport_id"], name: "index_offers_on_from_airport_id"
     t.index ["images_countries_rectangular_id"], name: "index_offers_on_images_countries_rectangular_id"
     t.index ["images_countries_square_id"], name: "index_offers_on_images_countries_square_id"
     t.index ["origin_id"], name: "index_offers_on_origin_id"
     t.index ["status"], name: "index_offers_on_status"
+    t.index ["to_airport_id"], name: "index_offers_on_to_airport_id"
     t.index ["two_sides"], name: "index_offers_on_two_sides"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
