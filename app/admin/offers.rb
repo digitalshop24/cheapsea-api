@@ -13,6 +13,7 @@ ActiveAdmin.register Offer do
     tag_column 'Статус', :status, interactive: true
     tag_column 'Тип', :offer_type, interactive: true
     tag_column 'Тип скидки', :discount_type, interactive: true
+    tag_column 'Качество', :quality, interactive: true
     column 'Авиакомпания', :airline
 
     actions
@@ -39,6 +40,7 @@ ActiveAdmin.register Offer do
       f.input :origin, label: 'Из города'
       f.input :destination, label: 'В город'
       f.input :user, label: 'Пользователь'
+      f.input :quality, label: 'Качество'
     end
 
     f.inputs 'Пересадки' do
@@ -80,6 +82,7 @@ ActiveAdmin.register Offer do
       row :to_airport_id
       row :origin_id
       row :destination_id
+      row :quality
     end
 
     panel 'Пересадки' do

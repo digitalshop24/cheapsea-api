@@ -6,8 +6,5 @@ class CreateTags < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-
-    # TODO remove
-    remove_column :offer_collections, :user_id
   end
 end

@@ -34,23 +34,26 @@
 #
 
 class OfferSerializer < ActiveModel::Serializer
-  attributes :id,
-    :offer_type,
-    :discount_type,
-    :name,
-    :name_auto,
-    :airline_id,
-    :is_direct,
-    :transfers_count,
-    :date_from,
-    :date_to,
-    :date_end,
-    :price,
-    :discount_rate,
-    :description,
-    :visits_count,
-    :created_at,
-    :updated_at
+  attributes %i[
+    id
+    offer_type
+    discount_type
+    name
+    name_auto
+    airline_id
+    is_direct
+    transfers_count
+    date_from
+    date_to
+    date_end
+    price
+    discount_rate
+    description
+    visits_count
+    quality
+    created_at
+    updated_at
+  ]
 
   belongs_to :user
   belongs_to :airline

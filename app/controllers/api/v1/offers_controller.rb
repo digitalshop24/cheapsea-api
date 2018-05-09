@@ -17,6 +17,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[two_sides]', :string, :optional, 'Two sides?'
     api.param :form, 'offer[from_airport_id]', :integer, :optional, 'ID of airport'
     api.param :form, 'offer[to_airport_id]', :integer, :optional, 'ID of airport'
+    api.param :form, 'offer[quality]', :integer, :optional, 'Quality: unknown(default), bad, normal, good'
   end
 
   swagger_api :create do |api|
@@ -148,6 +149,7 @@ class API::V1::OffersController < ApiController
       :from_airport_id,
       :to_airport_id,
       :origin_id,
+      :quality,
       :destination_id,
       transfers_attributes: [:id, :airline_id, :user_id, :city_id, :_destroy, :_create, :_update],
       offer_tags_attributes: [:id, :tag_id, :user_id, :city_id, :_destroy, :_create, :_update]

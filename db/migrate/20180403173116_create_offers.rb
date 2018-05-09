@@ -25,6 +25,7 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.integer :to_airport_id, foreign_key: true, index: true
       t.integer :visits_count, default: 0, null: false
       t.string :name_auto
+      t.integer :quality, default: 'unknown', null: false
 
       t.timestamps
     end
