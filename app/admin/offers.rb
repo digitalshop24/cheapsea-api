@@ -3,7 +3,7 @@ ActiveAdmin.register Offer do
 
   actions :index, :new, :show, :create, :edit, :update, :destroy
 
-  permit_params API::V1::OffersController.new.send(:params_array)
+  permit_params API::V1::OffersController.new.send(:params_array) << :user_id
 
   index do
     selectable_column
@@ -23,7 +23,7 @@ ActiveAdmin.register Offer do
       f.input :offer_type, label: 'Тип'
       f.input :discount_type, label: 'Тип скидки'
       f.input :name, label: 'Название'
-      f.input :airline_id, label: 'Авиакомпания'
+      f.input :airline, label: 'Авиакомпания'
       f.input :is_direct, label: 'Прямой?'
       f.input :date_from, as: :date_time_picker, label: 'От'
       f.input :date_to, as: :date_time_picker, label: 'По'
@@ -34,14 +34,16 @@ ActiveAdmin.register Offer do
       f.input :status, label: 'Статус'
       f.input :price_currency, label: 'Валюта'
       f.input :two_sides, label: 'В две стороны?'
-      f.input :from_airport_id, label: 'Из аэропорта'
-      f.input :to_airport_id, label: 'В аэропорт'
-      f.input :origin_id, label: 'Из города'
-      f.input :destination_id, label: 'В город'
+      f.input :from_airport, label: 'Из аэропорта'
+      f.input :to_airport, label: 'В аэропорт'
+      f.input :origin, label: 'Из города'
+      f.input :destination, label: 'В город'
+      f.input :user, label: 'Пользователь'
     end
 
     f.inputs 'Пересадки' do
-      f.has_many :transfers, heading: 'Пересадки', new_record: 'Добавить пересадку' do |p|
+      f.has_many :transfers, heading: 'Пересадки', new_record: 'Добавить пересадку', allow_destroy: true do |p|
+        p.input :_destroy, as: :boolean, label: "Удалить?" unless p.object.new_record?
         p.input :city, label: 'Город'
         p.input :airline, label: 'Авиакомпания'
         p.input :user, label: 'Пользователь'

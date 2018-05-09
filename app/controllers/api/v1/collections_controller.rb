@@ -22,6 +22,7 @@ class API::V1::CollectionsController < ApiController
     api.param :form, 'collection[name]', :string, :required, 'Name'
     api.param :form, 'collection[name_en]', :string, :optional, 'English name'
     api.param :form, 'collection[desc]', :string, :optional, 'Description'
+    api.param :form, 'collection[offer_collections_attributes]', :string, :optional, '"offer_collections_attributes"=>{"0"=>{"offer_id"=>"5"}, "1"=>{"offer_id"=>"4"}}}'
     response :unauthorized
     response :unprocess
   end
@@ -64,7 +65,16 @@ class API::V1::CollectionsController < ApiController
     Collection.find(params[:id])
   end
 
+  def params_array
+    [
+      :name,
+      :name_en,
+      :desc,
+      offer_collections_attributes: [:id, :offer_id, :_destroy]
+    ]
+  end
+
   def collection_params
-    params.require(:collection).permit(:name, :name_en, :desc)
+    params.require(:collection).permit(params_array)
   end
 end

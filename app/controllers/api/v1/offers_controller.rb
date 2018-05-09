@@ -28,7 +28,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[destination_id]', :integer, :required, 'Destination City id'
     api.param :form, 'offer[price]', :integer, :required, 'Price'
     api.param :form, 'offer[price_currency]', :integer, :required, 'Currency type: RUB, USD, EUR'
-    api.param :form, 'offer[transfers_attributes]', :string, :optional, 'Create transfers. ex: [{"city_id": "1", "airline_id": "1"}, {"city_id": "2", "airline_id": "2"}]'
+    api.param :form, 'offer[transfers_attributes]', :string, :optional, 'Create transfers. ex: "transfers_attributes"=>{"0"=>{"city_id"=>"1", "airline_id"=>"1"}, "1"=>{"city_id"=>"2"}}}'
     response :unauthorized
     response :unprocessable_entity
   end
@@ -44,7 +44,7 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[origin_id]', :integer, :optional, 'Origin City id'
     api.param :form, 'offer[destination_id]', :integer, :optional, 'Destination City id'
     api.param :form, 'offer[status]', :string, :optional, 'Status: draft, published'
-    api.param :form, 'offer[transfers_attributes]', :string, :optional, 'Update transfers. ex: [{"id": "51", "city_id": "1", "airline_id": "1"}]'
+    api.param :form, 'offer[transfers_attributes]', :string, :optional, 'Update transfers. ex: "transfers_attributes"=>{"0"=>{"id"=>"1", "city_id"=>"1", "airline_id"=>"1"}, "1"=>{"id"=>"2", "city_id"=>"2"}}}'
     response :unauthorized
     response :unprocessable_entity
   end

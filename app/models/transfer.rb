@@ -17,5 +17,5 @@ class Transfer < ApplicationRecord
   belongs_to :user
   belongs_to :city
 
-  validates :offer_id, :city_id, presence: true
+  validates :city_id, presence: true
 end

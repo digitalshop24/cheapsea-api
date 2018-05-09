@@ -14,8 +14,12 @@
 class Collection < ApplicationRecord
   paginates_per 20
 
-  validates :name, presence: true
+  validates :name, :user_id, presence: true
 
   has_many :offer_collections
   has_many :offers, through: :offer_collections, source: 'offer'
+
+  belongs_to :user
+
+  accepts_nested_attributes_for :offer_collections, allow_destroy: true
 end
