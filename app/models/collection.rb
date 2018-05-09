@@ -16,7 +16,7 @@ class Collection < ApplicationRecord
 
   validates :name, :user_id, presence: true
 
-  has_many :offer_collections
+  has_many :offer_collections, dependent: :destroy
   has_many :offers, through: :offer_collections, source: 'offer'
 
   belongs_to :user

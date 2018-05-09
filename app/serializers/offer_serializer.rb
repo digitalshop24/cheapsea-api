@@ -54,7 +54,7 @@ class OfferSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :airline
-  belongs_to :origin, serializer_options: { no_airports: true }
+  belongs_to :origin
   belongs_to :destination
   belongs_to :from_airport
   belongs_to :to_airport
@@ -62,6 +62,7 @@ class OfferSerializer < ActiveModel::Serializer
   belongs_to :images_countries_rectangular
 
   has_many :transfers
+  has_many :tags
 
   class CitySerializer < ActiveModel::Serializer
     attributes :name

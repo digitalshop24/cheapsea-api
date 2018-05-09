@@ -149,7 +149,8 @@ class API::V1::OffersController < ApiController
       :to_airport_id,
       :origin_id,
       :destination_id,
-      transfers_attributes: [:id, :airline_id, :user_id, :city_id, :_destroy, :_create, :_update]
+      transfers_attributes: [:id, :airline_id, :user_id, :city_id, :_destroy, :_create, :_update],
+      offer_tags_attributes: [:id, :tag_id, :user_id, :city_id, :_destroy, :_create, :_update]
     ]
   end
 

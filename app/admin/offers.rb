@@ -50,6 +50,13 @@ ActiveAdmin.register Offer do
       end
     end
 
+    f.inputs 'Связи с тегами' do
+      f.has_many :offer_tags, heading: 'Связи', new_record: 'Добавить связь' do |p|
+        p.input :_destroy, as: :boolean, label: "Удалить?" unless p.object.new_record?
+        p.input :tag, label: 'Тег'
+      end
+    end
+
     actions
   end
 
@@ -79,6 +86,12 @@ ActiveAdmin.register Offer do
       table_for offer.transfers do
         column :city
         column :airline
+      end
+    end
+
+    panel 'Теги' do
+      table_for offer.tags do
+        column :name
       end
     end
   end

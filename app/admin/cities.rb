@@ -1,15 +1,7 @@
 ActiveAdmin.register City do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  menu label: 'Города', priority: 5
 
+  actions :index, :new, :show, :create, :edit, :update
+
+  permit_params %i[iata name active country_id name_en latitude longitude]
 end

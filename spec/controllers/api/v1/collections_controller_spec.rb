@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe API::V1::CollectionsController, type: :controller do
+describe API::V1::CollectionsController, type: :controller do
   let(:user) { create(:user, role: 'admin') }
-  let(:collection) { create(:collection) }
+  let(:collection) { create(:collection, user: user) }
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
       sign_in user
-      get :create, params: { collection: FactoryGirl.attributes_for(:collection) }
+      post :create, params: { collection: FactoryGirl.attributes_for(:collection) }
       expect(response).to have_http_status(:success)
     end
   end
@@ -22,6 +22,14 @@ RSpec.describe API::V1::CollectionsController, type: :controller do
   describe "GET #show" do
     it "returns http success" do
       get :show, params: { id: collection.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "returns http success" do
+      sign_in user
+      delete :destroy, params: { id: collection.id }
       expect(response).to have_http_status(:success)
     end
   end

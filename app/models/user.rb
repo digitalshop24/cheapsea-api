@@ -8,6 +8,7 @@
 #  role            :integer          default("member")
 #  password_digest :string           not null
 #  image           :string
+#  phone           :string
 #
 
 class User < ApplicationRecord
@@ -17,7 +18,8 @@ class User < ApplicationRecord
 
   has_many :offers, dependent: :nullify
   has_many :collections, dependent: :nullify
-  has_many :offer_collections, dependent: :nullify
+  has_many :tags, dependent: :nullify
+  has_many :offer_tags, dependent: :nullify
 
   enum role: { member: 0, agent: 1, moderator: 2, admin: 3 }
 

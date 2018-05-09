@@ -3,7 +3,6 @@ class CreateOfferCollections < ActiveRecord::Migration[5.1]
     create_table :offer_collections do |t|
       t.references :offer, null: false
       t.references :collection, null: false
-      t.references :user
 
       t.timestamps
     end

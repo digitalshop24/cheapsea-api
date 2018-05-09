@@ -59,6 +59,8 @@ class Offer < ApplicationRecord
   belongs_to :images_countries_rectangular, class_name: 'Images::Countries::Rectangular', optional: true
 
   has_many :transfers, dependent: :destroy
+  has_many :offer_tags, dependent: :destroy
+  has_many :tags, through: :offer_tags, source: 'tag'
 
   validates :is_direct, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }
@@ -70,6 +72,7 @@ class Offer < ApplicationRecord
   scope :one_side, -> { where(two_sides: false) }
 
   accepts_nested_attributes_for :transfers, allow_destroy: true
+  accepts_nested_attributes_for :offer_tags, allow_destroy: true
 
   private
 

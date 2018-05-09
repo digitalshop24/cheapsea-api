@@ -1,7 +1,7 @@
 ActiveAdmin.register Country do
   menu label: "Страны", priority: 2
 
-  actions :index, :new, :create, :edit, :update, :destroy
+  actions :index, :new, :create, :edit, :update
 
   permit_params :iata, :name, :name_en, :continent_id, square_images_attributes: [:file, :id, :_destroy], rectangular_images_attributes: [:file, :id, :_destroy]
 

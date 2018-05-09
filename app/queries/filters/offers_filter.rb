@@ -8,9 +8,10 @@ class Filters::OffersFilter < Filters::Base
       :to_airport,
       :images_countries_rectangular,
       :images_countries_square,
+      :tags,
       origin: [country: :continent],
       destination: [country: :continent],
-      transfers: :airline
+      transfers: [:airline, :city]
     ).page(page)
   end
 end

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       resources :offers, only: %i[index show create update destroy]
       resources :collections, only: %i[index show create destroy]
       resources :offer_collections, only: %i[create destroy]
+      resources :tags, only: %i[index show create destroy]
+      resources :offer_tags, only: %i[create destroy]
       resource :profile, only: %i[create show]
     end
   end

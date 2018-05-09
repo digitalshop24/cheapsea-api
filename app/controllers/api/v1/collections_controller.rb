@@ -33,7 +33,7 @@ class API::V1::CollectionsController < ApiController
   end
 
   def index
-    render json: Collection.all.page(params[:page])
+    render json: Collection.includes(:offers).page(params[:page])
   end
 
   def show

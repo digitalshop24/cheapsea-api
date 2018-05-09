@@ -5,19 +5,24 @@ class Users::AccessCheckService
     },
     agent: {
       Offer: %i[index create update destroy],
-      Transfer: %i[update]
+      Transfer: %i[update],
+      OfferTag: %i[create destroy]
     },
     moderator: {
       Offer: %i[index create update destroy],
       Transfer: %i[index create update destroy],
       Collection: %i[create destroy],
-      OfferCollection: %i[create destroy]
+      OfferCollection: %i[create destroy],
+      Tag: %i[create destroy],
+      OfferTag: %i[create destroy]
     },
     admin: {
       Offer: %i[index create update destroy],
       Transfer: %i[index create update destroy],
       Collection: %i[create destroy],
-      OfferCollection: %i[create destroy]
+      OfferCollection: %i[create destroy],
+      Tag: %i[create destroy],
+      OfferTag: %i[create destroy]
     },
     guest: {
       Offer: %i[index]

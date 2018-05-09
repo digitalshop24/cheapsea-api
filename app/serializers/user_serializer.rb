@@ -8,6 +8,7 @@
 #  role            :integer          default("member")
 #  password_digest :string           not null
 #  image           :string
+#  phone           :string
 #
 
 class UserSerializer < ActiveModel::Serializer

@@ -18,6 +18,5 @@ describe Transfer, type: :model do
   it { is_expected.to belong_to(:airline) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:city) }
-  it { is_expected.to validate_presence_of(:offer_id) }
   it { is_expected.to validate_presence_of(:city_id) }
 end
