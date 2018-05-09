@@ -69,6 +69,8 @@ class Offer < ApplicationRecord
   scope :two_sides, -> { where(two_sides: true) }
   scope :one_side, -> { where(two_sides: false) }
 
+  accepts_nested_attributes_for :transfers, allow_destroy: true
+
   private
 
   def import_cheapest_offer_before_save

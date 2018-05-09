@@ -1,5 +1,4 @@
 ActiveAdmin.register Country do
-
   menu label: "Страны", priority: 2
 
   actions :index, :new, :create, :edit, :update, :destroy

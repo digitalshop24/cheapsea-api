@@ -130,25 +130,26 @@ class API::V1::OffersController < ApiController
   end
 
   def params_array
-    %i[
-      offer_type
-      discount_type
-      name
-      airline_id
-      is_direct
-      date_from
-      date_to
-      date_end
-      price
-      discount_rate
-      description
-      status
-      price_currency
-      two_sides
-      from_airport_id
-      to_airport_id
-      origin_id
-      destination_id
+    [
+      :offer_type,
+      :discount_type,
+      :name,
+      :airline_id,
+      :is_direct,
+      :date_from,
+      :date_to,
+      :date_end,
+      :price,
+      :discount_rate,
+      :description,
+      :status,
+      :price_currency,
+      :two_sides,
+      :from_airport_id,
+      :to_airport_id,
+      :origin_id,
+      :destination_id,
+      transfers_attributes: [:id, :airline_id, :user_id, :city_id, :_destroy, :_create, :_update]
     ]
   end
 

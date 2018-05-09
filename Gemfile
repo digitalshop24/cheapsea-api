@@ -30,7 +30,12 @@ gem 'rmagick', require: false           # A ruby wrapper for ImageMagick or Grap
 gem 'carrierwave'                           # This gem provides a simple and extremely flexible way to upload files from Ruby applications. It works well with Rack based web applications, such as Ruby on Rails.
 gem 'fog', '~> 1.36.0'
 gem 'tilt', '~> 2.0'
+
 gem 'activeadmin'
+gem 'active_admin_theme'
+gem 'jquery-rails'
+gem 'activeadmin_addons'
+
 gem 'figaro'
 gem 'geocoder'
 gem "interactor", "~> 3.0"
