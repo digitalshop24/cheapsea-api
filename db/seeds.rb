@@ -16,3 +16,5 @@ User.find_each do |user|
     destination: City.active.last,
     airline: Airline.first)
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
