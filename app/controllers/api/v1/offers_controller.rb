@@ -73,8 +73,8 @@ class API::V1::OffersController < ApiController
     param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR'
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
     param :query, :two_sides, :string, :optional, 'Two sides'
-    param :query, :origin_id, :string, :optional, 'Origin city id'
-    param :query, :destination_id, :string, :optional, 'Destination city id'
+    param :query, :origin_id, :integer, :optional, 'Origin city id'
+    param :query, :destination_id, :integer, :optional, 'Destination city id'
   end
 
   swagger_api :show do
