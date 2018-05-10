@@ -50,7 +50,7 @@ gem 'kaminari'
 gem 'knock', path: 'vendor/knock'
 gem 'russian'
 gem 'devise'
-gem 'filtering', path: '/Users/vitaliy/Projects/ruby/filtering'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

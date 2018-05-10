@@ -1,9 +1,4 @@
 PATH
-  remote: /Users/vitaliy/Projects/ruby/filtering
-  specs:
-    filtering (0.1.0)
-
-PATH
   remote: vendor/knock
   specs:
     knock (2.1.1)
@@ -486,7 +481,6 @@ DEPENDENCIES
   devise
   factory_girl_rails (= 4.7.0)
   figaro
-  filtering!
   fog (~> 1.36.0)
   geocoder
   httparty
