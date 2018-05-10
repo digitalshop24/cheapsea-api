@@ -99,6 +99,7 @@ class Offer < ApplicationRecord
     return if (triggered_fields & changes.keys).empty?
 
     self.name_auto = Offers::GenerateNameService.call(self)
+    self.name ||= self.name_auto
   end
 
   def add_country_images

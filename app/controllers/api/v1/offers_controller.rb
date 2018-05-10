@@ -61,7 +61,7 @@ class API::V1::OffersController < ApiController
   swagger_api :index do
     summary 'All offers'
     param :query, :page, :integer, :optional, 'Page'
-    param :query, :name, :string, :optional, 'Name'
+    param :query, :name, :string, :optional, 'Name. (\'name ILIKE ? or name_auto ILIKE ?\')'
     param :query, :offer_type, :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
     param :query, :discount_type, :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
     param :query, :airline_id, :string, :optional, 'Airline id'
@@ -72,8 +72,9 @@ class API::V1::OffersController < ApiController
     param :query, :price, :integer, :optional, 'Price'
     param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR'
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
-    param :query, :description, :string, :optional, 'Description'
     param :query, :two_sides, :string, :optional, 'Two sides'
+    param :query, :origin_id, :string, :optional, 'Origin city id'
+    param :query, :destination_id, :string, :optional, 'Destination city id'
   end
 
   swagger_api :show do
@@ -84,7 +85,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: ::Filters::OffersFilter.new(params.permit(params_array), params[:page]).call, include: '**', status: 200
+    render json: ::Filters::OffersFilter.new(params, params[:page]).call, include: '**', status: 200
   end
 
   def create

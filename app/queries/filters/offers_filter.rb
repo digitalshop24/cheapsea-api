@@ -1,7 +1,18 @@
 class Filters::OffersFilter < Filters::Base
   def initialize(params, page)
     super(params, page)
-    @relation = Offer.includes(
+  end
+
+  def call
+    super
+
+    filter_by_name if complex_params[:name].present?
+  end
+
+  private
+
+  def relation
+    Offer.includes(
       :airline,
       :user,
       :from_airport,
@@ -12,6 +23,19 @@ class Filters::OffersFilter < Filters::Base
       origin: [country: :continent],
       destination: [country: :continent],
       transfers: [:airline, :city]
-    ).page(page)
+    )
+  end
+
+  def simple_acessible_params
+    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides origin_id destination_id]
+  end
+
+  def complex_acessible_params
+    %i[name]
+  end
+
+  def filter_by_name
+    name = complex_params[:name]
+    results.where('name ILIKE ? or name_auto ILIKE ?', "%#{name}%", "%#{name}%")
   end
 end
