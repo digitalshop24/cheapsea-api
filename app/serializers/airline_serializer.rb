@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-class AirlineSerializer < ActiveModel::Serializer
-  attributes :id, :name
+class AirlineSerializer
+  include FastJsonapi::ObjectSerializer
+
+  attributes :name
 end

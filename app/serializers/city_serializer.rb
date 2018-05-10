@@ -14,8 +14,10 @@
 #  updated_at :datetime         not null
 #
 
-class CitySerializer < ActiveModel::Serializer
-  attributes :id, :name
+class CitySerializer
+  include FastJsonapi::ObjectSerializer
+
+  attributes :name
 
   has_many :airports
 end

@@ -11,8 +11,10 @@
 #  updated_at :datetime         not null
 #
 
-class CollectionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :name_en, :desc
+class CollectionSerializer
+  include FastJsonapi::ObjectSerializer
+
+  attributes :name, :name_en, :desc
 
   has_many :offers
 end

@@ -12,7 +12,9 @@
 #  desc         :text
 #
 
-class CountrySerializer < ActiveModel::Serializer
+class CountrySerializer
+  include FastJsonapi::ObjectSerializer
+
   attributes :name
 
   belongs_to :continent

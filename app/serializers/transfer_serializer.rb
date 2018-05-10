@@ -11,9 +11,9 @@
 #  city_id    :integer
 #
 
-class TransferSerializer < ActiveModel::Serializer
-  attributes :id
+class TransferSerializer
+  include FastJsonapi::ObjectSerializer
 
-  belongs_to :airline, serializer: nil
-  belongs_to :city, serializer: nil
+  belongs_to :airline
+  belongs_to :city
 end

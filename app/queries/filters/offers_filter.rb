@@ -1,4 +1,4 @@
-class Filters::OffersFilter < Filters::Base
+class Filters::OffersFilter < Filtering::Base
   def initialize(params, page)
     super(params, page)
   end
@@ -18,7 +18,7 @@ class Filters::OffersFilter < Filters::Base
       :tags,
       origin: [country: :continent],
       destination: [country: :continent],
-      transfers: [:airline, :city]
+      transfers: [:airline]
     )
   end
 

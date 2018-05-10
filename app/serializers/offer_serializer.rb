@@ -33,43 +33,51 @@
 #  images_countries_rectangular_id :integer
 #
 
-class OfferSerializer < ActiveModel::Serializer
-  attributes %i[
-    id
-    offer_type
-    discount_type
-    name
-    name_auto
-    airline_id
-    is_direct
-    transfers_count
-    date_from
-    date_to
-    date_end
-    price
-    discount_rate
-    description
-    visits_count
-    quality
-    created_at
-    updated_at
-  ]
+class OfferSerializer
+  include FastJsonapi::ObjectSerializer
 
-  belongs_to :user
-  belongs_to :airline
-  belongs_to :origin
-  belongs_to :destination
-  belongs_to :from_airport
-  belongs_to :to_airport
-  belongs_to :images_countries_square
-  belongs_to :images_countries_rectangular
+  attributes :offer_type,
+             :discount_type,
+             :name,
+             :name_auto,
+             :airline_id,
+             :is_direct,
+             :transfers_count,
+             :date_from,
+             :date_to,
+             :date_end,
+             :price,
+             :discount_rate,
+             :description,
+             :visits_count,
+             :quality,
+             :created_at,
+             :updated_at
+
+  attribute :user do |object|
+    UserSerializer.new(object.user).serializable_hash
+  end
+
+  attribute :airline do |object|
+    AirlineSerializer.new(object.airline).serializable_hash
+  end
+
+  attribute :origin do |object|
+    City::WithoutAirportsSerializer.new(object.origin).serializable_hash
+  end
+
+  attribute :destination do |object|
+    City::WithoutAirportsSerializer.new(object.destination).serializable_hash
+  end
+
+  attribute :from_airport do |object|
+    AirportSerializer.new(object.from_airport).serializable_hash
+  end
+
+  attribute :to_airport do |object|
+    AirportSerializer.new(object.to_airport).serializable_hash
+  end
 
   has_many :transfers
   has_many :tags
-
-  class CitySerializer < ActiveModel::Serializer
-    attributes :name
-
-    belongs_to :country
-  end
 end

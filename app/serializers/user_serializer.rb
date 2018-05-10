@@ -11,6 +11,8 @@
 #  phone           :string
 #
 
-class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :role, :phone
+class UserSerializer
+  include FastJsonapi::ObjectSerializer
+
+  attributes :name, :email, :role, :phone
 end

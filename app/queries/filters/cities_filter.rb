@@ -1,20 +1,23 @@
-class Filters::CitiesFilter
-  def initialize(query)
-    @query = query
-    @relation = City.includes(:airports)
-  end
-
-  def call
-    return popular_cities if query.nil?
-
-    relation.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
+class Filters::CitiesFilter < Filtering::Base
+  def initialize(params)
+    super(params)
   end
 
   private
 
-  attr_reader :query, :relation
+  # Required methods
 
-  def popular_cities
-    relation.active.includes(:airports)
+  def relation
+    City.includes(:airports)
+  end
+
+  def complex_acessible_params
+    %i[query]
+  end
+
+  # Complex filters
+
+  def filter_by_query(query)
+    results.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
   end
 end

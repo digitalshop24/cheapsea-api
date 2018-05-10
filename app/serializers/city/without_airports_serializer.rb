@@ -1,7 +1,5 @@
-class TagSerializer
+class City::WithoutAirportsSerializer
   include FastJsonapi::ObjectSerializer
 
   attributes :name
-
-  has_many :offers
 end

@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-class ContinentSerializer < ActiveModel::Serializer
+class ContinentSerializer
+  include FastJsonapi::ObjectSerializer
+
   attributes :name
 end

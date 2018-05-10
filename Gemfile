@@ -20,7 +20,6 @@ gem 'puma', '~> 3.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', require: 'rack/cors'
 gem 'rack-attack', '5.0.1'
-gem 'active_model_serializers', '0.10.2'
 gem 'awesome_print', '1.7.0'
 gem 'swagger-docs', '0.2.9'
 gem "redis", '3.3.0'
@@ -50,7 +49,8 @@ gem 'kaminari'
 gem 'knock', path: 'vendor/knock'
 gem 'russian'
 gem 'devise'
-
+gem 'filtering'
+gem 'fast_jsonapi'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

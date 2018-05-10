@@ -85,7 +85,9 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    render json: ::Filters::OffersFilter.new(params, params[:page]).call, include: '**', status: 200
+    offers = ::Filters::OffersFilter.new(params, params[:page]).call
+
+    render json: OfferSerializer.new(offers, { meta: { count: offers.count } }).serialized_json, status: 200
   end
 
   def create
