@@ -7,6 +7,8 @@ class Filters::OffersFilter < Filters::Base
     super
 
     filter_by_name if complex_params[:name].present?
+
+    results&.page(page)
   end
 
   private
@@ -36,6 +38,6 @@ class Filters::OffersFilter < Filters::Base
 
   def filter_by_name
     name = complex_params[:name]
-    results.where('name ILIKE ? or name_auto ILIKE ?', "%#{name}%", "%#{name}%")
+    @results = results.where('name ILIKE ? or name_auto ILIKE ?', "%#{name}%", "%#{name}%")
   end
 end
