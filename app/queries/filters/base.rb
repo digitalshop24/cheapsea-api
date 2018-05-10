@@ -1,39 +1,58 @@
-# This class created for auto filtering simple plain_params like Offer.where(name: name) without any conditions or complex logic
+# This class using for auto filtering simple plain_params like Offer.where(name: name) without any conditions or complex logic
 
 class Filters::Base
-  def initialize(params, page)
-    @plain_params = params.permit(simple_acessible_params)
+  def initialize(params, page = nil)
+    @plain_params = params.permit(plain_acessible_params)
     @complex_params = params.permit(complex_acessible_params)
     @page = page
-    @relation = nil
+    @results = relation
   end
 
   def call
     raise "@relation not initialized at #{self.class.name}. Add @relation = Offer for example." if relation.nil?
 
-    @results ||= relation.all
-    return results if plain_params.empty?
+    filter_by_plain_params unless plain_params.empty?
+    filter_by_complex_params unless complex_params.empty?
 
-    plain_params.each do |key, value|
-      @results = results.where("#{key}": value) if value.present?
-    end
-
-    results
+    results&.page(page)
   end
 
   protected
 
-  attr_reader :relation, :plain_params, :complex_params, :page, :results
+  attr_reader :plain_params, :complex_params, :page, :results
 
   def relation
-    raise 'relation method not implemented. Add this method to calling class and add AR relation, for example Offer.all'
+    raise 'relation method not implemented. Add this method to calling class and add AR relation, for example Model.all'
   end
 
-  def simple_acessible_params
-    raise 'simple_acessible_params method not implemented. Add this method to calling class and add parameters %i[offer_type] for example.'
+  def plain_acessible_params
+    raise 'plain_acessible_params method not implemented. Add this method to calling class and add parameters %i[offer_type] for example'
   end
 
   def complex_acessible_params
-    raise 'complex_acessible_params method not implemented. Add this method to calling class and add parameters %i[offer_type] for example.'
+    []
+  end
+
+  private
+
+  def filter_by_plain_params
+    plain_params.each do |key, value|
+      @results = results.where("#{key}": value) if value.present?
+    end
+  end
+
+  def filter_by_complex_params
+    raise_if_complex_method_not_implemented
+
+    complex_params.each do |key, value|
+      @results = send("filter_by_#{key}", value)
+    end
+  end
+
+  def raise_if_complex_method_not_implemented
+    complex_acessible_params.each do |param|
+      method_name = "filter_by_#{param}"
+      raise "#{method_name} method not implemented. Add #{method_name} private method to #{self.class.name} or remove #{param} param from complex_acessible_params" unless self.private_methods.include?(method_name.to_sym)
+    end
   end
 end

@@ -15,7 +15,7 @@
 #
 
 class CitySerializer < ActiveModel::Serializer
-  attributes :name
+  attributes :id, :name
 
   has_many :airports
 end

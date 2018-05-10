@@ -3,15 +3,9 @@ class Filters::OffersFilter < Filters::Base
     super(params, page)
   end
 
-  def call
-    super
-
-    filter_by_name if complex_params[:name].present?
-
-    results&.page(page)
-  end
-
   private
+
+  # Required methods
 
   def relation
     Offer.includes(
@@ -28,7 +22,7 @@ class Filters::OffersFilter < Filters::Base
     )
   end
 
-  def simple_acessible_params
+  def plain_acessible_params
     %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides origin_id destination_id]
   end
 
@@ -36,8 +30,9 @@ class Filters::OffersFilter < Filters::Base
     %i[name]
   end
 
-  def filter_by_name
-    name = complex_params[:name]
-    @results = results.where('name ILIKE ? or name_auto ILIKE ?', "%#{name}%", "%#{name}%")
+  # Complex filters
+
+  def filter_by_name(name)
+    results.where('name ILIKE ? or name_auto ILIKE ?', "%#{name}%", "%#{name}%")
   end
 end
