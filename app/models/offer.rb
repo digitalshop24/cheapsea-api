@@ -42,7 +42,7 @@ class Offer < ApplicationRecord
   after_destroy :import_cheapest_offer_after_destroy
 
   CURRENCY_TYPES = %w[RUB USD EUR]
-  REQUIRED_IMPORT_DICOUNT_PERCENT = 1
+  REQUIRED_IMPORT_DICOUNT_PERCENT = 30
 
   enum status: { draft: 0, published: 1 }
   enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
