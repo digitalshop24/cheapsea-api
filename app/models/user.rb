@@ -24,4 +24,12 @@ class User < ApplicationRecord
   enum role: { member: 0, agent: 1, moderator: 2, admin: 3 }
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  before_destroy :check_for_last_admin
+
+  private
+
+  def check_for_last_admin
+    throw(:abort) if admin? && User.admin.count == 1
+  end
 end

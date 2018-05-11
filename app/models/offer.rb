@@ -41,7 +41,8 @@ class Offer < ApplicationRecord
   before_create :add_country_images
   after_destroy :import_cheapest_offer_after_destroy
 
-  CURRENCY_TYPES = %w(RUB USD EUR)
+  CURRENCY_TYPES = %w[RUB USD EUR]
+  REQUIRED_IMPORT_DICOUNT_PERCENT = 1
 
   enum status: { draft: 0, published: 1 }
   enum offer_type: { airplane: 0, trane: 1, bus: 2, car_rent: 3 }
@@ -90,7 +91,7 @@ class Offer < ApplicationRecord
   def import_cheapest_offer
     return if two_sides?
 
-    Import::OneSideCheapestOfferWorker.perform_async(origin.id, destination.id)
+    Import::OneSideCheapestOfferWorker.perform_async(self.origin_id, self.destination_id)
   end
 
   def generate_name

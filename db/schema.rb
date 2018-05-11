@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509173550) do
+ActiveRecord::Schema.define(version: 20180511170254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 20180509173550) do
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
+  create_table "free_directions", force: :cascade do |t|
+    t.integer "origin_id", null: false
+    t.integer "destination_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["origin_id", "destination_id"], name: "index_free_directions_on_origin_id_and_destination_id", unique: true
+  end
+
   create_table "images_countries_rectangulars", force: :cascade do |t|
     t.bigint "country_id"
     t.string "file"
@@ -166,6 +174,7 @@ ActiveRecord::Schema.define(version: 20180509173550) do
     t.bigint "images_countries_square_id"
     t.bigint "images_countries_rectangular_id"
     t.integer "quality", default: 0, null: false
+    t.json "statistic", default: "{}", null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
