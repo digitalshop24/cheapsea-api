@@ -1,4 +1,4 @@
-class API::V1::TagsController < ApplicationController
+class API::V1::TagsController < ApiController
   before_action :authenticate_user, except: %i[index show]
 
   swagger_controller :tags, 'Tags management'
