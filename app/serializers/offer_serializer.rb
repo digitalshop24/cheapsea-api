@@ -52,7 +52,8 @@ class OfferSerializer
              :visits_count,
              :quality,
              :created_at,
-             :updated_at
+             :updated_at,
+             :statistic
 
   attribute :user do |object|
     UserSerializer.new(object.user).serializable_hash

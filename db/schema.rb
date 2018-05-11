@@ -89,12 +89,10 @@ ActiveRecord::Schema.define(version: 20180511170254) do
     t.string "iata", null: false
     t.string "name", null: false
     t.string "name_en", null: false
+    t.text "desc"
     t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "square_images"
-    t.json "rectangular_images"
-    t.text "desc"
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
@@ -167,14 +165,14 @@ ActiveRecord::Schema.define(version: 20180511170254) do
     t.integer "destination_id"
     t.integer "from_airport_id"
     t.integer "to_airport_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name_auto"
     t.integer "visits_count", default: 0, null: false
-    t.bigint "images_countries_square_id"
-    t.bigint "images_countries_rectangular_id"
+    t.string "name_auto"
     t.integer "quality", default: 0, null: false
     t.json "statistic", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "images_countries_square_id"
+    t.bigint "images_countries_rectangular_id"
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
@@ -200,6 +198,7 @@ ActiveRecord::Schema.define(version: 20180511170254) do
 
   create_table "transfers", id: :serial, force: :cascade do |t|
     t.integer "offer_id", null: false
+    t.string "google_place_id"
     t.integer "airline_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -227,7 +226,4 @@ ActiveRecord::Schema.define(version: 20180511170254) do
   add_foreign_key "offer_tags", "tags"
   add_foreign_key "offer_tags", "users"
   add_foreign_key "tags", "users"
-  add_foreign_key "transfers", "airlines"
-  add_foreign_key "transfers", "offers"
-  add_foreign_key "transfers", "users"
 end

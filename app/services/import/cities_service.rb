@@ -12,8 +12,6 @@ module Import::CitiesService
 
         name = city['name_translations']['ru']
 
-        city = City.find_by(name_en: city['name'])
-
         created_city = City.create!(
           iata: city['code'],
           name: name,
