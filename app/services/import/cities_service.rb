@@ -1,17 +1,18 @@
 module Import::CitiesService
   class << self
     def call
-      return if City.any?
+      cities = ::ThirdParty::Travelpayouts::GetCitiesService.call
 
       puts 'Cities import started'
 
-      cities = JSON.parse(File.read("#{Rails.root}/lib/import/cities.json"))
       active_cities = Cities::TopHundredValueObject.call
 
       cities.each_with_index do |city, index|
         puts "#{index}/#{cities.length} cities imported" if index % 1000 == 0
 
         name = city['name_translations']['ru']
+
+        city = City.find_by(name_en: city['name'])
 
         created_city = City.create!(
           iata: city['code'],
