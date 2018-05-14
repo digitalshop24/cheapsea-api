@@ -21,6 +21,7 @@ ActiveAdmin.register Collection do
       f.input :name, label: 'Название'
       f.input :name_en, label: 'Название анг.'
       f.input :desc, label: 'Описание'
+      f.input :user, label: 'Пользователь'
     end
 
     f.inputs 'Связи с предложениями' do
