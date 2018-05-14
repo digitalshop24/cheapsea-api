@@ -10,6 +10,7 @@ ActiveAdmin.register Tag do
     id_column
 
     column 'Название', :name
+    column 'Пользователь', :user
 
     actions
   end
@@ -17,13 +18,7 @@ ActiveAdmin.register Tag do
   form do |f|
     f.inputs 'Детали' do
       f.input :name, label: 'Название'
-    end
-
-    f.inputs 'Связи с тегами' do
-      f.has_many :offer_tags, heading: 'Связи', new_record: 'Добавить связь' do |p|
-        p.input :_destroy, as: :boolean, label: "Удалить?" unless p.object.new_record?
-        p.input :tag, label: 'Тег'
-      end
+      f.input :user, label: 'Пользователь'
     end
 
     actions
@@ -32,12 +27,7 @@ ActiveAdmin.register Tag do
   show do
     attributes_table do
       row :name
-    end
-
-    panel 'Связи с предложениями' do
-      table_for offer.offer_tags do
-        column :tag
-      end
+      row :user
     end
   end
 end

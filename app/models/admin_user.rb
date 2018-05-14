@@ -22,4 +22,12 @@ class AdminUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+
+  before_destroy :rollback_if_the_last_one
+
+  private
+
+  def rollback_if_the_last_one
+    throw(:abort) if AdminUser.count == 1
+  end
 end

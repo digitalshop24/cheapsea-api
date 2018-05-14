@@ -1,6 +1,6 @@
-User.create!(email: 'admin@gmail.com', password: 'password', role: 'member')
+User.create!(email: 'admin@gmail.com', password: 'password', role: 'admin')
 User.create!(email: 'agent@gmail.com', password: 'password', role: 'agent')
-User.create!(email: 'member@gmail.com', password: 'password', role: 'admin')
+User.create!(email: 'member@gmail.com', password: 'password', role: 'member')
 User.create!(email: 'moderator@gmail.com', password: 'password', role: 'moderator')
 
 Rake::Task['import:countries'].invoke
