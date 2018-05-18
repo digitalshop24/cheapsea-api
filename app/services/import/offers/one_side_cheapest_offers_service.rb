@@ -3,7 +3,7 @@ class Import::Offers::OneSideCheapestOffersService
     cities = City.active
 
     cities.each_with_index do |origin, index|
-      puts "#{self.class.name} | #{origin.name} - #{index + 1} / #{cities.length} checking..."
+      puts "#{self.class.name} | #{origin.name} - #{index + 1}/#{cities.length} checking..."
 
       cities.find_each do |destination|
         next if the_same_point?(origin.id, destination.id)

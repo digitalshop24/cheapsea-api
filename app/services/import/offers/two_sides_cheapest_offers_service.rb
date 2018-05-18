@@ -26,8 +26,6 @@ class Import::Offers::TwoSidesCheapestOffersService
               offer_type: 'airplane',
               two_sides: true,
               user: user,
-              price: data['price'],
-              name: "From #{origin.name} to #{destination.name} for #{data['price']} RUB.",
               airline: Airline.find_by(iata: data['airline']),
               date_from: data['departure_at'],
               date_to: data['return_at'],

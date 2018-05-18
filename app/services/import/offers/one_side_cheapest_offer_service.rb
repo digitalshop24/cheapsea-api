@@ -125,7 +125,6 @@ class Import::Offers::OneSideCheapestOfferService
       two_sides: false,
       user: user,
       price: data['value'],
-      name: "From #{origin.name} to #{destination.name} for #{data['value']} RUB.",
       origin: origin,
       destination: destination,
       from_airport: determine_airport(origin),
