@@ -16,7 +16,7 @@ HOST: http://localhost:3000
 PG_HOST: localhost
 PG_PORT: 5432
 PG_USERNAME: postgres
-PG_PASSWORD: password
+PG_PASSWORD: 3787TTg34d883
 
 production:
   RAILS_SERVE_STATIC_FILES: true

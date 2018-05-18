@@ -1,4 +1,6 @@
 # Start
+`98fy9g49384983g49843`
+
 `rake app:reset` drops database, creates database, runs migration, seeds, import
 
 # Import

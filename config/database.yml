@@ -18,7 +18,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  template: template0
+  template: template1
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV['PG_HOST'] || 'localhost' %>
   port: <%=  ENV['PG_PORT'] || '5432' %>

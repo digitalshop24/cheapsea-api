@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.1"
 
-server '51.15.41.137', user: 'root', roles: %w{app db web}, my_property: :my_value
+server '188.120.249.126', user: 'root', roles: %w{app db web}, my_property: :my_value
 
 set :application, "cheapsea"
 set :repo_url, "git@github.com:digitalshop24/cheapsea-api.git"

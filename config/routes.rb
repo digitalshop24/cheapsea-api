@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  get '/docs' => redirect('/api_html/dist/index.html?url=/apidocs/api-docs.json')
+  get '/docs' => redirect('/api_html/dist/index.html?url=/apidocs/api-docs.json') if Rails.env.development?
 
   default_url_options host: ENV['HOST']
 
