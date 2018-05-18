@@ -34,7 +34,7 @@ class Import::Offers::TwoSidesCheapestOffersService
               destination: destination
             )
           rescue Exception => e
-            logger.warn e
+            Logger.new(STDOUT).warn(e)
 
             next
           end
