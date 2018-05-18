@@ -17,4 +17,4 @@ User.find_each do |user|
     airline: Airline.first)
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@example.com', password: '2392y3dbc02384483', password_confirmation: '2392y3dbc02384483')

@@ -5,8 +5,6 @@ module Import::CitiesService
 
       puts 'Cities import started'
 
-      active_cities = Cities::TopHundredValueObject.call
-
       cities.each_with_index do |city, index|
         puts "#{index}/#{cities.length} cities imported" if index % 1000 == 0
 
@@ -16,7 +14,7 @@ module Import::CitiesService
           iata: city['code'],
           name: name,
           name_en: city['name'],
-          active: active_cities.include?(name),
+          active: is_active?(city['code']),
           country: Country.find_by(iata: city['country_code']),
           latitude: city.dig('coordinates', 'lat'),
           longitude: city.dig('coordinates', 'lon'))
@@ -33,6 +31,10 @@ module Import::CitiesService
       continent = Continent.find_or_create_by(name: time_zone.split('/').first)
 
       city.country.update(continent: continent)
+    end
+
+    def is_active?(iata)
+      Cities::TopHundredValueObject.iata_include?(iata)
     end
   end
 end
