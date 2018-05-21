@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ThirdParty::Travelpayouts::GetAirlinesService do
-  subject { ThirdParty::Travelpayouts::GetAirlinesService.call }
+  subject { ThirdParty::Travelpayouts::GetAirlinesService.new.call }
 
   use_vcr_cassette 'services/airlines/get_all_service'
 

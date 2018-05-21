@@ -4,7 +4,7 @@ class ThirdParty::Travelpayouts::GetOneSideCheapestOffersService < ThirdParty::B
   def call
     pre_initialize
 
-    url = "#{ENV['TRAVELPAYOUTS_URL']}/v2/prices/month-matrix?origin=#{origin}&destination=#{destination}&month=#{month}&show_to_affiliates=false&token=#{ENV['TRAVELPAYOUTS_KEY']}"
+    url = "/v2/prices/month-matrix?origin=#{origin}&destination=#{destination}&month=#{month}&show_to_affiliates=false&token=#{ENV['TRAVELPAYOUTS_KEY']}"
     response = get_url(url)
     result = JSON.parse(response.body)
     context.fail!(error: result['errors']) if result['errors'].present?

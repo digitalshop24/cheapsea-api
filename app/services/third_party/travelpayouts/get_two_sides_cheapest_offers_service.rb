@@ -4,7 +4,7 @@ class ThirdParty::Travelpayouts::GetTwoSidesCheapestOffersService < ThirdParty::
   def call
     pre_initialize
 
-    url = "#{ENV['TRAVELPAYOUTS_URL']}/v1/prices/cheap?origin=#{origin}&destination=#{destination}&token=#{ENV['TRAVELPAYOUTS_KEY']}"
+    url = "/v1/prices/cheap?origin=#{origin}&destination=#{destination}&token=#{ENV['TRAVELPAYOUTS_KEY']}"
     response = get_url(url)
     result = JSON.parse(response.body)
     context.fail!(error: result['error'] || result['message']) unless result['success']

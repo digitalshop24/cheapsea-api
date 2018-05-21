@@ -1,6 +1,6 @@
-module ThirdParty::Travelpayouts::GetAirlinesService
-  def self.call
-    response = HTTParty.get("#{ENV['TRAVELPAYOUTS_URL']}/data/airlines.json")
+class ThirdParty::Travelpayouts::GetAirlinesService < ThirdParty::Base
+  def call
+    response = get_url('/data/airlines.json')
     JSON.parse(response.body)
   end
 end

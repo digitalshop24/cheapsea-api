@@ -1,6 +1,6 @@
 module Import::AirportsService
   def self.call
-    airports = ::ThirdParty::Travelpayouts::GetAirportsService.call
+    airports = ::ThirdParty::Travelpayouts::GetAirportsService.new.call
 
     puts 'Airports import started'
 

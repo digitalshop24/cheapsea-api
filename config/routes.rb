@@ -30,7 +30,9 @@ Rails.application.routes.draw do
       resources :tags, only: %i[index show create destroy]
       resources :offer_tags, only: %i[create destroy]
       resources :free_directions, only: %i[index]
-      resource :profile, only: %i[create show]
+      resource :profile, only: %i[create show] do
+        get :geo
+      end
     end
   end
 end

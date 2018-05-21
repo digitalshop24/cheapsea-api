@@ -1,7 +1,7 @@
 module Import::CitiesService
   class << self
     def call
-      cities = ::ThirdParty::Travelpayouts::GetCitiesService.call
+      cities = ::ThirdParty::Travelpayouts::GetCitiesService.new.call
 
       puts 'Cities import started'
 

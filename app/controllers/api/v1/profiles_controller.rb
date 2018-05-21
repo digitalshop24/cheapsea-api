@@ -16,6 +16,10 @@ class API::V1::ProfilesController < ApiController
     render json: current_user
   end
 
+  def geo
+    #render json:
+  end
+
   swagger_api :create do |api|
     summary 'Create profile'
     api.param :form, 'profile[email]', :string, :required, 'Email'
