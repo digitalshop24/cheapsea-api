@@ -49,7 +49,7 @@ gem 'kaminari'
 gem 'knock', path: 'vendor/knock'
 gem 'russian'
 gem 'devise'
-gem 'filtering'
+gem 'filtering', '~> 0.1.4'
 gem 'fast_jsonapi'
 gem 'week_of_month'
 

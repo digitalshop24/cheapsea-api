@@ -16,5 +16,7 @@ class CollectionSerializer
 
   attributes :name, :name_en, :desc
 
-  has_many :offers
+  attribute :offers do |collection|
+    collection.offers.order(price: :asc)
+  end
 end

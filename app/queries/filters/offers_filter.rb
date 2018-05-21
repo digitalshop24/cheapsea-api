@@ -1,6 +1,6 @@
 class Filters::OffersFilter < Filtering::Base
-  def initialize(params, page)
-    super(params, page)
+  def initialize(params, args)
+    super(params, args)
   end
 
   private
