@@ -18,6 +18,6 @@ class Filters::CitiesFilter < Filtering::Base
   # Complex filters
 
   def filter_by_query(query)
-    results.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
+    result.where('name ILIKE ? or name_en ILIKE ?', "%#{query}%", "%#{query}%")
   end
 end

@@ -9,7 +9,7 @@ describe Filters::CitiesFilter do
   end
 
   context 'empty query' do
-    let(:query) { '' }
+    let(:query) { {} }
 
     it 'checks that result is not empty' do
       expect(subject).not_to be_empty
@@ -22,7 +22,7 @@ describe Filters::CitiesFilter do
 
   context 'record found in the database' do
     context 'name' do
-      let(:query) { 'Нью-Йорк' }
+      let(:query) { { query: 'Нью-Йорк' } }
 
       it 'checks that result is main city' do
         expect(subject.first).to eq(@main_city)
@@ -30,7 +30,7 @@ describe Filters::CitiesFilter do
     end
 
     context 'name_en' do
-      let(:query) { 'New York' }
+      let(:query) { { query: 'New York' } }
 
       it 'checks that result is main city' do
         expect(subject.first).to eq(@main_city)
