@@ -1,5 +1,5 @@
 class API::V1::ProfilesController < ApiController
-  before_action :authenticate_user, only: :show
+  before_action :authenticate_user, only: [:show, :geo]
 
   swagger_controller :profiles, 'Profile Management'
 
@@ -17,7 +17,7 @@ class API::V1::ProfilesController < ApiController
   end
 
   def geo
-    #render json:
+    render json: ThirdParty::Travelpayouts::GeoIpService.call(request.remote_ip)
   end
 
   swagger_api :create do |api|
@@ -33,6 +33,13 @@ class API::V1::ProfilesController < ApiController
 
   swagger_api :show do |api|
     summary 'Show profile'
+    ApiController.credentials(api)
+    response :unauthorized
+    response :unprocessable_entity
+  end
+
+  swagger_api :geo do |api|
+    summary 'Geo of profile'
     ApiController.credentials(api)
     response :unauthorized
     response :unprocessable_entity
