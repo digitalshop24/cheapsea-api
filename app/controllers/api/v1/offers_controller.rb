@@ -61,6 +61,7 @@ class API::V1::OffersController < ApiController
   swagger_api :index do
     summary 'All offers'
     param :query, :page, :integer, :optional, 'Page'
+    param :query, :order, :string, :optional, 'Order by. For example "price ASC"'
     param :query, :name, :string, :optional, 'Name. (\'name ILIKE ? or name_auto ILIKE ?\')'
     param :query, :offer_type, :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
     param :query, :discount_type, :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
@@ -85,7 +86,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    offers = ::Filters::OffersFilter.new(params, page: params[:page], order: 'price ASC').call
+    offers = ::Filters::OffersFilter.new(params, page: params[:page], order: params[:order]).call
 
     render json: OfferSerializer.new(offers, { meta: { count: offers.total_count, pages: offers.total_pages } }).serialized_json, status: 200
   end

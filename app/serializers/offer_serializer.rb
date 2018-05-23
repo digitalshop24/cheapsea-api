@@ -79,9 +79,14 @@ class OfferSerializer
     AirportSerializer.new(object.to_airport).serializable_hash
   end
 
+  attribute :square_image do |object|
+    ImageSerializer.new(object.images_countries_square).serializable_hash
+  end
+
+  attribute :rectangular_image do |object|
+    ImageSerializer.new(object.images_countries_rectangular).serializable_hash
+  end
+
   has_many :transfers
   has_many :tags
-
-  belongs_to :images_countries_square
-  belongs_to :images_countries_rectangular
 end

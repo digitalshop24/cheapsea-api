@@ -18,7 +18,7 @@ class Filters::OffersFilter < Filtering::Base
       :tags,
       origin: [country: :continent],
       destination: [country: :continent],
-      transfers: [:airline]
+      transfers: [:airline],
     )
   end
 
