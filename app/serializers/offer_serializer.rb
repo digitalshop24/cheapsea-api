@@ -81,4 +81,7 @@ class OfferSerializer
 
   has_many :transfers
   has_many :tags
+
+  belongs_to :images_countries_square
+  belongs_to :images_countries_rectangular
 end
