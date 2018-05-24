@@ -49,8 +49,9 @@ gem 'kaminari'
 gem 'knock', path: 'vendor/knock'
 gem 'russian'
 gem 'devise'
-gem 'filtering', '~> 0.1.4'
+gem 'filtering', '~> 0.1.5'
 gem 'fast_jsonapi'
+gem 'chewy'
 gem 'week_of_month'
 
 group :development, :test do

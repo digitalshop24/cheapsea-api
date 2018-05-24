@@ -5,7 +5,7 @@ module Import::AirportsService
     puts 'Airports import started'
 
     airports.each_with_index do |airport, index|
-      next if Airport.find_by(name: airport['name']).present?
+      next if Airport.find_by(name: airport['name'], iata: airport['code']).present?
 
       puts "#{index}/#{airports.length} airports imported" if index % 1000 == 0
 
@@ -15,7 +15,8 @@ module Import::AirportsService
         iata: airport['code'],
         city: City.find_by(iata: airport['city_code']),
         latitude: airport.dig('coordinates', 'lat'),
-        longitude: airport.dig('coordinates', 'lon'))
+        longitude: airport.dig('coordinates', 'lon')
+      )
     end
 
     puts "#{Airport.count} airports imported"

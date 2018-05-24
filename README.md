@@ -12,6 +12,17 @@
 
 `rake import:airports` import airports if there are no in the database
 
+## ElasticSearch indices
+### All
+`rake elastic_import:all`
+
+### 
+`rake elastic_import:cities`
+
+`rake elastic_import:airports`
+
+`rake elastic_import:airlines`
+
 ## Offers
 ### Cheapest
 `rake import:two_sides_cheapest_offers` two sides

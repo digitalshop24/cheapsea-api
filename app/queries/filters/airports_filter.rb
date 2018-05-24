@@ -1,7 +1,7 @@
-class Filters::CitiesFilter
+class Filters::AirportsFilter
   def initialize(params)
     @params = params
-    @result = ::CitiesIndex.limit(CitiesIndex.load.count)
+    @result = ::AirportsIndex.limit(AirportsIndex.load.count)
   end
 
   def call

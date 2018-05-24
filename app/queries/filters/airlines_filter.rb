@@ -1,7 +1,7 @@
-class Filters::CitiesFilter
+class Filters::AirlinesFilter
   def initialize(params)
     @params = params
-    @result = ::CitiesIndex.limit(CitiesIndex.load.count)
+    @result = ::AirlinesIndex.limit(AirlinesIndex.load.count)
   end
 
   def call
@@ -17,6 +17,6 @@ class Filters::CitiesFilter
   def filter_by_query(query)
     return if query.nil?
 
-    @result = result.query(multi_match: { query: query, fields: %w[name name_en] })
+    @result = result.query(match: { name: query })
   end
 end

@@ -19,7 +19,11 @@ class City < ApplicationRecord
 
   belongs_to :country
 
-  has_many :airports
+  has_many :airports, dependent: :nullify
 
   scope :active, -> { where(active: true) }
+
+  update_index('cities#city') { self }
+
+  paginates_per 20
 end

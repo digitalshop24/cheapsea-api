@@ -10,6 +10,8 @@ module Import::CitiesService
 
         name = city['name_translations']['ru']
 
+        next if City.find_by(name: city['name'], iata: city['code']).present?
+
         created_city = City.create!(
           iata: city['code'],
           name: name,

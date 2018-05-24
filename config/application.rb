@@ -33,5 +33,7 @@ module FilterApi
     config.middleware.use ActionDispatch::Flash
 
     WeekOfMonth.configuration.monday_active = true
+
+    config.autoload_paths << Rails.root.join('app', 'chewy')
   end
 end

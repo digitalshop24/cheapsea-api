@@ -10,6 +10,6 @@ class API::AirportsController < ApiController
   end
 
   def autocomplete
-    render json: Airport.where('name ILIKE ?', "%#{params[:query]}%").limit(10)
+    render json: ::Filters::AirportsFilter.new(params).call.limit(20)
   end
 end
