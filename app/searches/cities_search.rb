@@ -1,4 +1,4 @@
-class Filters::CitiesFilter
+class CitiesSearch
   def initialize(params)
     @params = params
     @result = ::CitiesIndex.limit(CitiesIndex.load.count)

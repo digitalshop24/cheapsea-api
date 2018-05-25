@@ -34,6 +34,6 @@ module FilterApi
 
     WeekOfMonth.configuration.monday_active = true
 
-    config.autoload_paths << Rails.root.join('app', 'chewy')
+    config.autoload_paths << Rails.root.join('app', 'queries', 'filters')
   end
 end

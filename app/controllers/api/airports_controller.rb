@@ -10,6 +10,6 @@ class API::AirportsController < ApiController
   end
 
   def autocomplete
-    render json: ::Filters::AirportsFilter.new(params).call.limit(20)
+    render json: AirportsSearch.new(params).call.limit(20)
   end
 end

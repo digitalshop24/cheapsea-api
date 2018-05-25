@@ -1,4 +1,4 @@
-class Filters::AirportsFilter
+class AirportsSearch
   def initialize(params)
     @params = params
     @result = ::AirportsIndex.limit(AirportsIndex.load.count)

@@ -13,4 +13,6 @@ class Airline < ApplicationRecord
   has_many :offers
 
   validates :name, presence: true
+
+  update_index('airlines#airline') { self }
 end

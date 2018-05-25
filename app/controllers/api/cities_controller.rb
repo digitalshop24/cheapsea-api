@@ -10,6 +10,6 @@ class API::CitiesController < ApiController
   end
 
   def autocomplete
-    render json: ::Filters::CitiesFilter.new(params).call.limit(20)
+    render json: CitiesSearch.new(params).call.limit(20)
   end
 end

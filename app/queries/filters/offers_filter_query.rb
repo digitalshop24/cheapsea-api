@@ -1,4 +1,4 @@
-class Filters::OffersFilter < Filtering::Base
+class OffersFilterQuery < Filtering::Base
   def initialize(params, args)
     super(params, args)
   end
@@ -19,11 +19,11 @@ class Filters::OffersFilter < Filtering::Base
       origin: [country: :continent],
       destination: [country: :continent],
       transfers: [:airline],
-    )
+    ).where(id: OffersSearch.new(params).call)
   end
 
   def plain_acessible_params
-    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides origin_id destination_id]
+    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides origin destination]
   end
 
   def complex_acessible_params

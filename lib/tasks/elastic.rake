@@ -22,4 +22,10 @@ namespace :elastic_import do
     AirlinesIndex.import!
     puts 'AirlinesIndex imported'
   end
+
+  task offers: :environment do
+    OffersIndex.purge!
+    OffersIndex.import!
+    puts 'OffersIndex imported'
+  end
 end

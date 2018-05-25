@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NYC&month=2018-05-21&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
+    uri: http://api.travelpayouts.com/v2/prices/month-matrix?destination=NYC&month=2018-05-25&origin=LED&show_to_affiliates=false&token=7181fab2e6eebcc0e6ec2123bb8593d1
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Mon, 21 May 2018 19:24:41 GMT
+      - Fri, 25 May 2018 23:40:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - njf02iinp0ob9tp15oibsa1ls6f9t9qa
+      - ncqjnmcn4mi9gvs7d1fdbn87m29o5o3q
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Allow-Origin:
@@ -38,8 +38,8 @@ http_interactions:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: "{\"success\": true, \"data\": \n[{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-05-21T16:24:41.723446\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-21\",\"actual\":true},{\"value\":19337.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-05-21T16:24:41.723446\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-22\",\"actual\":true},{\"value\":19337.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-05-21T16:24:41.723446\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-23\",\"actual\":true},{\"value\":18636.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-05-21T16:48:38\",\"duration\":1595,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-24\",\"actual\":true},{\"value\":19937.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-05-21T16:48:38\",\"duration\":1965,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-24\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-05-21T16:24:41.723446\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-25\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"AMADEUS\",\"found_at\":\"2018-05-21T16:24:41.723446\",\"duration\":null,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-26\",\"actual\":true},{\"value\":19914.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-05-21T10:55:56\",\"duration\":965,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-27\",\"actual\":true},{\"value\":31709.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"KupiBilet.ru\",\"found_at\":\"2018-05-21T10:55:56\",\"duration\":1765,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-27\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-05-20T10:41:04\",\"duration\":1185,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-28\",\"actual\":true},{\"value\":29822.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"SuperSaver.ru\",\"found_at\":\"2018-05-20T10:41:04\",\"duration\":1625,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-28\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-05-21T07:24:42\",\"duration\":1185,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-29\",\"actual\":true},{\"value\":27758.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Kiwi.com\",\"found_at\":\"2018-05-21T07:24:42\",\"duration\":1275,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-29\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-05-20T14:11:01\",\"duration\":1185,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-30\",\"actual\":true},{\"value\":21404.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Kiwi.com\",\"found_at\":\"2018-05-21T16:46:48\",\"duration\":2035,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-30\",\"actual\":true},{\"value\":19841.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"Aerobilet\",\"found_at\":\"2018-05-20T16:06:50\",\"duration\":1965,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-31\",\"actual\":true},{\"value\":21828.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Tickets.ru\",\"found_at\":\"2018-05-20T16:06:50\",\"duration\":2610,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-31\",\"actual\":true}]
+      string: "{\"success\": true, \"data\": \n[{\"value\":19762.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":1,\"gate\":\"SuperSaver.ru\",\"found_at\":\"2018-05-25T19:21:00\",\"duration\":1965,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-31\",\"actual\":true},{\"value\":25149.0,\"trip_class\":0,\"show_to_affiliates\":false,\"return_date\":null,\"origin\":\"LED\",\"number_of_changes\":2,\"gate\":\"Kiwi.com\",\"found_at\":\"2018-05-25T19:21:00\",\"duration\":2035,\"distance\":6893,\"destination\":\"NYC\",\"depart_date\":\"2018-05-31\",\"actual\":true}]
         }\n"
     http_version: 
-  recorded_at: Mon, 21 May 2018 19:25:01 GMT
+  recorded_at: Fri, 25 May 2018 23:40:54 GMT
 recorded_with: VCR 3.0.3

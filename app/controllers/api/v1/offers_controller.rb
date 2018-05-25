@@ -74,8 +74,8 @@ class API::V1::OffersController < ApiController
     param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR'
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
     param :query, :two_sides, :string, :optional, 'Two sides'
-    param :query, :origin_id, :integer, :optional, 'Origin city id'
-    param :query, :destination_id, :integer, :optional, 'Destination city id'
+    param :query, :origin, :string, :optional, 'Origin. Countries and cities ids. Url example: url?origin[countries]=1,2,3&origin[cities]=1,2,3'
+    param :query, :destination, :string, :optional, 'Destination. Countries and cities ids. Url example: url?destination[countries]=1,2,3&destination[cities]=1,2,3'
   end
 
   swagger_api :show do
@@ -86,7 +86,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    offers = ::Filters::OffersFilter.new(params, page: params[:page], order: params[:order]).call
+    offers = ::OffersFilterQuery.new(params, page: params[:page], order: params[:order]).call
 
     render json: OfferSerializer.new(offers, {
       meta: {

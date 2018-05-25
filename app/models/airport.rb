@@ -18,4 +18,6 @@ class Airport < ApplicationRecord
   validates :name, :name_en, :iata, presence: true
 
   belongs_to :city
+
+  update_index('airports#airport') { self }
 end

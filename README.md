@@ -1,5 +1,5 @@
 # Start
-`98fy9g49384983g49843`
+`sudo kill -9 $(sudo lsof -t -i:3001)`
 
 `rake app:reset` drops database, creates database, runs migration, seeds, import
 
@@ -22,6 +22,8 @@
 `rake elastic_import:airports`
 
 `rake elastic_import:airlines`
+
+`rake elastic_import:offers`
 
 ## Offers
 ### Cheapest

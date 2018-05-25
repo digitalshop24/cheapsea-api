@@ -3,6 +3,7 @@ require 'factory_girl'
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)
 require 'vcr'
+require 'chewy/rspec'
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
@@ -19,6 +20,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
+    Chewy.strategy(:bypass)
   end
 
   config.around(:each) do |example|
