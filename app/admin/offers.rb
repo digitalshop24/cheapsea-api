@@ -3,7 +3,7 @@ ActiveAdmin.register Offer do
 
   actions :index, :new, :show, :create, :edit, :update, :destroy
 
-  permit_params API::V1::OffersController.new.send(:params_array) << :user_id
+  permit_params API::V1::OffersController.new.send(:params_array) << %i[user_id main]
 
   index do
     selectable_column
@@ -14,6 +14,7 @@ ActiveAdmin.register Offer do
     tag_column 'Тип', :offer_type, interactive: true
     tag_column 'Тип скидки', :discount_type, interactive: true
     tag_column 'Качество', :quality, interactive: true
+    toggle_bool_column 'На главной', :main
     column 'Авиакомпания', :airline
 
     actions
@@ -41,6 +42,7 @@ ActiveAdmin.register Offer do
       f.input :destination, label: 'В город'
       f.input :user, label: 'Пользователь'
       f.input :quality, label: 'Качество'
+      f.input :main, label: 'На главной'
     end
 
     f.inputs 'Пересадки' do
@@ -83,6 +85,7 @@ ActiveAdmin.register Offer do
       row :origin_id
       row :destination_id
       row :quality
+      row :main
     end
 
     panel 'Пересадки' do

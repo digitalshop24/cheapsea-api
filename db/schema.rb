@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526152327) do
+ActiveRecord::Schema.define(version: 20180526161914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20180526152327) do
     t.datetime "updated_at", null: false
     t.bigint "images_countries_square_id"
     t.bigint "images_countries_rectangular_id"
+    t.boolean "main", default: false, null: false
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"

@@ -27,6 +27,7 @@ class CreateOffers < ActiveRecord::Migration[5.0]
       t.string :name_auto
       t.integer :quality, default: 'unknown', null: false
       t.json :statistic, null: false, default: '{}'
+      t.boolean :main, default: false, null: false
 
       t.timestamps
     end

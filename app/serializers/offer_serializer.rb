@@ -89,6 +89,15 @@ class OfferSerializer
     ImageSerializer.new(object.images_countries_rectangular).serializable_hash
   end
 
-  has_many :transfers
-  has_many :tags
+  attribute :transfers do |object|
+    TransferSerializer.new(object.transfers).serializable_hash
+  end
+
+  attribute :tags do |object|
+    TagSerializer.new(object.tags).serializable_hash
+  end
+
+  attribute :collection_ids do |object|
+    object.collections.ids
+  end
 end

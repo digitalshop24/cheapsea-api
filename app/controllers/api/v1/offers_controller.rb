@@ -76,6 +76,7 @@ class API::V1::OffersController < ApiController
     param :query, :two_sides, :string, :optional, 'Two sides'
     param :query, :origin, :string, :optional, 'Origin. Countries and cities ids. Url example: url?origin[countries]=1,2,3&origin[cities]=1,2,3'
     param :query, :destination, :string, :optional, 'Destination. Countries and cities ids. Url example: url?destination[countries]=1,2,3&destination[cities]=1,2,3'
+    param :query, :main, :boolean, :optional, 'On main dashboard?'
   end
 
   swagger_api :show do

@@ -65,6 +65,8 @@ class Offer < ApplicationRecord
   has_many :transfers, dependent: :destroy
   has_many :offer_tags, dependent: :destroy
   has_many :tags, through: :offer_tags, source: 'tag'
+  has_many :offer_collections, dependent: :destroy
+  has_many :collections, through: :offer_collections, source: 'collection'
 
   validates :is_direct, inclusion: { in: [ true, false ] }
   validates :two_sides, inclusion: { in: [ true, false ] }

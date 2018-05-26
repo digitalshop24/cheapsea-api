@@ -16,9 +16,10 @@ class OffersFilterQuery < Filtering::Base
       :images_countries_rectangular,
       :images_countries_square,
       :tags,
+      :collections,
       origin: [country: :continent],
       destination: [country: :continent],
-      transfers: [:airline],
+      transfers: [:airline]
     )
 
     filtered_by_elastic_ids = OffersSearch.new(params).call
@@ -28,7 +29,7 @@ class OffersFilterQuery < Filtering::Base
   end
 
   def plain_acessible_params
-    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price_currency discount_rate two_sides]
+    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price_currency discount_rate two_sides main]
   end
 
   def complex_acessible_params

@@ -1,5 +1,5 @@
 ActiveAdmin.register Collection do
-  menu label: 'Коллекции', priority: 3
+  menu label: 'Коллекции', priority: 2
 
   actions :index, :new, :show, :create, :edit, :update, :destroy
 

@@ -50,4 +50,8 @@ describe Offer, type: :model do
   it { is_expected.to belong_to(:destination) }
   it { is_expected.to belong_to(:to_airport) }
   it { is_expected.to have_many(:transfers) }
+  it { is_expected.to have_many(:offer_tags) }
+  it { is_expected.to have_many(:tags) }
+  it { is_expected.to have_many(:offer_collections) }
+  it { is_expected.to have_many(:collections) }
 end
