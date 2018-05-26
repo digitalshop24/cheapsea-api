@@ -8,7 +8,7 @@ class OffersFilterQuery < Filtering::Base
   # Required methods
 
   def relation
-    Offer.includes(
+    offers = Offer.includes(
       :airline,
       :user,
       :from_airport,
@@ -19,11 +19,16 @@ class OffersFilterQuery < Filtering::Base
       origin: [country: :continent],
       destination: [country: :continent],
       transfers: [:airline],
-    ).where(id: OffersSearch.new(params).call)
+    )
+
+    filtered_by_elastic_ids = OffersSearch.new(params).call
+    offers = offers.where(id: filtered_by_elastic_ids) if filtered_by_elastic_ids.any?
+
+    offers
   end
 
   def plain_acessible_params
-    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides origin destination]
+    %i[offer_type discount_type airline_id transfers_count date_from date_to date_end price price_currency discount_rate two_sides]
   end
 
   def complex_acessible_params
