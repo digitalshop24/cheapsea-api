@@ -23,12 +23,14 @@
 #  gate                            :string
 #  origin_id                       :integer
 #  destination_id                  :integer
-#  created_at                      :datetime         not null
-#  updated_at                      :datetime         not null
 #  from_airport_id                 :integer
 #  to_airport_id                   :integer
-#  name_auto                       :string
 #  visits_count                    :integer          default(0), not null
+#  name_auto                       :string
+#  quality                         :integer          default("unknown"), not null
+#  statistic                       :json             not null
+#  created_at                      :datetime         not null
+#  updated_at                      :datetime         not null
 #  images_countries_square_id      :integer
 #  images_countries_rectangular_id :integer
 #

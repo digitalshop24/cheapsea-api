@@ -3,7 +3,7 @@ ActiveAdmin.register Collection do
 
   actions :index, :new, :show, :create, :edit, :update, :destroy
 
-  permit_params API::V1::CollectionsController.new.send(:params_array) << :user_id
+  permit_params API::V1::CollectionsController.new.send(:params_array) << %i[user_id status main]
 
   index do
     selectable_column
@@ -12,6 +12,8 @@ ActiveAdmin.register Collection do
     column 'Название', :name
     column 'Название анг.', :name_en
     column 'Описание', :desc
+    toggle_bool_column 'На главной', :main
+    tag_column 'Статус', :status, interactive: true
 
     actions
   end
@@ -22,6 +24,8 @@ ActiveAdmin.register Collection do
       f.input :name_en, label: 'Название анг.'
       f.input :desc, label: 'Описание'
       f.input :user, label: 'Пользователь'
+      f.input :status, label: 'Cтатус'
+      f.input :main, label: 'На главную'
     end
 
     f.inputs 'Связи с предложениями' do
@@ -39,6 +43,8 @@ ActiveAdmin.register Collection do
       row :name
       row :name_en
       row :desc
+      row :status
+      row :main
     end
 
     panel 'Связи с предложениями' do

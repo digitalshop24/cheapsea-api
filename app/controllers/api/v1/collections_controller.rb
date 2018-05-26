@@ -37,7 +37,12 @@ class API::V1::CollectionsController < ApiController
   end
 
   def show
-    render json: CollectionSerializer.new(find_collection).serializable_hash
+    render json: CollectionSerializer.new(find_collection, {
+      meta: {
+        first_date: collection_offers.first.date_from,
+        last_date: collection_offers.last.date_to
+      }
+    }).serializable_hash
   end
 
   def create
@@ -62,7 +67,11 @@ class API::V1::CollectionsController < ApiController
   private
 
   def find_collection
-    Collection.find(params[:id])
+    @collection ||= Collection.find(params[:id])
+  end
+
+  def collection_offers
+    @offers ||= find_collection.offers.order(date_from: :asc)
   end
 
   def params_array

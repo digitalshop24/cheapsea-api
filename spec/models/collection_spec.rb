@@ -2,13 +2,16 @@
 #
 # Table name: collections
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  name_en    :string
-#  desc       :text
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string           not null
+#  name_en      :string
+#  desc         :text
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  status       :integer          default("draft"), not null
+#  published_at :datetime
+#  main         :boolean          default(FALSE), not null
 #
 
 require 'rails_helper'

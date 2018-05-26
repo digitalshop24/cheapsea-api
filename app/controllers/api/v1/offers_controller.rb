@@ -93,7 +93,7 @@ class API::V1::OffersController < ApiController
         count: offers.page.total_count,
         pages: offers.page.total_pages
       }
-    }).serialized_json, status: 200
+    }).serializable_hash, status: 200
   end
 
   def create
