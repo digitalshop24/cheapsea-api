@@ -37,7 +37,7 @@ class API::V1::CollectionsController < ApiController
   end
 
   def show
-    render json: find_collection
+    render json: CollectionSerializer.new(find_collection).serializable_hash
   end
 
   def create
