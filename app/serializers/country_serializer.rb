@@ -15,5 +15,13 @@
 class CountrySerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :name
+  attributes :name,
+    :name_en,
+    :desc,
+    :police_phone_number,
+    :ambulance_phone_number,
+    :inoculations,
+    :snakes,
+    :thieves,
+    :queer_money
 end

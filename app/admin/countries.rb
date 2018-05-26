@@ -3,7 +3,18 @@ ActiveAdmin.register Country do
 
   actions :index, :new, :create, :edit, :update
 
-  permit_params :iata, :name, :name_en, :continent_id, square_images_attributes: [:file, :id, :_destroy], rectangular_images_attributes: [:file, :id, :_destroy]
+  permit_params :iata,
+    :name,
+    :name_en,
+    :continent_id,
+    :desc,
+    :police_phone_number,
+    :ambulance_phone_number,
+    :inoculations,
+    :snakes,
+    :thieves,
+    :queer_money,
+    square_images_attributes: [:file, :id, :_destroy], rectangular_images_attributes: [:file, :id, :_destroy]
 
   index do
     selectable_column
@@ -34,6 +45,12 @@ ActiveAdmin.register Country do
       f.input :name, label: 'Название'
       f.input :name_en, label: 'Название анг.'
       f.input :desc, label: 'Описание'
+      f.input :police_phone_number, label: 'Телефон полиции'
+      f.input :ambulance_phone_number, label: 'Телефон скорой помощи'
+      f.input :inoculations, label: 'Прививки'
+      f.input :snakes, label: 'Змеи'
+      f.input :thieves, label: 'Щипачи'
+      f.input :queer_money, label: 'Фальшивые деньги'
     end
 
     actions

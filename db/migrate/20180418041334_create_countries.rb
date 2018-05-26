@@ -6,6 +6,12 @@ class CreateCountries < ActiveRecord::Migration[5.1]
       t.string :name_en, null: false
       t.text :desc
       t.references :continent
+      t.string :police_phone_number
+      t.string :ambulance_phone_number
+      t.boolean :inoculations, default: false, null: false
+      t.boolean :snakes, default: false, null: false
+      t.boolean :thieves, default: false, null: false
+      t.boolean :queer_money, default: false, null: false
 
       t.timestamps
     end

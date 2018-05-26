@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526161914) do
+ActiveRecord::Schema.define(version: 20180526164754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,12 @@ ActiveRecord::Schema.define(version: 20180526161914) do
     t.bigint "continent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "police_phone_number"
+    t.string "ambulance_phone_number"
+    t.boolean "inoculations", default: false, null: false
+    t.boolean "snakes", default: false, null: false
+    t.boolean "thieves", default: false, null: false
+    t.boolean "queer_money", default: false, null: false
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
