@@ -67,11 +67,11 @@ class API::V1::OffersController < ApiController
     param :query, :discount_type, :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
     param :query, :airline_id, :string, :optional, 'Airline id'
     param :query, :transfers_count, :integer, :optional, 'Transfers count'
-    param :query, :date_from, :string, :optional, 'Start date of offer'
-    param :query, :date_to, :string, :optional, 'End date of offer'
-    param :query, :date_end, :string, :optional, 'Date when offer will archived automaticly'
-    param :query, :price, :integer, :optional, 'Price'
-    param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR'
+    param :query, :date_from, :string, :optional, 'Start date of an offer'
+    param :query, :date_to, :string, :optional, 'End date of an offer'
+    param :query, :date_end, :string, :optional, 'Date when offer will be archived automatically'
+    param :query, :price, :string, :optional, 'Price by range or particular price. Example: 100-300 or just 100'
+    param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR. RUB by default.'
     param :query, :discount_rate, :integer, :optional, 'Discount rate'
     param :query, :two_sides, :string, :optional, 'Two sides'
     param :query, :origin, :string, :optional, 'Origin. Countries and cities ids. Url example: url?origin[countries]=1,2,3&origin[cities]=1,2,3'
@@ -86,7 +86,7 @@ class API::V1::OffersController < ApiController
   def index
     authorize Offer
 
-    offers = ::OffersFilterQuery.new(params, page: params[:page], order: params[:order]).call
+    offers = ::OffersFilterQuery.new(params, page: params[:page] || 1, order: params[:order]).call
 
     render json: OfferSerializer.new(offers, {
       meta: {
