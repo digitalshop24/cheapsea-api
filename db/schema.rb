@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526164754) do
+ActiveRecord::Schema.define(version: 20180529181420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180526164754) do
     t.integer "status", default: 0, null: false
     t.datetime "published_at"
     t.boolean "main", default: false, null: false
+    t.string "image"
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 

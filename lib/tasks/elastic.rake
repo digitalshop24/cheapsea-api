@@ -28,4 +28,10 @@ namespace :elastic_import do
     OffersIndex.import!
     puts 'OffersIndex imported'
   end
+
+  task offer_collections: :environment do
+    OfferCollectionsIndex.purge!
+    OfferCollectionsIndex.import!
+    puts 'OfferCollections imported'
+  end
 end

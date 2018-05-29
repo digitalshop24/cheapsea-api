@@ -17,9 +17,5 @@
 class CollectionSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :name, :name_en, :desc
-
-  attribute :offers do |collection|
-    collection.offers.order(price: :asc)
-  end
+  attributes :name, :name_en, :desc, :image
 end

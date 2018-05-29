@@ -3,7 +3,7 @@ class API::V1::CollectionsController < ApiController
 
   swagger_controller :collections, 'Collections management'
 
-  swagger_api :index do
+  swagger_api :index do |api|
     summary 'All collections'
     param :query, :page, :integer, :optional, 'Page'
   end
@@ -27,9 +27,10 @@ class API::V1::CollectionsController < ApiController
     response :unprocess
   end
 
-  swagger_api :show do
+  swagger_api :show do |api|
     summary 'Show a collection'
     param :path, :id, :integer, :optional, 'Collection Id'
+    API::V1::OffersController.filter_params(api, 'offers')
   end
 
   def index
@@ -39,8 +40,9 @@ class API::V1::CollectionsController < ApiController
   def show
     render json: CollectionSerializer.new(find_collection, {
       meta: {
-        first_date: collection_offers.first.date_from,
-        last_date: collection_offers.last.date_to
+        first_date: collection_offers.first&.date_from,
+        last_date: collection_offers.last&.date_to,
+        offers: serialize_offers(params)
       }
     }).serializable_hash
   end
@@ -79,11 +81,24 @@ class API::V1::CollectionsController < ApiController
       :name,
       :name_en,
       :desc,
+      :image,
       offer_collections_attributes: [:id, :offer_id, :_destroy]
     ]
   end
 
   def collection_params
     params.require(:collection).permit(params_array)
+  end
+
+  def serialize_offers(params)
+    params[:offers] ||= {}
+
+    OfferSerializer.new(
+      OffersFilterQuery.new(
+        params[:offers].merge(collection_id: params[:id]),
+        page: params[:offers][:page] || 1,
+        order: params[:offers][:order]
+      ).call
+    ).serializable_hash
   end
 end

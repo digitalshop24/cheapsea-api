@@ -3,12 +3,10 @@ class OffersFilterQuery < Filtering::Base
     super(params, args)
   end
 
-  private
+  def call
+    super
 
-  # Required methods
-
-  def relation
-    offers = Offer.includes(
+    result.includes(
       :airline,
       :user,
       :from_airport,
@@ -21,9 +19,17 @@ class OffersFilterQuery < Filtering::Base
       destination: [country: :continent],
       transfers: [:airline]
     )
+  end
+
+  private
+
+  # Required methods
+
+  def relation
+    offers = Offer.all
 
     filtered_by_elastic_ids = OffersSearch.new(params).call
-    offers = offers.where(id: filtered_by_elastic_ids) if filtered_by_elastic_ids.any?
+    offers = offers.where(id: filtered_by_elastic_ids) if filtered_by_elastic_ids.present?
 
     offers
   end
@@ -49,5 +55,9 @@ class OffersFilterQuery < Filtering::Base
     else
       result.where(price: price)
     end
+  end
+
+  def filter_by_collection_id(id)
+    result.joins(:collections).where(collections: { id: id })
   end
 end

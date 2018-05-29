@@ -53,6 +53,8 @@ class Offer < ApplicationRecord
 
   paginates_per 20
 
+  update_index('offers#offer') { self }
+
   belongs_to :user
   belongs_to :airline, optional: true
   belongs_to :origin, class_name: 'City', foreign_key: 'origin_id'

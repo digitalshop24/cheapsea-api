@@ -30,6 +30,8 @@ class Collection < ApplicationRecord
 
   before_save :update_published_at_if_status_changed_to_published
 
+  mount_uploader :image, CollectionUploader
+
   private
 
   def update_published_at_if_status_changed_to_published

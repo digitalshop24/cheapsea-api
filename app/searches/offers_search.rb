@@ -4,22 +4,31 @@ class OffersSearch
   end
 
   def call
-    result = [
-      filter_by_directions
-    ].reduce(&:&)
-
-    result
+    [
+      filter_by_directions,
+      filter_by_collection_id
+    ].compact.reduce(&:&)
   end
 
   private
 
   attr_reader :params
 
+  # Indices
+
   def index
     OffersIndex.limit(OffersIndex.load.count)
   end
 
+  def offer_collections_index
+    OfferCollectionsIndex.limit(OfferCollectionsIndex.load.count)
+  end
+
+  # Filters
+
   def filter_by_directions
+    return if params[:destination].nil? && params[:origin].nil?
+
     origins = [filter_by_origin_countries_ids, filter_by_origin_cities_ids].flatten.compact
     destinations = [filter_by_destination_countries_ids, filter_by_destination_cities_ids].flatten.compact
 
@@ -51,5 +60,11 @@ class OffersSearch
     cities_ids = params.dig('destination', 'cities')&.split(',')
     return if cities_ids.nil?
     index.filter(terms: { destination_city_id: cities_ids }).load.map(&:id)
+  end
+
+  def filter_by_collection_id
+    id = params[:collection_id]
+    return if id.nil?
+    offer_collections_index.filter(term: { collection_id: id }).load.map(&:offer_id)
   end
 end

@@ -15,4 +15,6 @@ class OfferCollection < ApplicationRecord
 
   belongs_to :offer
   belongs_to :collection
+
+  update_index('offer_collections#offer_collection') { self }
 end

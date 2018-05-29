@@ -26,6 +26,7 @@ ActiveAdmin.register Collection do
       f.input :user, label: 'Пользователь'
       f.input :status, label: 'Cтатус'
       f.input :main, label: 'На главную'
+      f.input :image, label: 'Изображение'
     end
 
     f.inputs 'Связи с предложениями' do
@@ -45,6 +46,7 @@ ActiveAdmin.register Collection do
       row :desc
       row :status
       row :main
+      row :image
     end
 
     panel 'Связи с предложениями' do

@@ -20,6 +20,30 @@ class API::V1::OffersController < ApiController
     api.param :form, 'offer[quality]', :integer, :optional, 'Quality: unknown(default), bad, normal, good'
   end
 
+  def self.filter_params(api, key = nil)
+    api.param :query, "#{key}[page]", :integer, :optional, 'Page'
+    api.param :query, "#{key}[order]", :string, :optional, 'Order by. For example "price ASC"'
+    api.param :query, "#{key}[name]", :string, :optional, 'Name. (\'name ILIKE ? or name_auto ILIKE ?\')'
+    api.param :query, "#{key}[offer_type]", :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
+    api.param :query, "#{key}[discount_type]", :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
+    api.param :query, "#{key}[airline_id]", :string, :optional, 'Airline id'
+    api.param :query, "#{key}[transfers_count]", :integer, :optional, 'Transfers count'
+    api.param :query, "#{key}[date_from]", :string, :optional, 'Start date of an offer'
+    api.param :query, "#{key}[date_to]", :string, :optional, 'End date of an offer'
+    api.param :query, "#{key}[date_end]", :string, :optional, 'Date when offer will be archived automatically'
+    api.param :query, "#{key}[price]", :string, :optional, 'Price by range or particular price. Example: 100-300 or just 100'
+    api.param :query, "#{key}[price_currency]", :integer, :optional, 'Currency type: RUB, USD, EUR. RUB by default.'
+    api.param :query, "#{key}[discount_rate]", :integer, :optional, 'Discount rate'
+    api.param :query, "#{key}[two_sides]", :string, :optional, 'Two sides'
+    api.param :query, "#{key}[origin]", :string, :optional, 'Origin. Countries and cities ids. Url example: url?origin[countries]=1,2,3&origin[cities]=1,2,3'
+    api.param :query, "#{key}[destination]", :string, :optional, 'Destination. Countries and cities ids. Url example: url?destination[countries]=1,2,3&destination[cities]=1,2,3'
+    api.param :query, "#{key}[main]", :boolean, :optional, 'On main dashboard?'
+  end
+
+  def self.required_id(api)
+    api.param :path, :id, :integer, :required, 'Offer Id'
+  end
+
   swagger_api :create do |api|
     summary 'Create a new Offer item'
     API::V1::OffersController.params(api)
@@ -36,7 +60,7 @@ class API::V1::OffersController < ApiController
 
   swagger_api :update do |api|
     summary 'Update an Offer item'
-    param :path, :id, :integer, :required, 'Offer Id'
+    API::V1::OffersController.required_id(api)
     API::V1::OffersController.params(api)
     api.param :form, 'offer[name]', :string, :optional, 'Name'
     api.param :form, 'offer[is_direct]', :boolean, :optional, 'Is a direct flight?'
@@ -52,36 +76,20 @@ class API::V1::OffersController < ApiController
 
   swagger_api :destroy do |api|
     summary 'Destroy an Offer item'
-    param :path, :id, :integer, :required, 'Offer Id'
+    API::V1::OffersController.required_id(api)
     ApiController.credentials(api)
     response :unauthorized
     response :unprocessable_entity
   end
 
-  swagger_api :index do
+  swagger_api :index do |api|
     summary 'All offers'
-    param :query, :page, :integer, :optional, 'Page'
-    param :query, :order, :string, :optional, 'Order by. For example "price ASC"'
-    param :query, :name, :string, :optional, 'Name. (\'name ILIKE ? or name_auto ILIKE ?\')'
-    param :query, :offer_type, :string, :optional, 'Offer type: airplane, trane, bus, car_rent'
-    param :query, :discount_type, :string, :optional, 'Discount type: hot, seasonal, erroneous, other'
-    param :query, :airline_id, :string, :optional, 'Airline id'
-    param :query, :transfers_count, :integer, :optional, 'Transfers count'
-    param :query, :date_from, :string, :optional, 'Start date of an offer'
-    param :query, :date_to, :string, :optional, 'End date of an offer'
-    param :query, :date_end, :string, :optional, 'Date when offer will be archived automatically'
-    param :query, :price, :string, :optional, 'Price by range or particular price. Example: 100-300 or just 100'
-    param :query, :price_currency, :integer, :optional, 'Currency type: RUB, USD, EUR. RUB by default.'
-    param :query, :discount_rate, :integer, :optional, 'Discount rate'
-    param :query, :two_sides, :string, :optional, 'Two sides'
-    param :query, :origin, :string, :optional, 'Origin. Countries and cities ids. Url example: url?origin[countries]=1,2,3&origin[cities]=1,2,3'
-    param :query, :destination, :string, :optional, 'Destination. Countries and cities ids. Url example: url?destination[countries]=1,2,3&destination[cities]=1,2,3'
-    param :query, :main, :boolean, :optional, 'On main dashboard?'
+    API::V1::OffersController.filter_params(api)
   end
 
-  swagger_api :show do
+  swagger_api :show do |api|
     summary 'Show an offer'
-    param :path, :id, :integer, :optional, 'Offer Id'
+    API::V1::OffersController.required_id(api)
   end
 
   def index
