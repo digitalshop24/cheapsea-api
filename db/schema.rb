@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180529181420) do
+ActiveRecord::Schema.define(version: 20180607102445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180529181420) do
     t.datetime "published_at"
     t.boolean "main", default: false, null: false
     t.string "image"
+    t.text "short_desc"
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
@@ -184,6 +185,7 @@ ActiveRecord::Schema.define(version: 20180529181420) do
     t.bigint "images_countries_square_id"
     t.bigint "images_countries_rectangular_id"
     t.boolean "main", default: false, null: false
+    t.text "faq"
     t.index ["airline_id"], name: "index_offers_on_airline_id"
     t.index ["date_from"], name: "index_offers_on_date_from"
     t.index ["date_to"], name: "index_offers_on_date_to"
@@ -209,12 +211,17 @@ ActiveRecord::Schema.define(version: 20180529181420) do
 
   create_table "transfers", id: :serial, force: :cascade do |t|
     t.integer "offer_id", null: false
-    t.string "google_place_id"
     t.integer "airline_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_id"
+    t.integer "to_airline_id"
+    t.integer "airport_id"
+    t.integer "to_airport_id"
+    t.integer "to_city_id"
+    t.integer "type", default: 0
+    t.integer "number"
     t.index ["airline_id"], name: "index_transfers_on_airline_id"
     t.index ["city_id"], name: "index_transfers_on_city_id"
     t.index ["offer_id"], name: "index_transfers_on_offer_id"

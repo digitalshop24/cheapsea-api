@@ -35,5 +35,6 @@ module FilterApi
     WeekOfMonth.configuration.monday_active = true
 
     config.autoload_paths << Rails.root.join('app', 'queries', 'filters')
+    config.autoload_paths << Rails.root.join('app', 'swagger-docs', '*')
   end
 end

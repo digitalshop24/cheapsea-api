@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Tue, 29 May 2018 14:49:27 GMT
+      - Thu, 07 Jun 2018 05:36:00 GMT
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
@@ -34,5 +34,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Parameter month is not Date"}'
     http_version: 
-  recorded_at: Tue, 29 May 2018 14:49:59 GMT
+  recorded_at: Thu, 07 Jun 2018 05:36:46 GMT
 recorded_with: VCR 3.0.3

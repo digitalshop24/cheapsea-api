@@ -4,6 +4,7 @@ class CreateCollections < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.string :name_en
       t.text :desc
+      t.text :short_desc
       t.references :user
       t.integer :status, default: 'draft', null: false
       t.datetime :published_at

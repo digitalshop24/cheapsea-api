@@ -43,14 +43,21 @@ ActiveAdmin.register Offer do
       f.input :user, label: 'Пользователь'
       f.input :quality, label: 'Качество'
       f.input :main, label: 'На главной'
+      f.input :faq, label: 'Инструкция'
     end
 
     f.inputs 'Пересадки' do
       f.has_many :transfers, heading: 'Пересадки', new_record: 'Добавить пересадку', allow_destroy: true do |p|
         p.input :_destroy, as: :boolean, label: "Удалить?" unless p.object.new_record?
         p.input :city, label: 'Город'
+        p.input :to_city, label: 'Город назначения'
         p.input :airline, label: 'Авиакомпания'
+        p.input :to_airline, label: 'Авиакомпания назначения'
+        p.input :airport, label: 'Аэропорт'
+        p.input :to_airport, label: 'Аэропорт назначения'
         p.input :user, label: 'Пользователь'
+        p.input :type, label: 'В какую сторону'
+        p.input :number, label: 'Номер'
       end
     end
 
@@ -86,12 +93,34 @@ ActiveAdmin.register Offer do
       row :destination_id
       row :quality
       row :main
+      row :faq
     end
 
     panel 'Пересадки' do
-      table_for offer.transfers do
-        column :city
-        column :airline
+      panel 'Туда' do
+        table_for offer.transfers.from_origin, sortable: true do
+          column :city
+          column :airline
+          column :airport
+          column :to_airport
+          column :to_city
+          column :to_airline
+          column :type
+          column :number
+        end
+      end
+
+      panel 'Обратно' do
+        table_for offer.transfers.to_origin, sortable: true do
+          column :city
+          column :airline
+          column :airport
+          column :to_airport
+          column :to_city
+          column :to_airline
+          column :type
+          column :number
+        end
       end
     end
 

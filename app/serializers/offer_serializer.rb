@@ -33,6 +33,7 @@
 #  updated_at                      :datetime         not null
 #  images_countries_square_id      :integer
 #  images_countries_rectangular_id :integer
+#  main                            :boolean          default(FALSE), not null
 #
 
 class OfferSerializer
@@ -55,7 +56,8 @@ class OfferSerializer
              :quality,
              :created_at,
              :updated_at,
-             :statistic
+             :statistic,
+             :faq
 
   attribute :user do |object|
     UserSerializer.new(object.user).serializable_hash

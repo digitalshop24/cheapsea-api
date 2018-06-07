@@ -12,6 +12,7 @@ ActiveAdmin.register Collection do
     column 'Название', :name
     column 'Название анг.', :name_en
     column 'Описание', :desc
+    column 'Короткое описание', :short_desc
     toggle_bool_column 'На главной', :main
     tag_column 'Статус', :status, interactive: true
 
@@ -23,6 +24,7 @@ ActiveAdmin.register Collection do
       f.input :name, label: 'Название'
       f.input :name_en, label: 'Название анг.'
       f.input :desc, label: 'Описание'
+      f.input :short_desc, label: 'Короткое описание'
       f.input :user, label: 'Пользователь'
       f.input :status, label: 'Cтатус'
       f.input :main, label: 'На главную'
@@ -44,6 +46,7 @@ ActiveAdmin.register Collection do
       row :name
       row :name_en
       row :desc
+      row :short_desc
       row :status
       row :main
       row :image

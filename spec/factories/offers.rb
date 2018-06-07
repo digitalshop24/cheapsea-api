@@ -33,6 +33,7 @@
 #  updated_at                      :datetime         not null
 #  images_countries_square_id      :integer
 #  images_countries_rectangular_id :integer
+#  main                            :boolean          default(FALSE), not null
 #
 
 FactoryGirl.define do

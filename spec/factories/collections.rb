@@ -12,6 +12,8 @@
 #  status       :integer          default("draft"), not null
 #  published_at :datetime
 #  main         :boolean          default(FALSE), not null
+#  image        :string
+#  short_desc   :text
 #
 
 FactoryGirl.define do

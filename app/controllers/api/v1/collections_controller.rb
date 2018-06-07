@@ -1,37 +1,7 @@
 class API::V1::CollectionsController < ApiController
   before_action :authenticate_user, except: %i[index show]
 
-  swagger_controller :collections, 'Collections management'
-
-  swagger_api :index do |api|
-    summary 'All collections'
-    param :query, :page, :integer, :optional, 'Page'
-  end
-
-  swagger_api :destroy do |api|
-    summary 'Destroy a collection'
-    param :path, :id, :integer, :required, 'Collection Id'
-    ApiController.credentials(api)
-    response :unauthorized
-    response :unprocessable_entity
-  end
-
-  swagger_api :create do |api|
-    summary 'Create a new collection'
-    ApiController.credentials(api)
-    api.param :form, 'collection[name]', :string, :required, 'Name'
-    api.param :form, 'collection[name_en]', :string, :optional, 'English name'
-    api.param :form, 'collection[desc]', :string, :optional, 'Description'
-    api.param :form, 'collection[offer_collections_attributes]', :string, :optional, '"offer_collections_attributes"=>{"0"=>{"offer_id"=>"5"}, "1"=>{"offer_id"=>"4"}}}'
-    response :unauthorized
-    response :unprocess
-  end
-
-  swagger_api :show do |api|
-    summary 'Show a collection'
-    param :path, :id, :integer, :optional, 'Collection Id'
-    API::V1::OffersController.filter_params(api, 'offers')
-  end
+  include ::V1::CollectionsControllerDoc
 
   def index
     render json: Collection.includes(:offers).page(params[:page])
@@ -81,6 +51,7 @@ class API::V1::CollectionsController < ApiController
       :name,
       :name_en,
       :desc,
+      :short_desc,
       :image,
       offer_collections_attributes: [:id, :offer_id, :_destroy]
     ]
