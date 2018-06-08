@@ -29,7 +29,7 @@ class OffersFilterQuery < Filtering::Base
     offers = Offer.all
 
     filtered_by_elastic_ids = OffersSearch.new(params).call
-    offers = offers.where(id: filtered_by_elastic_ids) if filtered_by_elastic_ids.present?
+    offers = offers.where(id: filtered_by_elastic_ids) if filtered_by_elastic_ids.is_a?(Array)
 
     offers
   end
@@ -55,9 +55,5 @@ class OffersFilterQuery < Filtering::Base
     else
       result.where(price: price)
     end
-  end
-
-  def filter_by_collection_id(id)
-    result.joins(:collections).where(collections: { id: id })
   end
 end
